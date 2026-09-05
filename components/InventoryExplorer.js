@@ -232,8 +232,8 @@ export default function InventoryExplorer({ inventory }) {
     <main className="app-shell">
       <section className="hero-panel">
         <div className="hero-copy">
-          <p className="eyebrow">Genesis of Manchester</p>
-          <h1>Inventory Intelligence</h1>
+          <p className="eyebrow">Inventory Intelligence</p>
+          <h1>Genesis of Manchester</h1>
           <p className="hero-subtitle">
             Search the live inventory the way a salesperson thinks. Model, color, payment range, mileage, stock number, VIN, availability and more.
           </p>
