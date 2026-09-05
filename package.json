@@ -1,14 +1,20 @@
 {
   "name": "genesis-inventory",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check scraper/config.js && node --check scraper/normalize.js && node --check scraper/validate.js && node --check scraper/scrape.js && node --check scraper/normalize.test.js",
-    "test": "node --test scraper/normalize.test.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "check": "node --check scraper/config.js && node --check scraper/normalize.js && node --check scraper/validate.js && node --check scraper/scrape.js && node --check scraper/normalize.test.js && node --check lib/search.js && node --check lib/search.test.js",
+    "test": "node --test scraper/normalize.test.js lib/search.test.js",
     "scrape": "node scraper/scrape.js"
   },
   "dependencies": {
-    "playwright": "^1.55.0"
+    "next": "16.3.4",
+    "playwright": "^1.55.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   }
 }
