@@ -1,9 +1,5 @@
 export const CONFIG = {
   baseUrl: 'https://www.genesisofmanchester.com',
-  allowedSharedUsedHosts: [
-    'autofairhyundai.com',
-    'www.autofairhyundai.com'
-  ],
   listingPages: [
     {
       name: 'new',
