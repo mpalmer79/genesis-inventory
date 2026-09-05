@@ -49,6 +49,105 @@ function findJsonLdValue(objects, keys) {
   return null;
 }
 
+function findJsonLdImages(objects) {
+  const images = [];
+  const stack = [...objects];
+
+  while (stack.length) {
+    const current = stack.shift();
+    if (!current || typeof current !== 'object') continue;
+    if (Array.isArray(current)) {
+      stack.push(...current);
+      continue;
+    }
+
+    for (const [key, value] of Object.entries(current)) {
+      const normalizedKey = key.toLowerCase();
+      if (['image', 'contenturl', 'thumbnailurl'].includes(normalizedKey)) {
+        if (typeof value === 'string') images.push(value);
+        else if (Array.isArray(value)) {
+          for (const entry of value) {
+            if (typeof entry === 'string') images.push(entry);
+            else if (entry && typeof entry === 'object') stack.push(entry);
+          }
+        } else if (value && typeof value === 'object') {
+          stack.push(value);
+        }
+        continue;
+      }
+
+      if (value && typeof value === 'object') stack.push(value);
+    }
+  }
+
+  return images;
+}
+
+function absoluteImageUrl(value, baseUrl) {
+  const candidate = clean(value);
+  if (!candidate) return null;
+
+  try {
+    const url = new URL(candidate, baseUrl);
+    if (!['http:', 'https:'].includes(url.protocol)) return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
+function scoreImageUrl(value) {
+  try {
+    const url = new URL(value);
+    const hostname = url.hostname.toLowerCase();
+    const path = url.pathname.toLowerCase();
+    const search = url.search.toLowerCase();
+    let score = 0;
+
+    if (hostname === 'pictures.dealer.com' || hostname.endsWith('.pictures.dealer.com')) score += 40;
+    if (/oem[_-]vin[_-]stock[_-]photos/.test(path)) score += 140;
+    if (/(^|[/_-])(inventory|vehicle|stock|vin)([/_.-]|$)/.test(path)) score += 35;
+    if (/impolicy=resize/.test(search)) score += 20;
+
+    const width = Number(url.searchParams.get('w'));
+    if (Number.isFinite(width) && width >= 600) score += 25;
+
+    if (/(logo|favicon|sprite|icon|badge|kbb|brandmark|wordmark)/.test(path)) score -= 250;
+
+    // This is the generic Genesis branding asset that was previously being
+    // selected as every vehicle's photo. Keep the rule narrow so normal
+    // dealer-hosted photography can still be selected.
+    if (/genesisgroup\/0965\/501c0321c6a3530ad91e53dc61e0385b/.test(path)) score -= 400;
+
+    return score;
+  } catch {
+    return -1000;
+  }
+}
+
+function selectVehicleImage(raw) {
+  const candidates = [];
+  const seen = new Set();
+
+  const addCandidate = (value, structured = false) => {
+    const url = absoluteImageUrl(value, raw.url);
+    if (!url || seen.has(url)) return;
+    seen.add(url);
+    candidates.push({
+      url,
+      score: scoreImageUrl(url) + (structured ? 30 : 0)
+    });
+  };
+
+  for (const image of findJsonLdImages(raw.jsonLd || [])) addCandidate(image, true);
+  for (const image of raw.images || []) addCandidate(image, false);
+
+  candidates.sort((a, b) => b.score - a.score);
+  const best = candidates[0];
+  if (!best || best.score <= 0) return null;
+  return best.url;
+}
+
 function parseTitle(rawTitle, structuredName) {
   const text = clean(rawTitle) || clean(structuredName) || '';
   const normalized = text
@@ -138,7 +237,7 @@ export function normalizeVehicle(raw) {
 
   const isCertified = raw.condition === 'certified' || /^certified\b/i.test(heading);
   const condition = raw.condition === 'new' ? 'new' : isCertified ? 'certified' : 'used';
-  const imageUrl = clean(raw.images?.find((src) => /^https?:\/\//i.test(src)) || null);
+  const imageUrl = selectVehicleImage(raw);
 
   return {
     vin,
@@ -177,4 +276,4 @@ export function csvEscape(value) {
   return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 
-export { clean, toNumber, MONEY_PATTERN };
+export { clean, toNumber, MONEY_PATTERN, selectVehicleImage };
