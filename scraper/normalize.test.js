@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { normalizeVehicle } from './normalize.js';
 
-test('normalizes a Genesis VDP with labeled vehicle fields', () => {
+test('normalizes a new Genesis VDP with labeled vehicle fields', () => {
   const vehicle = normalizeVehicle({
     condition: 'new',
     source: 'new',
@@ -28,6 +28,7 @@ test('normalizes a Genesis VDP with labeled vehicle fields', () => {
       GM260787
       MSRP
       $68,450
+      Certified Pre-Owned Inventory
     `,
     jsonLd: [],
     images: ['https://example.com/gv80.jpg']
@@ -46,4 +47,26 @@ test('normalizes a Genesis VDP with labeled vehicle fields', () => {
   assert.equal(vehicle.engine, '2.5L DOHC');
   assert.equal(vehicle.msrp, 68450);
   assert.equal(vehicle.condition, 'new');
+  assert.equal(vehicle.certified, false);
+});
+
+test('uses the certified inventory source as authoritative CPO classification', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'certified',
+    source: 'certified',
+    url: 'https://www.genesisofmanchester.com/used/Genesis/2024-Genesis-GV70-example.htm',
+    heading: 'Used 2024 Genesis GV70 2.5T Advanced',
+    bodyText: `
+      Used 2024 Genesis GV70 2.5T Advanced
+      VIN
+      KMUMADTB0RU123456
+      Stock Number
+      GMU1234
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.condition, 'certified');
+  assert.equal(vehicle.certified, true);
 });
