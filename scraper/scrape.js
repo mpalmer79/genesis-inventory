@@ -12,7 +12,7 @@ const CSV_PATH = resolve(DATA_DIR, 'inventory.csv');
 const CHANGES_PATH = resolve(DATA_DIR, 'changes.json');
 const HISTORY_PATH = resolve(DATA_DIR, 'history.json');
 const BASE_HOSTNAME = new URL(CONFIG.baseUrl).hostname;
-const VDP_PATH_PATTERN = /^\/(new|used)\/[^/]+\/20\d{2}-[^/]+-[a-f0-9]{32}\.htm$/i;
+const VDP_PATH_PATTERN = /^\/(new|used|certified)\/[^/]+\/20\d{2}-[^/]+-[a-f0-9]{32}\.htm$/i;
 
 const sleep = (ms) => new Promise((resolvePromise) => setTimeout(resolvePromise, ms));
 
@@ -38,7 +38,7 @@ function canonicalVehicleDetailUrl(href, source) {
     } else {
       if (url.hostname !== BASE_HOSTNAME) return null;
       if (source.condition === 'new' && pathCondition !== 'new') return null;
-      if (source.condition === 'certified' && pathCondition !== 'used') return null;
+      if (source.condition === 'certified' && !['certified', 'used'].includes(pathCondition)) return null;
     }
 
     url.search = '';
