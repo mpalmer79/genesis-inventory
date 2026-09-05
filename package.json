@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check": "node --check scraper/config.js && node --check scraper/normalize.js && node --check scraper/validate.js && node --check scraper/scrape.js && node --check scraper/normalize.test.js",
+    "test": "node --test scraper/normalize.test.js",
     "scrape": "node scraper/scrape.js"
   },
   "dependencies": {
