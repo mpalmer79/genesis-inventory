@@ -11,6 +11,7 @@ const INVENTORY_PATH = resolve(DATA_DIR, 'inventory.json');
 const CSV_PATH = resolve(DATA_DIR, 'inventory.csv');
 const CHANGES_PATH = resolve(DATA_DIR, 'changes.json');
 const HISTORY_PATH = resolve(DATA_DIR, 'history.json');
+const BASE_HOSTNAME = new URL(CONFIG.baseUrl).hostname;
 
 const sleep = (ms) => new Promise((resolvePromise) => setTimeout(resolvePromise, ms));
 
@@ -22,66 +23,89 @@ async function readJson(path, fallback) {
   }
 }
 
-function isVehicleDetailUrl(href) {
+function canonicalVehicleDetailUrl(href) {
   try {
     const url = new URL(href, CONFIG.baseUrl);
-    if (url.hostname !== new URL(CONFIG.baseUrl).hostname) return false;
-    return /^\/(new|used)\/[^?#]+\.htm$/i.test(url.pathname);
+    if (url.hostname !== BASE_HOSTNAME) return null;
+    if (!/^\/(?:new|used)\/[^/]+\/20\d{2}-[^/]+-[a-f0-9]{32}\.htm$/i.test(url.pathname)) return null;
+    url.search = '';
+    url.hash = '';
+    return url.toString();
   } catch {
-    return false;
+    return null;
   }
 }
 
-async function dismissOverlays(page) {
-  const patterns = [/accept/i, /agree/i, /close/i, /continue/i, /no thanks/i];
-  for (const pattern of patterns) {
-    const button = page.getByRole('button', { name: pattern }).first();
-    try {
-      if (await button.isVisible({ timeout: 400 })) await button.click({ timeout: 800 });
-    } catch {
-      // Optional overlays vary by session and are safe to ignore.
-    }
+function listingUrl(sourceUrl, start) {
+  const url = new URL(sourceUrl);
+  if (start > 0) url.searchParams.set('start', String(start));
+  else url.searchParams.delete('start');
+  return url.toString();
+}
+
+async function navigate(page, url) {
+  await page.goto(url, {
+    waitUntil: 'domcontentloaded',
+    timeout: CONFIG.navigationTimeoutMs
+  });
+  await page.waitForTimeout(250);
+}
+
+async function discoverPagination(page) {
+  const starts = await page.locator('a[href*="start="]').evaluateAll((anchors) =>
+    anchors
+      .map((anchor) => {
+        try {
+          return Number(new URL(anchor.href).searchParams.get('start'));
+        } catch {
+          return NaN;
+        }
+      })
+      .filter((value) => Number.isInteger(value) && value > 0)
+  );
+
+  if (!starts.length) return [0];
+
+  const pageSize = Math.min(...starts);
+  const maxStart = Math.max(...starts);
+  if (!Number.isFinite(pageSize) || pageSize <= 0) return [0];
+
+  const pages = [];
+  for (let start = 0; start <= maxStart; start += pageSize) pages.push(start);
+  return pages;
+}
+
+async function extractVehicleLinks(page) {
+  const hrefs = await page.locator('a[href]').evaluateAll((anchors) => anchors.map((anchor) => anchor.href));
+  const links = new Set();
+  for (const href of hrefs) {
+    const canonical = canonicalVehicleDetailUrl(href);
+    if (canonical) links.add(canonical);
   }
+  return links;
 }
 
 async function collectVehicleLinks(page, source) {
   console.log(`Discovering ${source.name} inventory from ${source.url}`);
-  await page.goto(source.url, {
-    waitUntil: 'domcontentloaded',
-    timeout: CONFIG.navigationTimeoutMs
-  });
-  await dismissOverlays(page);
+  await navigate(page, source.url);
+
+  const starts = await discoverPagination(page);
+  console.log(`${source.name}: ${starts.length} listing page${starts.length === 1 ? '' : 's'} detected.`);
 
   const links = new Set();
-  let stableRounds = 0;
-  let previousCount = 0;
-
-  for (let round = 0; round < CONFIG.maxListingScrolls; round += 1) {
-    const hrefs = await page.locator('a[href]').evaluateAll((anchors) => anchors.map((anchor) => anchor.href));
-    for (const href of hrefs) {
-      if (isVehicleDetailUrl(href)) links.add(new URL(href, CONFIG.baseUrl).toString());
+  for (let pageIndex = 0; pageIndex < starts.length; pageIndex += 1) {
+    const start = starts[pageIndex];
+    if (pageIndex > 0) {
+      await navigate(page, listingUrl(source.url, start));
+      await sleep(CONFIG.requestDelayMs);
     }
 
-    if (links.size === previousCount) stableRounds += 1;
-    else stableRounds = 0;
-    previousCount = links.size;
-
-    if (stableRounds >= CONFIG.stableScrollRounds) break;
-
-    const moreButton = page.getByRole('button', { name: /load more|show more|view more/i }).first();
-    try {
-      if (await moreButton.isVisible({ timeout: 250 })) {
-        await moreButton.click({ timeout: 1200 });
-      }
-    } catch {
-      // Most Dealer.com inventory pages load through scrolling instead.
-    }
-
-    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    await page.waitForTimeout(800);
+    const pageLinks = await extractVehicleLinks(page);
+    for (const link of pageLinks) links.add(link);
+    console.log(`${source.name}: page ${pageIndex + 1}/${starts.length}, ${pageLinks.size} VDPs, ${links.size} unique.`);
   }
 
-  console.log(`Found ${links.size} ${source.name} vehicle detail links.`);
+  console.log(`Found ${links.size} canonical ${source.name} vehicle detail links.`);
   return [...links].map((url) => ({ url, source: source.name, condition: source.condition }));
 }
 
@@ -99,14 +123,12 @@ async function parseJsonLd(page) {
   });
 }
 
-async function collectVehicle(page, target, index, total) {
-  console.log(`[${index + 1}/${total}] ${target.url}`);
+async function collectVehicle(page, target) {
   await page.goto(target.url, {
     waitUntil: 'domcontentloaded',
     timeout: CONFIG.navigationTimeoutMs
   });
-  await dismissOverlays(page);
-  await page.waitForTimeout(350);
+  await page.waitForTimeout(150);
 
   const heading = await page.locator('h1').first().textContent().catch(() => null);
   const bodyText = await page.locator('body').innerText();
@@ -114,7 +136,7 @@ async function collectVehicle(page, target, index, total) {
   const images = await page.locator('img[src]').evaluateAll((elements) =>
     elements
       .map((element) => element.currentSrc || element.src)
-      .filter(Boolean)
+      .filter((src) => src && /^https?:\/\//i.test(src))
   );
 
   return normalizeVehicle({
@@ -126,6 +148,41 @@ async function collectVehicle(page, target, index, total) {
   });
 }
 
+async function collectVehiclesConcurrently(context, targets) {
+  const results = new Array(targets.length);
+  let nextIndex = 0;
+  const workerCount = Math.min(CONFIG.detailConcurrency, targets.length);
+
+  async function worker(workerNumber) {
+    const page = await context.newPage();
+    try {
+      while (true) {
+        const index = nextIndex;
+        nextIndex += 1;
+        if (index >= targets.length) break;
+
+        const target = targets[index];
+        if (index === 0 || (index + 1) % 25 === 0 || index === targets.length - 1) {
+          console.log(`VDP progress: ${index + 1}/${targets.length} (worker ${workerNumber}).`);
+        }
+
+        try {
+          results[index] = await collectVehicle(page, target);
+        } catch (error) {
+          console.warn(`Failed to collect ${target.url}: ${error.message}`);
+        }
+
+        await sleep(CONFIG.requestDelayMs);
+      }
+    } finally {
+      await page.close();
+    }
+  }
+
+  await Promise.all(Array.from({ length: workerCount }, (_, index) => worker(index + 1)));
+  return results.filter(Boolean);
+}
+
 function dedupeVehicles(vehicles) {
   const unique = new Map();
   for (const vehicle of vehicles) {
@@ -133,6 +190,11 @@ function dedupeVehicles(vehicles) {
     if (!key) continue;
     const existing = unique.get(key);
     if (!existing) {
+      unique.set(key, vehicle);
+      continue;
+    }
+
+    if (vehicle.condition === 'certified' && existing.condition !== 'new') {
       unique.set(key, vehicle);
       continue;
     }
@@ -204,9 +266,11 @@ function buildHistory(currentVehicles, previousInventory, existingHistory, times
     updatedAt: timestamp,
     vehicles: { ...(existingHistory?.vehicles || {}) }
   };
+  const currentKeys = new Set();
 
   for (const vehicle of currentVehicles) {
     const key = vehicleKey(vehicle);
+    currentKeys.add(key);
     const prior = history.vehicles[key];
     history.vehicles[key] = {
       firstSeen: prior?.firstSeen || vehicle.firstSeen,
@@ -218,7 +282,7 @@ function buildHistory(currentVehicles, previousInventory, existingHistory, times
 
   for (const vehicle of previousInventory?.vehicles || []) {
     const key = vehicleKey(vehicle);
-    if (currentVehicles.some((current) => vehicleKey(current) === key)) continue;
+    if (currentKeys.has(key)) continue;
     const prior = history.vehicles[key];
     history.vehicles[key] = {
       firstSeen: prior?.firstSeen || vehicle.firstSeen || vehicle.lastSeen || timestamp,
@@ -237,6 +301,7 @@ function toCsv(vehicles) {
     'stockNumber',
     'condition',
     'certified',
+    'availability',
     'year',
     'make',
     'model',
@@ -250,6 +315,7 @@ function toCsv(vehicles) {
     'mileage',
     'msrp',
     'price',
+    'location',
     'firstSeen',
     'lastSeen',
     'daysObserved',
@@ -286,34 +352,25 @@ async function main() {
 
   await context.route('**/*', async (route) => {
     const type = route.request().resourceType();
-    if (['font', 'media'].includes(type)) await route.abort();
+    if (['image', 'font', 'media'].includes(type)) await route.abort();
     else await route.continue();
   });
 
   const discoveryPage = await context.newPage();
-  const targets = [];
 
   try {
+    const targets = [];
     for (const source of CONFIG.listingPages) {
       targets.push(...await collectVehicleLinks(discoveryPage, source));
       await sleep(CONFIG.requestDelayMs);
     }
+    await discoveryPage.close();
 
     const uniqueTargets = [...new Map(targets.map((target) => [target.url, target])).values()];
-    console.log(`Collected ${uniqueTargets.length} unique VDP links across all sources.`);
+    console.log(`Collected ${uniqueTargets.length} unique canonical VDP links across all sources.`);
 
-    const page = await context.newPage();
-    const vehicles = [];
-
-    for (let index = 0; index < uniqueTargets.length; index += 1) {
-      try {
-        const vehicle = await collectVehicle(page, uniqueTargets[index], index, uniqueTargets.length);
-        vehicles.push(vehicle);
-      } catch (error) {
-        console.warn(`Failed to collect ${uniqueTargets[index].url}: ${error.message}`);
-      }
-      await sleep(CONFIG.requestDelayMs);
-    }
+    const vehicles = await collectVehiclesConcurrently(context, uniqueTargets);
+    console.log(`Parsed ${vehicles.length}/${uniqueTargets.length} VDPs.`);
 
     const deduped = dedupeVehicles(vehicles);
     const observed = addObservationMetadata(deduped, previousInventory, existingHistory, timestamp);
@@ -336,6 +393,7 @@ async function main() {
       vehicles: observed.sort((a, b) => {
         const conditionOrder = { new: 0, certified: 1, used: 2 };
         return (conditionOrder[a.condition] ?? 9) - (conditionOrder[b.condition] ?? 9) ||
+          (a.make || '').localeCompare(b.make || '') ||
           (a.model || '').localeCompare(b.model || '') ||
           (a.stockNumber || '').localeCompare(b.stockNumber || '');
       })
