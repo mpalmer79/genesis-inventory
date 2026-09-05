@@ -36,11 +36,11 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Check JavaScript
-        run: npm run check
+      - name: Check scraper JavaScript
+        run: npm run check:scraper
 
-      - name: Run parser tests
-        run: npm test
+      - name: Run scraper tests
+        run: npm run test:scraper
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
