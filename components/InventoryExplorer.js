@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { searchInventory } from '../lib/search.js';
+import styles from './InventoryExplorer.module.css';
 
 const INITIAL_VISIBLE = 24;
 
@@ -311,15 +312,15 @@ export default function InventoryExplorer({ inventory }) {
 
       {visibleVehicles.length ? (
         condition === 'new' ? (
-          <section className="model-groups" aria-label="New inventory grouped by model">
+          <section className={styles.modelGroups} aria-label="New inventory grouped by model">
             {groupedNewVehicles.map((group) => (
-              <section className="model-group" key={group.modelName}>
-                <header className="model-group-header">
+              <section className={styles.modelGroup} key={group.modelName}>
+                <header className={styles.modelGroupHeader}>
                   <div>
-                    <p className="model-group-kicker">New Inventory</p>
+                    <p className={styles.kicker}>New Inventory</p>
                     <h3>{group.modelName}</h3>
                   </div>
-                  <span className="model-group-count">
+                  <span className={styles.count}>
                     {group.vehicles.length.toLocaleString()} vehicle{group.vehicles.length === 1 ? '' : 's'}
                   </span>
                 </header>
