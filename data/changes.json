@@ -1,6 +1,76 @@
 {
-  "generatedAt": "2026-09-05T12:04:02.213Z",
-  "added": [],
+  "generatedAt": "2026-09-05T15:14:47.743Z",
+  "added": [
+    {
+      "vin": "KMUMADTB5PU109511",
+      "stockNumber": "GM20157T",
+      "condition": "used",
+      "certified": false,
+      "availability": "in-stock",
+      "year": 2023,
+      "make": "|",
+      "model": "GenesisGV70",
+      "trim": "2.5T",
+      "exteriorColor": "Brunswick Green",
+      "interiorColor": "Green",
+      "bodyStyle": "SUV/5 seats",
+      "drivetrain": "All-Wheel Drive",
+      "transmission": "8-Speed Automatic with SHIFTRONIC",
+      "engine": "I-4 cyl",
+      "mileage": 59235,
+      "msrp": null,
+      "price": 33999,
+      "location": "Sales: (603) 420-7772",
+      "rawTitle": "Used | 2023 | GenesisGV70 2.5T",
+      "source": "shared-used",
+      "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2023-Genesis-GV70-47214b10ac1827bd9540ac670b075e9b.htm",
+      "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0171/90d587b113871e4c6b6717cb27d88be6x.jpg",
+      "firstSeen": "2026-09-05T15:14:47.743Z",
+      "lastSeen": "2026-09-05T15:14:47.743Z",
+      "daysObserved": 1
+    }
+  ],
   "removed": [],
-  "priceChanged": []
+  "priceChanged": [
+    {
+      "key": "KM8J3CA44HU449583",
+      "vin": "KM8J3CA44HU449583",
+      "stockNumber": "HY19269W",
+      "oldPrice": 9499,
+      "newPrice": 8999,
+      "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2017-Hyundai-Tucson-45c0643dac1858c9a0e64925ff2d83a9.htm"
+    },
+    {
+      "key": "5NMJCCDE2SH590921",
+      "vin": "5NMJCCDE2SH590921",
+      "stockNumber": "HY19270T",
+      "oldPrice": 29499,
+      "newPrice": 28999,
+      "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2025-Hyundai-Tucson-8b70471fac18393888ed303f0c72158b.htm"
+    },
+    {
+      "key": "5NMJFCDE7RH328233",
+      "vin": "5NMJFCDE7RH328233",
+      "stockNumber": "HY19271C",
+      "oldPrice": 26999,
+      "newPrice": 25999,
+      "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Tucson-499bb543ac1858c9a0e649257a801181.htm"
+    },
+    {
+      "key": "5XYPGDA37LG702454",
+      "vin": "5XYPGDA37LG702454",
+      "stockNumber": "HY19203W",
+      "oldPrice": 5999,
+      "newPrice": 5949,
+      "sourceUrl": "https://www.autofairhyundai.com/used/Kia/2020-Kia-Sorento-f51066eaac1849ee428c30afc5302a7c.htm"
+    },
+    {
+      "key": "3VVUX7B2XRM037248",
+      "vin": "3VVUX7B2XRM037248",
+      "stockNumber": "HY19204T",
+      "oldPrice": 23999,
+      "newPrice": 23499,
+      "sourceUrl": "https://www.autofairhyundai.com/used/Volkswagen/2024-Volkswagen-Taos-f5106521ac180936a0a72ed803044512.htm"
+    }
+  ]
 }
