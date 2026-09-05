@@ -1,4 +1,4 @@
-import { vehicleKey } from './normalize.js';
+import { parseUrlVehicleIdentity, vehicleKey } from './normalize.js';
 
 const GENESIS_MODELS = new Set(['G70', 'G80', 'G90', 'GV60', 'GV70', 'Electrified GV70', 'GV80', 'GV80 Coupe']);
 const CRITICAL_FIELDS = ['stockNumber', 'year', 'make', 'model', 'availability'];
@@ -16,6 +16,10 @@ function completeness(vehicles, field) {
   return present / vehicles.length;
 }
 
+function compactIdentity(value) {
+  return String(value ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
 function hasPlausibleIdentity(vehicle) {
   const make = String(vehicle.make || '').trim();
   const model = String(vehicle.model || '').trim();
@@ -31,6 +35,13 @@ function hasSuspiciousLocation(vehicle) {
   if (!location) return false;
   if (/^(details|view details|sales|service|parts|phone|call|text)\b/i.test(location)) return true;
   return /\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}/.test(location);
+}
+
+function hasUrlIdentityMismatch(vehicle) {
+  const expected = parseUrlVehicleIdentity(vehicle.sourceUrl);
+  if (!expected) return false;
+  return compactIdentity(vehicle.make) !== compactIdentity(expected.make) ||
+    compactIdentity(vehicle.model) !== compactIdentity(expected.modelSlug);
 }
 
 export function validateInventory(vehicles, previousInventory, rules, expectedInventory = null) {
@@ -100,6 +111,12 @@ export function validateInventory(vehicles, previousInventory, rules, expectedIn
   if (invalidIdentities.length) {
     const examples = invalidIdentities.slice(0, 3).map((vehicle) => `${vehicle.stockNumber || vehicle.vin || 'unknown'} (${vehicle.make || 'null'} / ${vehicle.model || 'null'})`).join(', ');
     errors.push(`${invalidIdentities.length} vehicle(s) have semantically invalid make/model values. Examples: ${examples}.`);
+  }
+
+  const urlIdentityMismatches = vehicles.filter(hasUrlIdentityMismatch);
+  if (urlIdentityMismatches.length) {
+    const examples = urlIdentityMismatches.slice(0, 3).map((vehicle) => `${vehicle.stockNumber || vehicle.vin || 'unknown'} (${vehicle.make || 'null'} / ${vehicle.model || 'null'})`).join(', ');
+    errors.push(`${urlIdentityMismatches.length} vehicle(s) disagree with make/model identity encoded in their VDP URLs. Examples: ${examples}.`);
   }
 
   const suspiciousLocations = vehicles.filter(hasSuspiciousLocation);
