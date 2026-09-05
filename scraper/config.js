@@ -26,6 +26,8 @@ export const CONFIG = {
     minimumPreOwnedVehicles: 50,
     minimumDiscoveryCoverage: 0.95,
     minimumVinCompleteness: 0.85,
-    minimumRetainedRatio: 0.45
+    minimumRetainedRatio: 0.45,
+    minimumCriticalFieldCompleteness: 0.95,
+    minimumImageCompleteness: 0.8
   }
 };

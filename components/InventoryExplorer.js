@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { searchInventory } from '../lib/search.js';
+import { effectiveVehiclePrice, parseInventoryQuery, searchInventory } from '../lib/search.js';
 import styles from './InventoryExplorer.module.css';
 
 const INITIAL_VISIBLE = 24;
@@ -32,6 +32,18 @@ function formatTimestamp(value) {
     hour: 'numeric',
     minute: '2-digit'
   }).format(date);
+}
+
+function inventoryHealth(value) {
+  const timestamp = Date.parse(value || '');
+  if (!Number.isFinite(timestamp)) {
+    return { tone: 'unknown', label: 'Sync status unknown' };
+  }
+
+  const ageHours = Math.max(0, (Date.now() - timestamp) / 3600000);
+  if (ageHours <= 26) return { tone: 'current', label: 'Inventory current' };
+  if (ageHours <= 36) return { tone: 'delayed', label: 'Inventory refresh delayed' };
+  return { tone: 'stale', label: 'Inventory may be stale' };
 }
 
 function vehicleTitle(vehicle) {
@@ -82,11 +94,18 @@ function groupByModel(vehicles) {
 }
 
 function InventoryCard({ vehicle }) {
-  const effectivePrice = vehicle.price ?? vehicle.msrp;
+  const primaryPrice = effectiveVehiclePrice(vehicle);
   const mileage = formatMileage(vehicle.mileage);
+  const websitePrice = vehicle.condition === 'new' && vehicle.price != null && vehicle.msrp != null && Number(vehicle.price) !== Number(vehicle.msrp)
+    ? vehicle.price
+    : null;
+  const copyValue = [
+    vehicle.stockNumber ? `Stock ${vehicle.stockNumber}` : null,
+    vehicle.vin ? `VIN ${vehicle.vin}` : null
+  ].filter(Boolean).join('\n') || vehicle.sourceUrl;
 
   return (
-    <article className="vehicle-card">
+    <article className="vehicle-card" data-model-year={vehicle.year || ''}>
       <div className="vehicle-media">
         {vehicle.imageUrl ? (
           <img
@@ -112,7 +131,11 @@ function InventoryCard({ vehicle }) {
             <p className="vehicle-model">{vehicleTitle(vehicle)}</p>
             <p className="vehicle-stock">Stock {vehicle.stockNumber || 'N/A'} · VIN {vehicle.vin || 'N/A'}</p>
           </div>
-          <div className="vehicle-price">{formatCurrency(effectivePrice)}</div>
+          <div className="vehicle-price">
+            <span>{vehicle.condition === 'new' ? 'MSRP' : 'Price'}</span>
+            <strong>{formatCurrency(primaryPrice)}</strong>
+            {websitePrice ? <small>Website {formatCurrency(websitePrice)}</small> : null}
+          </div>
         </div>
 
         <dl className="vehicle-facts">
@@ -130,7 +153,7 @@ function InventoryCard({ vehicle }) {
           <button
             type="button"
             className="copy-button"
-            onClick={() => navigator.clipboard?.writeText(vehicle.vin || vehicle.stockNumber || vehicle.sourceUrl)}
+            onClick={() => navigator.clipboard?.writeText(copyValue)}
           >
             Copy VIN / Stock
           </button>
@@ -167,8 +190,14 @@ export default function InventoryExplorer({ inventory }) {
   }, []);
 
   const models = useMemo(() => {
-    return [...new Set(vehicles.map((vehicle) => vehicle.model).filter(Boolean))].sort((a, b) => a.localeCompare(b));
-  }, [vehicles]);
+    const scoped = vehicles.filter((vehicle) => {
+      if (condition === 'new') return vehicle.condition === 'new';
+      if (condition === 'used') return ['used', 'certified'].includes(vehicle.condition);
+      if (condition === 'certified') return vehicle.condition === 'certified';
+      return true;
+    });
+    return [...new Set(scoped.map((vehicle) => vehicle.model).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+  }, [vehicles, condition]);
 
   const searchState = useMemo(() => {
     if (!query.trim()) return { parsed: { labels: [] }, results: vehicles };
@@ -188,9 +217,9 @@ export default function InventoryExplorer({ inventory }) {
     if (sort === 'model-year') {
       list.sort(compareModelYear);
     } else if (sort === 'price-low') {
-      list.sort((a, b) => (Number(a.price ?? a.msrp) || Number.MAX_SAFE_INTEGER) - (Number(b.price ?? b.msrp) || Number.MAX_SAFE_INTEGER));
+      list.sort((a, b) => (effectiveVehiclePrice(a) ?? Number.MAX_SAFE_INTEGER) - (effectiveVehiclePrice(b) ?? Number.MAX_SAFE_INTEGER));
     } else if (sort === 'price-high') {
-      list.sort((a, b) => (Number(b.price ?? b.msrp) || 0) - (Number(a.price ?? a.msrp) || 0));
+      list.sort((a, b) => (effectiveVehiclePrice(b) ?? 0) - (effectiveVehiclePrice(a) ?? 0));
     } else if (sort === 'mileage-low') {
       list.sort((a, b) => (Number(a.mileage) || 0) - (Number(b.mileage) || 0));
     }
@@ -208,9 +237,16 @@ export default function InventoryExplorer({ inventory }) {
     : filteredVehicles.slice(0, visibleCount);
 
   const preOwned = Number(metrics.preOwned ?? ((metrics.used || 0) + (metrics.certified || 0)));
+  const health = inventoryHealth(inventory?.generatedAt);
 
   function resetView(nextValue, setter) {
     setter(nextValue);
+    setVisibleCount(INITIAL_VISIBLE);
+  }
+
+  function handleConditionChange(nextCondition) {
+    setCondition(nextCondition);
+    setModel('all');
     setVisibleCount(INITIAL_VISIBLE);
   }
 
@@ -223,6 +259,15 @@ export default function InventoryExplorer({ inventory }) {
   function submitSearch(nextQuery = queryInput) {
     const normalized = String(nextQuery || '').trim();
     if (!normalized) return;
+
+    const parsed = parseInventoryQuery(normalized);
+    if (parsed.filters.condition) {
+      setCondition(parsed.filters.condition);
+      if (!parsed.filters.model) setModel('all');
+    }
+    if (parsed.filters.availability) setAvailability(parsed.filters.availability);
+    if (parsed.filters.model) setModel(parsed.filters.model);
+
     setQueryInput(normalized);
     setQuery(normalized);
     setVisibleCount(INITIAL_VISIBLE);
@@ -318,7 +363,7 @@ export default function InventoryExplorer({ inventory }) {
           <p className="eyebrow">Inventory Intelligence</p>
           <h1>Genesis of Manchester</h1>
           <p className="hero-subtitle">
-            Search the live inventory the way a salesperson thinks. Model, color, payment range, mileage, stock number, VIN, availability and more.
+            Search the live inventory the way a salesperson thinks. Model, color, price range, mileage, stock number, VIN, availability and more.
           </p>
         </div>
 
@@ -326,15 +371,8 @@ export default function InventoryExplorer({ inventory }) {
           <span>Last inventory sync</span>
           <strong>{formatTimestamp(inventory?.generatedAt)}</strong>
           <small>{vehicles.length.toLocaleString()} active records</small>
+          <div className={`sync-health sync-health-${health.tone}`}>{health.label}</div>
         </div>
-      </section>
-
-      <section className="metric-grid" aria-label="Inventory summary">
-        <div className="metric-card"><span>Total</span><strong>{Number(metrics.total ?? vehicles.length).toLocaleString()}</strong></div>
-        <div className="metric-card"><span>New</span><strong>{Number(metrics.new ?? 0).toLocaleString()}</strong></div>
-        <div className="metric-card"><span>Pre-Owned</span><strong>{preOwned.toLocaleString()}</strong></div>
-        <div className="metric-card"><span>In Stock</span><strong>{Number(metrics.inStock ?? 0).toLocaleString()}</strong></div>
-        <div className="metric-card"><span>In Transit</span><strong>{Number(metrics.inTransit ?? 0).toLocaleString()}</strong></div>
       </section>
 
       <section className="search-panel">
@@ -397,7 +435,7 @@ export default function InventoryExplorer({ inventory }) {
         {query ? (
           <div className="search-feedback" role="status" aria-live="polite">
             <strong>{filteredVehicles.length.toLocaleString()} matching vehicle{filteredVehicles.length === 1 ? '' : 's'}</strong>
-            <span>with the current Stock Type and filters</span>
+            <span>with the interpreted request and visible filters</span>
           </div>
         ) : null}
 
@@ -412,7 +450,7 @@ export default function InventoryExplorer({ inventory }) {
       <section className="filter-bar" aria-label="Inventory filters">
         <label>
           <span>Stock Type</span>
-          <select value={condition} onChange={(event) => resetView(event.target.value, setCondition)}>
+          <select aria-label="Stock Type" value={condition} onChange={(event) => handleConditionChange(event.target.value)}>
             <option value="all">All</option>
             <option value="new">New</option>
             <option value="used">Pre-Owned</option>
@@ -422,7 +460,7 @@ export default function InventoryExplorer({ inventory }) {
 
         <label>
           <span>Availability</span>
-          <select value={availability} onChange={(event) => resetView(event.target.value, setAvailability)}>
+          <select aria-label="Availability" value={availability} onChange={(event) => resetView(event.target.value, setAvailability)}>
             <option value="all">All</option>
             <option value="in-stock">In Stock</option>
             <option value="in-transit">In Transit</option>
@@ -431,7 +469,7 @@ export default function InventoryExplorer({ inventory }) {
 
         <label>
           <span>Model</span>
-          <select value={model} onChange={(event) => resetView(event.target.value, setModel)}>
+          <select aria-label="Model" value={model} onChange={(event) => resetView(event.target.value, setModel)}>
             <option value="all">All Models</option>
             {models.map((item) => <option key={item} value={item}>{item}</option>)}
           </select>
@@ -439,13 +477,21 @@ export default function InventoryExplorer({ inventory }) {
 
         <label>
           <span>Sort</span>
-          <select value={sort} onChange={(event) => resetView(event.target.value, setSort)}>
+          <select aria-label="Sort" value={sort} onChange={(event) => resetView(event.target.value, setSort)}>
             <option value="model-year">Model / Year: Newest First</option>
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
             <option value="mileage-low">Mileage: Low to High</option>
           </select>
         </label>
+      </section>
+
+      <section className="metric-grid" aria-label="Inventory summary">
+        <div className="metric-card"><span>Total</span><strong>{Number(metrics.total ?? vehicles.length).toLocaleString()}</strong></div>
+        <div className="metric-card"><span>New</span><strong>{Number(metrics.new ?? 0).toLocaleString()}</strong></div>
+        <div className="metric-card"><span>Pre-Owned</span><strong>{preOwned.toLocaleString()}</strong></div>
+        <div className="metric-card"><span>In Stock</span><strong>{Number(metrics.inStock ?? 0).toLocaleString()}</strong></div>
+        <div className="metric-card"><span>In Transit</span><strong>{Number(metrics.inTransit ?? 0).toLocaleString()}</strong></div>
       </section>
 
       <section className="results-header" ref={resultsRef}>
@@ -460,7 +506,7 @@ export default function InventoryExplorer({ inventory }) {
         condition === 'new' ? (
           <section className={styles.modelGroups} aria-label="New inventory grouped by model">
             {groupedNewVehicles.map((group) => (
-              <section className={styles.modelGroup} key={group.modelName}>
+              <section className={styles.modelGroup} key={group.modelName} data-model-group={group.modelName}>
                 <header className={styles.modelGroupHeader}>
                   <div>
                     <p className={styles.kicker}>New Inventory</p>

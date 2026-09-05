@@ -8,7 +8,9 @@ on:
       - 'app/**'
       - 'components/**'
       - 'lib/**'
+      - 'e2e/**'
       - 'data/inventory.json'
+      - 'next.config.js'
       - 'package.json'
       - '.github/workflows/app-ci.yml'
   pull_request:
@@ -16,7 +18,9 @@ on:
       - 'app/**'
       - 'components/**'
       - 'lib/**'
+      - 'e2e/**'
       - 'data/inventory.json'
+      - 'next.config.js'
       - 'package.json'
       - '.github/workflows/app-ci.yml'
 
@@ -30,7 +34,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Check out repository
@@ -52,3 +56,9 @@ jobs:
 
       - name: Build application
         run: npm run build
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run production smoke test
+        run: npm run test:e2e
