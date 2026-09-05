@@ -45,6 +45,9 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
+      - name: Diagnose inventory transport
+        run: npm run diagnose
+
       - name: Scrape inventory
         run: npm run scrape
 
