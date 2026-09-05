@@ -484,14 +484,25 @@ async function main() {
     await discoveryPage.close();
 
     const uniqueTargets = [...new Map(targets.map((target) => [target.url, target])).values()];
+    const expectedInventory = {
+      total: uniqueTargets.length,
+      new: uniqueTargets.filter((target) => target.condition === 'new').length,
+      preOwned: uniqueTargets.filter((target) => ['used', 'certified'].includes(target.condition)).length
+    };
     console.log(`Collected ${uniqueTargets.length} unique canonical VDP links across all sources.`);
+    console.log('Discovered inventory targets:', expectedInventory);
 
     const vehicles = await collectVehiclesConcurrently(context, uniqueTargets);
     console.log(`Parsed ${vehicles.length}/${uniqueTargets.length} VDPs.`);
 
     const deduped = dedupeVehicles(vehicles);
     const observed = addObservationMetadata(deduped, previousInventory, existingHistory, timestamp);
-    const validation = validateInventory(observed, previousInventory, CONFIG.validation);
+    const validation = validateInventory(
+      observed,
+      previousInventory,
+      CONFIG.validation,
+      expectedInventory
+    );
 
     console.log('Validation metrics:', validation.metrics);
     for (const warning of validation.warnings) console.warn(`WARNING: ${warning}`);
