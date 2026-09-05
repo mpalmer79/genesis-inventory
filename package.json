@@ -1,13 +1,15 @@
 {
   "name": "genesis-inventory",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "check": "node --check scraper/config.js && node --check scraper/normalize.js && node --check scraper/validate.js && node --check scraper/scrape.js && node --check scraper/normalize.test.js && node --check lib/search.js && node --check lib/search.test.js",
+    "check": "npm run check:scraper && npm run check:search",
+    "check:scraper": "node --check scraper/config.js && node --check scraper/normalize.js && node --check scraper/validate.js && node --check scraper/scrape.js && node --check scraper/normalize.test.js",
+    "check:search": "node --check lib/search.js && node --check lib/search.test.js",
     "test": "node --test scraper/normalize.test.js lib/search.test.js",
     "test:scraper": "node --test scraper/normalize.test.js",
     "test:search": "node --test lib/search.test.js",
