@@ -10,16 +10,21 @@ export const CONFIG = {
       name: 'shared-used',
       url: 'https://www.genesisofmanchester.com/used-inventory/shared-inventory.htm',
       condition: 'used'
+    },
+    {
+      name: 'certified',
+      url: 'https://www.genesisofmanchester.com/certified-inventory/index.htm',
+      condition: 'certified'
     }
   ],
-  requestDelayMs: 650,
+  requestDelayMs: 250,
   navigationTimeoutMs: 45000,
-  maxListingScrolls: 60,
-  stableScrollRounds: 4,
+  detailConcurrency: 6,
   validation: {
-    minimumTotalVehicles: 20,
-    minimumNewVehicles: 10,
-    minimumVinCompleteness: 0.7,
+    minimumTotalVehicles: 100,
+    minimumNewVehicles: 50,
+    minimumPreOwnedVehicles: 100,
+    minimumVinCompleteness: 0.85,
     minimumRetainedRatio: 0.45
   }
 };
