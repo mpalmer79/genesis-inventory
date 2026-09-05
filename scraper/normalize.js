@@ -1,5 +1,6 @@
 const VIN_PATTERN = /\b[A-HJ-NPR-Z0-9]{17}\b/i;
 const MONEY_PATTERN = /\$\s?([0-9]{2,3}(?:,[0-9]{3})*(?:\.\d{2})?)/;
+const VDP_FILENAME_PATTERN = /^(20\d{2})-(.+)-([a-f0-9]{32})\.htm$/i;
 
 function clean(value) {
   if (value == null) return null;
@@ -11,6 +12,10 @@ function toNumber(value) {
   if (value == null) return null;
   const match = String(value).replace(/,/g, '').match(/-?\d+(?:\.\d+)?/);
   return match ? Number(match[0]) : null;
+}
+
+function compactIdentity(value) {
+  return String(value ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
 function extractByLabel(bodyText, labels) {
@@ -154,7 +159,106 @@ function stripTitleSeparators(value) {
     .trim();
 }
 
-function parseTitle(rawTitle, structuredName) {
+function formatUrlMake(value) {
+  const make = clean(value) || '';
+  const known = new Map([
+    ['Land-Rover', 'Land Rover'],
+    ['Alfa-Romeo', 'Alfa Romeo'],
+    ['Mercedes-Benz', 'Mercedes-Benz']
+  ]);
+  return known.get(make) || make;
+}
+
+function parseUrlVehicleIdentity(rawUrl) {
+  try {
+    const url = new URL(rawUrl);
+    const segments = url.pathname.split('/').filter(Boolean).map((segment) => decodeURIComponent(segment));
+    if (segments.length < 3 || !/^(new|used)$/i.test(segments[0])) return null;
+
+    const makeSegment = segments[1];
+    const filename = segments.at(-1);
+    const match = filename.match(VDP_FILENAME_PATTERN);
+    if (!match) return null;
+
+    const year = Number(match[1]);
+    const identitySlug = match[2];
+    const slugParts = identitySlug.split('-').filter(Boolean);
+    const makeTarget = compactIdentity(makeSegment);
+    let consumed = '';
+    let modelStart = -1;
+
+    for (let index = 0; index < slugParts.length; index += 1) {
+      consumed += compactIdentity(slugParts[index]);
+      if (consumed === makeTarget) {
+        modelStart = index + 1;
+        break;
+      }
+      if (!makeTarget.startsWith(consumed)) break;
+    }
+
+    if (modelStart < 0 || modelStart >= slugParts.length) return null;
+    const modelSlug = slugParts.slice(modelStart).join('-');
+    if (!modelSlug) return null;
+
+    return {
+      year,
+      make: formatUrlMake(makeSegment),
+      modelSlug
+    };
+  } catch {
+    return null;
+  }
+}
+
+function stripLeadingIdentity(value, identity) {
+  const text = stripTitleSeparators(value);
+  const target = compactIdentity(identity);
+  if (!text || !target) return text;
+
+  let consumed = '';
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    if (/[a-z0-9]/i.test(char)) consumed += char.toLowerCase();
+    if (!target.startsWith(consumed)) return text;
+    if (consumed === target) return stripTitleSeparators(text.slice(index + 1));
+  }
+
+  return text;
+}
+
+function parseModelFromUrlRemainder(remainder, modelSlug) {
+  const target = compactIdentity(modelSlug);
+  const parts = stripTitleSeparators(remainder).split(/\s+/).filter(Boolean);
+  let consumed = '';
+
+  for (let index = 0; index < parts.length; index += 1) {
+    consumed += compactIdentity(parts[index]);
+    if (consumed === target) {
+      return {
+        model: clean(parts.slice(0, index + 1).join(' ')),
+        trim: clean(parts.slice(index + 1).join(' '))
+      };
+    }
+    if (!target.startsWith(consumed)) break;
+  }
+
+  return {
+    model: clean(modelSlug.replace(/-/g, ' ')),
+    trim: null
+  };
+}
+
+function canonicalGenesisModel(value) {
+  const text = clean(value) || '';
+  const match = text.match(/^(Electrified\s+GV70|GV80\s+Coupe|GV80|GV70|GV60|G90|G80|G70)$/i);
+  if (!match) return text || null;
+  const normalized = match[1].replace(/\s+/g, ' ').toUpperCase();
+  if (normalized === 'ELECTRIFIED GV70') return 'Electrified GV70';
+  if (normalized === 'GV80 COUPE') return 'GV80 Coupe';
+  return normalized;
+}
+
+function parseTitle(rawTitle, structuredName, rawUrl) {
   const text = clean(rawTitle) || clean(structuredName) || '';
   const normalized = stripTitleSeparators(
     text
@@ -164,10 +268,26 @@ function parseTitle(rawTitle, structuredName) {
   );
 
   const yearMatch = normalized.match(/\b(20\d{2})\b/);
-  const year = yearMatch ? Number(yearMatch[1]) : null;
+  const urlIdentity = parseUrlVehicleIdentity(rawUrl);
+  const year = yearMatch ? Number(yearMatch[1]) : urlIdentity?.year ?? null;
   let remainder = stripTitleSeparators(
     yearMatch ? normalized.slice(yearMatch.index + yearMatch[0].length) : normalized
   );
+
+  if (urlIdentity) {
+    remainder = stripLeadingIdentity(remainder, urlIdentity.make);
+    const parsedModel = parseModelFromUrlRemainder(remainder, urlIdentity.modelSlug);
+    const model = urlIdentity.make === 'Genesis'
+      ? canonicalGenesisModel(parsedModel.model)
+      : parsedModel.model;
+
+    return {
+      year,
+      make: urlIdentity.make,
+      model,
+      trim: parsedModel.trim
+    };
+  }
 
   let make = null;
   if (/^genesis(?:\s+|(?=electrified|g(?:v)?\d))/i.test(remainder)) {
@@ -181,7 +301,7 @@ function parseTitle(rawTitle, structuredName) {
 
   if (genesisModelMatch) {
     make = make || 'Genesis';
-    model = clean(genesisModelMatch[1])?.replace(/\s+/g, ' ');
+    model = canonicalGenesisModel(genesisModelMatch[1]);
     trim = clean(remainder.slice(genesisModelMatch.index + genesisModelMatch[0].length));
   } else {
     const parts = remainder.split(/\s+/).filter(Boolean);
@@ -248,7 +368,7 @@ export function normalizeVehicle(raw) {
   const jsonLd = raw.jsonLd || [];
   const heading = clean(raw.heading) || '';
   const structuredName = findJsonLdValue(jsonLd, ['name']);
-  const title = parseTitle(heading, structuredName);
+  const title = parseTitle(heading, structuredName, raw.url);
 
   const vin = clean(
     findJsonLdValue(jsonLd, ['vehicleIdentificationNumber', 'vin']) ||
@@ -312,4 +432,4 @@ export function csvEscape(value) {
   return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 
-export { clean, toNumber, MONEY_PATTERN, selectVehicleImage, sanitizeLocation, sanitizePowertrain };
+export { clean, toNumber, MONEY_PATTERN, selectVehicleImage, sanitizeLocation, sanitizePowertrain, parseUrlVehicleIdentity };
