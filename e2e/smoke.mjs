@@ -25,6 +25,19 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
+async function waitForSelectValue(page, label, expected) {
+  await page.waitForFunction(
+    ({ labelText, expectedValue }) => {
+      const select = [...document.querySelectorAll('select')].find((element) =>
+        element.getAttribute('aria-label') === labelText
+      );
+      return select?.value === expectedValue;
+    },
+    { labelText: label, expectedValue: expected },
+    { timeout: 3000 }
+  );
+}
+
 let browser;
 try {
   await waitForServer();
@@ -41,21 +54,22 @@ try {
   assert(await page.locator('[data-model-group]').count() > 0, 'New inventory model groups are missing.');
   assert(await page.getByRole('button', { name: 'Copy VIN / Stock' }).count() > 0, 'Vehicle copy action is missing.');
 
-  const firstGroupYears = await page.locator('[data-model-group]').first().locator('[data-model-year]').evaluateAll((cards) =>
-    cards.map((card) => Number(card.getAttribute('data-model-year'))).filter(Number.isFinite)
-  );
+  const firstGroupYears = await page.locator('[data-model-group]').first().locator('[data-model-year]').evaluateAll((cards) => cards.map((card) => Number(card.getAttribute('data-model-year'))).filter(Number.isFinite));
   assert(firstGroupYears.every((year, index) => index === 0 || firstGroupYears[index - 1] >= year), 'Model years are not sorted newest first.');
 
   const search = page.getByLabel('Ask inventory');
   await search.fill('Used AWD SUVs under 30k miles');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
-  await page.waitForTimeout(150);
-  assert(await page.getByLabel('Stock Type').inputValue() === 'used', 'Used natural-language search did not synchronize Stock Type.');
+  await waitForSelectValue(page, 'Stock Type', 'used');
+  assert(await page.getByLabel('Make').count() === 1, 'Pre-Owned Make filter is missing.');
+
+  await search.fill('Used Genesis vehicles');
+  await page.getByRole('button', { name: 'Search', exact: true }).click();
+  await waitForSelectValue(page, 'Make', 'Genesis');
 
   await search.fill('Show me certified Genesis vehicles');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
-  await page.waitForTimeout(150);
-  assert(await page.getByLabel('Stock Type').inputValue() === 'certified', 'Certified natural-language search did not synchronize Stock Type.');
+  await waitForSelectValue(page, 'Stock Type', 'certified');
 
   console.log('E2E smoke checks passed.');
 } finally {
