@@ -23,7 +23,8 @@ export const CONFIG = {
   validation: {
     minimumTotalVehicles: 100,
     minimumNewVehicles: 50,
-    minimumPreOwnedVehicles: 100,
+    minimumPreOwnedVehicles: 50,
+    minimumDiscoveryCoverage: 0.95,
     minimumVinCompleteness: 0.85,
     minimumRetainedRatio: 0.45
   }
