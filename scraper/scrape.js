@@ -67,7 +67,7 @@ async function navigate(page, url) {
 async function settleListingPage(page, source) {
   if (source.name !== 'shared-used') return;
 
-  for (let attempt = 0; attempt < 6; attempt += 1) {
+  for (let attempt = 0; attempt < 8; attempt += 1) {
     const candidateCount = await page.locator('a[href*="/used/"]').count();
     if (candidateCount >= 12) return;
 
@@ -110,6 +110,61 @@ async function extractVehicleLinks(page, source) {
   return links;
 }
 
+function linkSignature(links) {
+  return [...links].sort().slice(0, 8).join('|');
+}
+
+async function waitForListingChange(page, source, previousSignature) {
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    await page.waitForTimeout(250);
+    await settleListingPage(page, source);
+    const currentLinks = await extractVehicleLinks(page, source);
+    if (currentLinks.size > 0 && linkSignature(currentLinks) !== previousSignature) return true;
+  }
+  return false;
+}
+
+async function clickListingControl(page, locator, source, previousSignature) {
+  if ((await locator.count()) === 0) return false;
+
+  try {
+    const control = locator.first();
+    await control.scrollIntoViewIfNeeded();
+    await control.click({ timeout: 10000 });
+    return await waitForListingChange(page, source, previousSignature);
+  } catch {
+    return false;
+  }
+}
+
+async function advanceSharedListingPage(page, source, start, previousSignature) {
+  const exact = page.locator(`a[href*="start=${start}"]`);
+  if (await clickListingControl(page, exact, source, previousSignature)) {
+    console.log(`shared-used: advanced through start=${start} pagination anchor.`);
+    return true;
+  }
+
+  const semanticNext = page.locator(
+    'a[rel="next"], a[aria-label*="next" i], a[title*="next" i]'
+  );
+  if (await clickListingControl(page, semanticNext, source, previousSignature)) {
+    console.log(`shared-used: advanced through semantic next-page control for start=${start}.`);
+    return true;
+  }
+
+  const textNext = page.getByRole('link', { name: /next/i });
+  if (await clickListingControl(page, textNext, source, previousSignature)) {
+    console.log(`shared-used: advanced through text next-page control for start=${start}.`);
+    return true;
+  }
+
+  console.warn(`shared-used: stateful pagination failed for start=${start}; trying direct URL fallback.`);
+  await navigate(page, listingUrl(source.url, start));
+  await settleListingPage(page, source);
+  const directLinks = await extractVehicleLinks(page, source);
+  return directLinks.size > 0 && linkSignature(directLinks) !== previousSignature;
+}
+
 async function collectVehicleLinks(page, source) {
   console.log(`Discovering ${source.name} inventory from ${source.url}`);
   await navigate(page, source.url);
@@ -120,22 +175,43 @@ async function collectVehicleLinks(page, source) {
 
   const links = new Set();
   const hostCounts = new Map();
+  let consecutiveNoProgress = 0;
 
   for (let pageIndex = 0; pageIndex < starts.length; pageIndex += 1) {
-    const start = starts[pageIndex];
     if (pageIndex > 0) {
-      await navigate(page, listingUrl(source.url, start));
-      await settleListingPage(page, source);
+      const previousPageLinks = await extractVehicleLinks(page, source);
+      const previousSignature = linkSignature(previousPageLinks);
+      const start = starts[pageIndex];
+
+      if (source.name === 'shared-used') {
+        const advanced = await advanceSharedListingPage(page, source, start, previousSignature);
+        if (!advanced) {
+          console.warn(`shared-used: unable to advance to listing page ${pageIndex + 1}; stopping pagination.`);
+          break;
+        }
+      } else {
+        await navigate(page, listingUrl(source.url, start));
+        await settleListingPage(page, source);
+      }
       await sleep(CONFIG.requestDelayMs);
     }
 
     const pageLinks = await extractVehicleLinks(page, source);
+    const beforeCount = links.size;
     for (const link of pageLinks) {
       links.add(link);
       const hostname = new URL(link).hostname;
       hostCounts.set(hostname, (hostCounts.get(hostname) || 0) + 1);
     }
-    console.log(`${source.name}: page ${pageIndex + 1}/${starts.length}, ${pageLinks.size} VDPs, ${links.size} unique.`);
+
+    const added = links.size - beforeCount;
+    consecutiveNoProgress = added === 0 ? consecutiveNoProgress + 1 : 0;
+    console.log(`${source.name}: page ${pageIndex + 1}/${starts.length}, ${pageLinks.size} VDPs, ${added} new, ${links.size} unique.`);
+
+    if (source.name === 'shared-used' && consecutiveNoProgress >= 2) {
+      console.warn('shared-used: two consecutive pages added no new VDPs; stopping to prevent a pagination loop.');
+      break;
+    }
   }
 
   if (source.name === 'shared-used') {
