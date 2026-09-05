@@ -3,8 +3,8 @@ import { chromium } from 'playwright';
 
 const PORT = 3100;
 const baseUrl = `http://127.0.0.1:${PORT}`;
-const server = spawn('npm', ['run', 'start', '--', '-p', String(PORT)], {
-  stdio: ['ignore', 'pipe', 'pipe'],
+const server = spawn(process.execPath, ['node_modules/next/dist/bin/next', 'start', '-p', String(PORT)], {
+  stdio: 'ignore',
   env: { ...process.env, NODE_ENV: 'production' }
 });
 
@@ -30,7 +30,11 @@ try {
   await waitForServer();
   browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
-  await page.goto(baseUrl, { waitUntil: 'networkidle' });
+  await page.route('**/*', async (route) => {
+    if (route.request().resourceType() === 'image') await route.abort();
+    else await route.continue();
+  });
+  await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
   assert((await page.locator('h1').first().textContent())?.includes('Genesis of Manchester'), 'Hero title is missing.');
   assert(await page.getByLabel('Stock Type').inputValue() === 'new', 'Default Stock Type must be New.');
