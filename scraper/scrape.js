@@ -12,6 +12,7 @@ const CSV_PATH = resolve(DATA_DIR, 'inventory.csv');
 const CHANGES_PATH = resolve(DATA_DIR, 'changes.json');
 const HISTORY_PATH = resolve(DATA_DIR, 'history.json');
 const BASE_HOSTNAME = new URL(CONFIG.baseUrl).hostname;
+const VDP_PATH_PATTERN = /^\/(new|used)\/[^/]+\/20\d{2}-[^/]+-[a-f0-9]{32}\.htm$/i;
 
 const sleep = (ms) => new Promise((resolvePromise) => setTimeout(resolvePromise, ms));
 
@@ -23,11 +24,23 @@ async function readJson(path, fallback) {
   }
 }
 
-function canonicalVehicleDetailUrl(href) {
+function canonicalVehicleDetailUrl(href, source) {
   try {
     const url = new URL(href, CONFIG.baseUrl);
-    if (url.hostname !== BASE_HOSTNAME) return null;
-    if (!/^\/(?:new|used)\/[^/]+\/20\d{2}-[^/]+-[a-f0-9]{32}\.htm$/i.test(url.pathname)) return null;
+    const pathMatch = url.pathname.match(VDP_PATH_PATTERN);
+    if (!pathMatch) return null;
+
+    const pathCondition = pathMatch[1].toLowerCase();
+    const isSharedUsed = source.name === 'shared-used';
+
+    if (isSharedUsed) {
+      if (url.protocol !== 'https:' || pathCondition !== 'used') return null;
+    } else {
+      if (url.hostname !== BASE_HOSTNAME) return null;
+      if (source.condition === 'new' && pathCondition !== 'new') return null;
+      if (source.condition === 'certified' && pathCondition !== 'used') return null;
+    }
+
     url.search = '';
     url.hash = '';
     return url.toString();
@@ -49,6 +62,18 @@ async function navigate(page, url) {
     timeout: CONFIG.navigationTimeoutMs
   });
   await page.waitForTimeout(250);
+}
+
+async function settleListingPage(page, source) {
+  if (source.name !== 'shared-used') return;
+
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    const candidateCount = await page.locator('a[href*="/used/"]').count();
+    if (candidateCount >= 12) return;
+
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(500);
+  }
 }
 
 async function discoverPagination(page) {
@@ -75,11 +100,11 @@ async function discoverPagination(page) {
   return pages;
 }
 
-async function extractVehicleLinks(page) {
+async function extractVehicleLinks(page, source) {
   const hrefs = await page.locator('a[href]').evaluateAll((anchors) => anchors.map((anchor) => anchor.href));
   const links = new Set();
   for (const href of hrefs) {
-    const canonical = canonicalVehicleDetailUrl(href);
+    const canonical = canonicalVehicleDetailUrl(href, source);
     if (canonical) links.add(canonical);
   }
   return links;
@@ -88,21 +113,37 @@ async function extractVehicleLinks(page) {
 async function collectVehicleLinks(page, source) {
   console.log(`Discovering ${source.name} inventory from ${source.url}`);
   await navigate(page, source.url);
+  await settleListingPage(page, source);
 
   const starts = await discoverPagination(page);
   console.log(`${source.name}: ${starts.length} listing page${starts.length === 1 ? '' : 's'} detected.`);
 
   const links = new Set();
+  const hostCounts = new Map();
+
   for (let pageIndex = 0; pageIndex < starts.length; pageIndex += 1) {
     const start = starts[pageIndex];
     if (pageIndex > 0) {
       await navigate(page, listingUrl(source.url, start));
+      await settleListingPage(page, source);
       await sleep(CONFIG.requestDelayMs);
     }
 
-    const pageLinks = await extractVehicleLinks(page);
-    for (const link of pageLinks) links.add(link);
+    const pageLinks = await extractVehicleLinks(page, source);
+    for (const link of pageLinks) {
+      links.add(link);
+      const hostname = new URL(link).hostname;
+      hostCounts.set(hostname, (hostCounts.get(hostname) || 0) + 1);
+    }
     console.log(`${source.name}: page ${pageIndex + 1}/${starts.length}, ${pageLinks.size} VDPs, ${links.size} unique.`);
+  }
+
+  if (source.name === 'shared-used') {
+    const hosts = [...hostCounts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([hostname, count]) => `${hostname}=${count}`)
+      .join(', ');
+    console.log(`shared-used VDP hosts: ${hosts || 'none'}`);
   }
 
   console.log(`Found ${links.size} canonical ${source.name} vehicle detail links.`);
