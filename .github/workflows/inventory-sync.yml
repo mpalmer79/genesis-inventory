@@ -10,6 +10,7 @@ on:
     paths:
       - 'scraper/**'
       - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/inventory-sync.yml'
 
 permissions:
@@ -32,9 +33,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Check scraper JavaScript
         run: npm run check:scraper
