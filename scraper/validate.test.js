@@ -73,3 +73,28 @@ test('rejects a crawl with poor critical field completeness', () => {
   assert.equal(result.valid, false);
   assert.ok(result.errors.some((error) => error.includes('stockNumber completeness')));
 });
+
+test('rejects punctuation-only makes and concatenated Genesis model names', () => {
+  const inventory = [
+    ...vehicles('new', 100),
+    ...vehicles('used', 60, 1000)
+  ];
+  inventory[120].make = '|';
+  inventory[120].model = 'GenesisGV70';
+
+  const result = validateInventory(inventory, null, rules, { total: 160, new: 100, preOwned: 60 });
+  assert.equal(result.valid, false);
+  assert.ok(result.errors.some((error) => error.includes('semantically invalid make/model values')));
+});
+
+test('rejects phone-number or department text in location fields', () => {
+  const inventory = [
+    ...vehicles('new', 100),
+    ...vehicles('used', 60, 1000)
+  ];
+  inventory[120].location = 'Sales: (603) 420-7772';
+
+  const result = validateInventory(inventory, null, rules, { total: 160, new: 100, preOwned: 60 });
+  assert.equal(result.valid, false);
+  assert.ok(result.errors.some((error) => error.includes('location field')));
+});

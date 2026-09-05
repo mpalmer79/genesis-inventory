@@ -161,3 +161,53 @@ test('rejects generic action text as a stocking location', () => {
 
   assert.equal(vehicle.location, null);
 });
+
+test('normalizes separator-heavy shared-used Genesis titles', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'used',
+    source: 'shared-used',
+    url: 'https://www.autofairhyundai.com/used/Genesis/2023-Genesis-GV70-example.htm',
+    heading: 'Used | 2023 | GenesisGV70 2.5T',
+    bodyText: `
+      Exterior Color
+      Brunswick Green
+      Interior Color
+      Green
+      Location
+      Sales: (603) 420-7772
+      VIN
+      KMUMADTB5PU109511
+      Stock Number
+      GM20157T
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.year, 2023);
+  assert.equal(vehicle.make, 'Genesis');
+  assert.equal(vehicle.model, 'GV70');
+  assert.equal(vehicle.trim, '2.5T');
+  assert.equal(vehicle.location, null);
+});
+
+test('rejects phone-number text as a stocking location', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'used',
+    source: 'shared-used',
+    url: 'https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Tucson-example.htm',
+    heading: 'Used 2024 Hyundai Tucson SEL',
+    bodyText: `
+      Location
+      (603) 555-1212
+      VIN
+      5NMJB3DE0RH123456
+      Stock Number
+      HU12345
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.location, null);
+});

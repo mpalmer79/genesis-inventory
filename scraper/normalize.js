@@ -144,22 +144,35 @@ function selectVehicleImage(raw) {
   return best.url;
 }
 
+function stripTitleSeparators(value) {
+  const text = clean(value);
+  if (!text) return '';
+  return text
+    .replace(/^[|•·:/\-\s]+/, '')
+    .replace(/[|•·]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function parseTitle(rawTitle, structuredName) {
   const text = clean(rawTitle) || clean(structuredName) || '';
-  const normalized = text
-    .replace(/^new\s+/i, '')
-    .replace(/^used\s+/i, '')
-    .replace(/^certified\s+(?:pre-owned\s+)?/i, '')
-    .trim();
+  const normalized = stripTitleSeparators(
+    text
+      .replace(/^new\s+/i, '')
+      .replace(/^used\s+/i, '')
+      .replace(/^certified\s+(?:pre-owned\s+)?/i, '')
+  );
 
   const yearMatch = normalized.match(/\b(20\d{2})\b/);
   const year = yearMatch ? Number(yearMatch[1]) : null;
-  let remainder = yearMatch ? normalized.slice(yearMatch.index + yearMatch[0].length).trim() : normalized;
+  let remainder = stripTitleSeparators(
+    yearMatch ? normalized.slice(yearMatch.index + yearMatch[0].length) : normalized
+  );
 
   let make = null;
-  if (/^genesis\b/i.test(remainder)) {
+  if (/^genesis(?:\s+|(?=electrified|g(?:v)?\d))/i.test(remainder)) {
     make = 'Genesis';
-    remainder = remainder.replace(/^genesis\b/i, '').trim();
+    remainder = stripTitleSeparators(remainder.replace(/^genesis\s*/i, ''));
   }
 
   const genesisModelMatch = remainder.match(/\b(Electrified\s+GV70|GV80\s+Coupe|GV80|GV70|GV60|G90|G80|G70)\b/i);
@@ -210,6 +223,8 @@ function sanitizeLocation(value) {
   const location = clean(value);
   if (!location || location.length > 120) return null;
   if (/^(details|view details|directions|get directions|contact|contact us|schedule service|learn more)$/i.test(location)) return null;
+  if (/^(sales|service|parts|phone|call|text)\b/i.test(location)) return null;
+  if (/\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}/.test(location)) return null;
   return location;
 }
 
