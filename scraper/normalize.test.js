@@ -211,3 +211,45 @@ test('rejects phone-number text as a stocking location', () => {
 
   assert.equal(vehicle.location, null);
 });
+
+test('uses the VDP URL to split concatenated used make and model names', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'used',
+    source: 'shared-used',
+    url: 'https://www.autofairhyundai.com/used/Chevrolet/2013-Chevrolet-Spark-35029f91ac18460621052e7cff0b6816.htm',
+    heading: 'Used | 2013 | ChevroletSpark 1LT Auto',
+    bodyText: `
+      VIN
+      KL8CD6S93DC505933
+      Stock Number
+      HY19163W
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.make, 'Chevrolet');
+  assert.equal(vehicle.model, 'Spark');
+  assert.equal(vehicle.trim, '1LT Auto');
+});
+
+test('uses the VDP URL to preserve multi-word used models', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'used',
+    source: 'shared-used',
+    url: 'https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Santa-Fe-1234567890abcdef1234567890abcdef.htm',
+    heading: 'Used | 2024 | HyundaiSanta Fe SEL AWD',
+    bodyText: `
+      VIN
+      5NMP3DGL0RH123456
+      Stock Number
+      HY20000T
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.make, 'Hyundai');
+  assert.equal(vehicle.model, 'Santa Fe');
+  assert.equal(vehicle.trim, 'SEL AWD');
+});
