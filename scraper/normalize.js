@@ -99,11 +99,24 @@ function parsePrice(bodyText, jsonLd, labels) {
   return null;
 }
 
+function parseAvailability(bodyText, jsonLd) {
+  const structured = clean(findJsonLdValue(jsonLd, ['availability']))?.toLowerCase() || '';
+  if (/instock|in_stock/.test(structured)) return 'in-stock';
+  if (/preorder|pre-order|intransit|in_transit/.test(structured)) return 'in-transit';
+  if (/outofstock|out_of_stock/.test(structured)) return 'unavailable';
+
+  const upperVehicleSection = bodyText.slice(0, 12000);
+  if (/\bin transit\b/i.test(upperVehicleSection)) return 'in-transit';
+  if (/\bin stock\b/i.test(upperVehicleSection)) return 'in-stock';
+  return null;
+}
+
 export function normalizeVehicle(raw) {
   const bodyText = raw.bodyText || '';
   const jsonLd = raw.jsonLd || [];
+  const heading = clean(raw.heading) || '';
   const structuredName = findJsonLdValue(jsonLd, ['name']);
-  const title = parseTitle(raw.heading, structuredName);
+  const title = parseTitle(heading, structuredName);
 
   const vin = clean(
     findJsonLdValue(jsonLd, ['vehicleIdentificationNumber', 'vin']) ||
@@ -123,30 +136,31 @@ export function normalizeVehicle(raw) {
   const msrp = parsePrice(bodyText, jsonLd, ['msrp', 'MSRP']);
   const price = parsePrice(bodyText, jsonLd, ['price', 'salePrice', 'internetPrice', 'Dealer Price', 'Sale Price', 'Price']);
 
-  const isCertified = /certified pre-owned|genesis certified|\bcpo\b/i.test(bodyText);
+  const isCertified = raw.condition === 'certified' || /^certified\b/i.test(heading);
   const condition = raw.condition === 'new' ? 'new' : isCertified ? 'certified' : 'used';
-
   const imageUrl = clean(raw.images?.find((src) => /^https?:\/\//i.test(src)) || null);
 
   return {
     vin,
     stockNumber,
     condition,
-    certified: isCertified,
+    certified: condition === 'certified',
+    availability: parseAvailability(bodyText, jsonLd),
     year: title.year,
     make: title.make,
     model: title.model,
     trim: title.trim,
-    exteriorColor: clean(extractByLabel(bodyText, ['Exterior Color', 'Exterior'])),
-    interiorColor: clean(extractByLabel(bodyText, ['Interior Color', 'Interior'])),
-    bodyStyle: clean(extractByLabel(bodyText, ['Body/Seating', 'Body Style', 'Body'])),
-    drivetrain: clean(extractByLabel(bodyText, ['Drivetrain', 'Drive Type'])),
+    exteriorColor: clean(extractByLabel(bodyText, ['Exterior Color'])),
+    interiorColor: clean(extractByLabel(bodyText, ['Interior Color'])),
+    bodyStyle: clean(extractByLabel(bodyText, ['Body/Seating', 'Body Style'])),
+    drivetrain: clean(extractByLabel(bodyText, ['Drivetrain', 'Drive Line', 'Drive Type'])),
     transmission: clean(extractByLabel(bodyText, ['Transmission'])),
     engine: clean(extractByLabel(bodyText, ['Engine'])),
     mileage: toNumber(mileageValue),
     msrp,
     price,
-    rawTitle: clean(raw.heading) || structuredName,
+    location: clean(extractByLabel(bodyText, ['Location'])),
+    rawTitle: heading || structuredName,
     source: raw.source,
     sourceUrl: raw.url,
     imageUrl
