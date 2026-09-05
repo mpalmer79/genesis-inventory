@@ -5,6 +5,9 @@ export function validateInventory(vehicles, previousInventory, rules) {
   const warnings = [];
   const total = vehicles.length;
   const newCount = vehicles.filter((vehicle) => vehicle.condition === 'new').length;
+  const usedCount = vehicles.filter((vehicle) => vehicle.condition === 'used').length;
+  const certifiedCount = vehicles.filter((vehicle) => vehicle.condition === 'certified').length;
+  const preOwnedCount = usedCount + certifiedCount;
   const vinCount = vehicles.filter((vehicle) => vehicle.vin).length;
   const vinCompleteness = total ? vinCount / total : 0;
 
@@ -14,6 +17,10 @@ export function validateInventory(vehicles, previousInventory, rules) {
 
   if (newCount < rules.minimumNewVehicles) {
     errors.push(`Only ${newCount} new vehicles were collected; minimum is ${rules.minimumNewVehicles}.`);
+  }
+
+  if (preOwnedCount < rules.minimumPreOwnedVehicles) {
+    errors.push(`Only ${preOwnedCount} pre-owned vehicles were collected; minimum is ${rules.minimumPreOwnedVehicles}.`);
   }
 
   if (vinCompleteness < rules.minimumVinCompleteness) {
@@ -50,8 +57,11 @@ export function validateInventory(vehicles, previousInventory, rules) {
     metrics: {
       total,
       new: newCount,
-      used: vehicles.filter((vehicle) => vehicle.condition === 'used').length,
-      certified: vehicles.filter((vehicle) => vehicle.condition === 'certified').length,
+      used: usedCount,
+      certified: certifiedCount,
+      preOwned: preOwnedCount,
+      inStock: vehicles.filter((vehicle) => vehicle.availability === 'in-stock').length,
+      inTransit: vehicles.filter((vehicle) => vehicle.availability === 'in-transit').length,
       vinCompleteness: Number(vinCompleteness.toFixed(4))
     }
   };
