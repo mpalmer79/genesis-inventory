@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { searchInventory } from '../lib/search.js';
+import styles from './InventoryExplorer.module.css';
 
 const INITIAL_VISIBLE = 24;
 
@@ -50,6 +51,36 @@ function availabilityLabel(value) {
   return 'Status Unknown';
 }
 
+function compareModelYear(a, b) {
+  const modelCompare = (a.model || 'Other').localeCompare(b.model || 'Other');
+  if (modelCompare !== 0) return modelCompare;
+
+  const yearCompare = (Number(b.year) || 0) - (Number(a.year) || 0);
+  if (yearCompare !== 0) return yearCompare;
+
+  const trimCompare = (a.trim || '').localeCompare(b.trim || '');
+  if (trimCompare !== 0) return trimCompare;
+
+  return (a.stockNumber || '').localeCompare(b.stockNumber || '');
+}
+
+function groupByModel(vehicles) {
+  const groups = new Map();
+
+  for (const vehicle of vehicles) {
+    const modelName = vehicle.model || 'Other';
+    if (!groups.has(modelName)) groups.set(modelName, []);
+    groups.get(modelName).push(vehicle);
+  }
+
+  return [...groups.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([modelName, modelVehicles]) => ({
+      modelName,
+      vehicles: modelVehicles
+    }));
+}
+
 function InventoryCard({ vehicle }) {
   const effectivePrice = vehicle.price ?? vehicle.msrp;
   const mileage = formatMileage(vehicle.mileage);
@@ -90,7 +121,6 @@ function InventoryCard({ vehicle }) {
           {vehicle.drivetrain ? <><dt>Drive</dt><dd>{vehicle.drivetrain}</dd></> : null}
           {mileage ? <><dt>Mileage</dt><dd>{mileage}</dd></> : null}
           {vehicle.location ? <><dt>Location</dt><dd>{vehicle.location}</dd></> : null}
-          {vehicle.daysObserved ? <><dt>Tracked</dt><dd>{vehicle.daysObserved} day{vehicle.daysObserved === 1 ? '' : 's'}</dd></> : null}
         </dl>
 
         <div className="vehicle-actions">
@@ -114,10 +144,10 @@ export default function InventoryExplorer({ inventory }) {
   const vehicles = Array.isArray(inventory?.vehicles) ? inventory.vehicles : [];
   const metrics = inventory?.metrics || {};
   const [query, setQuery] = useState('');
-  const [condition, setCondition] = useState('all');
+  const [condition, setCondition] = useState('new');
   const [availability, setAvailability] = useState('all');
   const [model, setModel] = useState('all');
-  const [sort, setSort] = useState('relevance');
+  const [sort, setSort] = useState('model-year');
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
 
   const models = useMemo(() => {
@@ -139,20 +169,28 @@ export default function InventoryExplorer({ inventory }) {
       return true;
     });
 
-    if (sort === 'price-low') {
+    if (sort === 'model-year') {
+      list.sort(compareModelYear);
+    } else if (sort === 'price-low') {
       list.sort((a, b) => (Number(a.price ?? a.msrp) || Number.MAX_SAFE_INTEGER) - (Number(b.price ?? b.msrp) || Number.MAX_SAFE_INTEGER));
     } else if (sort === 'price-high') {
       list.sort((a, b) => (Number(b.price ?? b.msrp) || 0) - (Number(a.price ?? a.msrp) || 0));
     } else if (sort === 'mileage-low') {
       list.sort((a, b) => (Number(a.mileage) || 0) - (Number(b.mileage) || 0));
-    } else if (sort === 'oldest') {
-      list.sort((a, b) => (Number(b.daysObserved) || 0) - (Number(a.daysObserved) || 0));
     }
 
     return list;
   }, [searchState.results, condition, availability, model, sort]);
 
-  const visibleVehicles = filteredVehicles.slice(0, visibleCount);
+  const groupedNewVehicles = useMemo(() => {
+    if (condition !== 'new') return [];
+    return groupByModel(filteredVehicles);
+  }, [condition, filteredVehicles]);
+
+  const visibleVehicles = condition === 'new'
+    ? filteredVehicles
+    : filteredVehicles.slice(0, visibleCount);
+
   const preOwned = Number(metrics.preOwned ?? ((metrics.used || 0) + (metrics.certified || 0)));
 
   function resetView(nextValue, setter) {
@@ -227,7 +265,7 @@ export default function InventoryExplorer({ inventory }) {
 
       <section className="filter-bar" aria-label="Inventory filters">
         <label>
-          <span>Condition</span>
+          <span>Stock Type</span>
           <select value={condition} onChange={(event) => resetView(event.target.value, setCondition)}>
             <option value="all">All</option>
             <option value="new">New</option>
@@ -256,11 +294,10 @@ export default function InventoryExplorer({ inventory }) {
         <label>
           <span>Sort</span>
           <select value={sort} onChange={(event) => resetView(event.target.value, setSort)}>
-            <option value="relevance">Relevance</option>
+            <option value="model-year">Model / Year: Newest First</option>
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
             <option value="mileage-low">Mileage: Low to High</option>
-            <option value="oldest">Tracked Longest</option>
           </select>
         </label>
       </section>
@@ -270,15 +307,38 @@ export default function InventoryExplorer({ inventory }) {
           <p className="eyebrow">Results</p>
           <h2>{filteredVehicles.length.toLocaleString()} matching vehicle{filteredVehicles.length === 1 ? '' : 's'}</h2>
         </div>
-        <p>Showing {Math.min(visibleCount, filteredVehicles.length).toLocaleString()} of {filteredVehicles.length.toLocaleString()}</p>
+        <p>Showing {visibleVehicles.length.toLocaleString()} of {filteredVehicles.length.toLocaleString()}</p>
       </section>
 
       {visibleVehicles.length ? (
-        <section className="inventory-grid">
-          {visibleVehicles.map((vehicle) => (
-            <InventoryCard key={vehicle.vin || vehicle.stockNumber || vehicle.sourceUrl} vehicle={vehicle} />
-          ))}
-        </section>
+        condition === 'new' ? (
+          <section className={styles.modelGroups} aria-label="New inventory grouped by model">
+            {groupedNewVehicles.map((group) => (
+              <section className={styles.modelGroup} key={group.modelName}>
+                <header className={styles.modelGroupHeader}>
+                  <div>
+                    <p className={styles.kicker}>New Inventory</p>
+                    <h3>{group.modelName}</h3>
+                  </div>
+                  <span className={styles.count}>
+                    {group.vehicles.length.toLocaleString()} vehicle{group.vehicles.length === 1 ? '' : 's'}
+                  </span>
+                </header>
+                <div className="inventory-grid">
+                  {group.vehicles.map((vehicle) => (
+                    <InventoryCard key={vehicle.vin || vehicle.stockNumber || vehicle.sourceUrl} vehicle={vehicle} />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </section>
+        ) : (
+          <section className="inventory-grid">
+            {visibleVehicles.map((vehicle) => (
+              <InventoryCard key={vehicle.vin || vehicle.stockNumber || vehicle.sourceUrl} vehicle={vehicle} />
+            ))}
+          </section>
+        )
       ) : (
         <section className="empty-state">
           <h2>No exact matches</h2>
@@ -286,7 +346,7 @@ export default function InventoryExplorer({ inventory }) {
         </section>
       )}
 
-      {visibleCount < filteredVehicles.length ? (
+      {condition !== 'new' && visibleCount < filteredVehicles.length ? (
         <div className="load-more-wrap">
           <button type="button" className="load-more" onClick={() => setVisibleCount((count) => count + INITIAL_VISIBLE)}>
             Show 24 More
