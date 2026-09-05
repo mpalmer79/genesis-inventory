@@ -38,3 +38,12 @@ jobs:
 
       - name: Inspect shared pages
         run: node tools/inspect-shared.js
+
+      - name: Upload diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shared-used-diagnostic
+          path: debug/shared-used-diagnostic.json
+          if-no-files-found: error
+          retention-days: 1
