@@ -98,3 +98,18 @@ test('rejects phone-number or department text in location fields', () => {
   assert.equal(result.valid, false);
   assert.ok(result.errors.some((error) => error.includes('location field')));
 });
+
+test('rejects make and model values that disagree with a canonical VDP URL', () => {
+  const inventory = [
+    ...vehicles('new', 100),
+    ...vehicles('used', 60, 1000)
+  ];
+  inventory[120].sourceUrl = 'https://www.autofairhyundai.com/used/Chevrolet/2013-Chevrolet-Spark-35029f91ac18460621052e7cff0b6816.htm';
+  inventory[120].year = 2013;
+  inventory[120].make = 'ChevroletSpark';
+  inventory[120].model = '1LT';
+
+  const result = validateInventory(inventory, null, rules, { total: 160, new: 100, preOwned: 60 });
+  assert.equal(result.valid, false);
+  assert.ok(result.errors.some((error) => error.includes('disagree with make/model identity encoded in their VDP URLs')));
+});
