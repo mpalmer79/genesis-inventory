@@ -1,4 +1,5 @@
 import './globals.css';
+import './hero-overrides.css';
 
 export const metadata = {
   title: 'Genesis Inventory Intelligence',
