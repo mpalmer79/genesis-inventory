@@ -1,6 +1,6 @@
 {
   "name": "genesis-inventory",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -16,12 +16,15 @@
     "test": "node --test scraper/normalize.test.js scraper/validate.test.js lib/search.test.js",
     "test:scraper": "node --test scraper/normalize.test.js scraper/validate.test.js",
     "test:search": "node --test lib/search.test.js",
+    "test:e2e": "node e2e/smoke.mjs",
     "scrape": "node scraper/scrape.js"
   },
   "dependencies": {
     "next": "16.3.4",
-    "playwright": "^1.55.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "playwright": "^1.55.0"
   }
 }

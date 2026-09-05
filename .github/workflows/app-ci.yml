@@ -8,16 +8,22 @@ on:
       - 'app/**'
       - 'components/**'
       - 'lib/**'
+      - 'e2e/**'
       - 'data/inventory.json'
+      - 'next.config.js'
       - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/app-ci.yml'
   pull_request:
     paths:
       - 'app/**'
       - 'components/**'
       - 'lib/**'
+      - 'e2e/**'
       - 'data/inventory.json'
+      - 'next.config.js'
       - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/app-ci.yml'
 
 permissions:
@@ -30,7 +36,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: Check out repository
@@ -40,9 +46,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Check search JavaScript
         run: npm run check:search
@@ -52,3 +59,9 @@ jobs:
 
       - name: Build application
         run: npm run build
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run production smoke test
+        run: npm run test:e2e

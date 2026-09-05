@@ -113,10 +113,6 @@ function scoreImageUrl(value) {
     if (Number.isFinite(width) && width >= 600) score += 25;
 
     if (/(logo|favicon|sprite|icon|badge|kbb|brandmark|wordmark)/.test(path)) score -= 250;
-
-    // This is the generic Genesis branding asset that was previously being
-    // selected as every vehicle's photo. Keep the rule narrow so normal
-    // dealer-hosted photography can still be selected.
     if (/genesisgroup\/0965\/501c0321c6a3530ad91e53dc61e0385b/.test(path)) score -= 400;
 
     return score;
@@ -210,6 +206,28 @@ function parseAvailability(bodyText, jsonLd) {
   return null;
 }
 
+function sanitizeLocation(value) {
+  const location = clean(value);
+  if (!location || location.length > 120) return null;
+  if (/^(details|view details|directions|get directions|contact|contact us|schedule service|learn more)$/i.test(location)) return null;
+  return location;
+}
+
+function sanitizePowertrain(title, engineValue, transmissionValue) {
+  let engine = clean(engineValue);
+  let transmission = clean(transmissionValue);
+  const isElectric = /\b(electrified\s+gv70|gv60)\b/i.test(`${title.model || ''} ${title.trim || ''}`);
+
+  if (isElectric) {
+    if (engine && !/electric|motor|ev|permanent magnet/i.test(engine)) engine = null;
+    if (transmission && /(?:[6-9]|10)[-\s]?speed|automatic|shiftronic/i.test(transmission) && !/single|reduction|electric/i.test(transmission)) {
+      transmission = null;
+    }
+  }
+
+  return { engine, transmission };
+}
+
 export function normalizeVehicle(raw) {
   const bodyText = raw.bodyText || '';
   const jsonLd = raw.jsonLd || [];
@@ -238,6 +256,9 @@ export function normalizeVehicle(raw) {
   const isCertified = raw.condition === 'certified' || /^certified\b/i.test(heading);
   const condition = raw.condition === 'new' ? 'new' : isCertified ? 'certified' : 'used';
   const imageUrl = selectVehicleImage(raw);
+  const rawEngine = extractByLabel(bodyText, ['Engine']);
+  const rawTransmission = extractByLabel(bodyText, ['Transmission']);
+  const powertrain = sanitizePowertrain(title, rawEngine, rawTransmission);
 
   return {
     vin,
@@ -253,12 +274,12 @@ export function normalizeVehicle(raw) {
     interiorColor: clean(extractByLabel(bodyText, ['Interior Color'])),
     bodyStyle: clean(extractByLabel(bodyText, ['Body/Seating', 'Body Style'])),
     drivetrain: clean(extractByLabel(bodyText, ['Drivetrain', 'Drive Line', 'Drive Type'])),
-    transmission: clean(extractByLabel(bodyText, ['Transmission'])),
-    engine: clean(extractByLabel(bodyText, ['Engine'])),
+    transmission: powertrain.transmission,
+    engine: powertrain.engine,
     mileage: toNumber(mileageValue),
     msrp,
     price,
-    location: clean(extractByLabel(bodyText, ['Location'])),
+    location: sanitizeLocation(extractByLabel(bodyText, ['Location'])),
     rawTitle: heading || structuredName,
     source: raw.source,
     sourceUrl: raw.url,
@@ -276,4 +297,4 @@ export function csvEscape(value) {
   return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 
-export { clean, toNumber, MONEY_PATTERN, selectVehicleImage };
+export { clean, toNumber, MONEY_PATTERN, selectVehicleImage, sanitizeLocation, sanitizePowertrain };

@@ -115,3 +115,49 @@ test('prefers structured VDP image metadata when available', () => {
 
   assert.equal(vehicle.imageUrl, structuredImage);
 });
+
+test('removes obviously incorrect ICE powertrain fields from electric Genesis models', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'new',
+    source: 'new',
+    url: 'https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-Electrified-GV70-example.htm',
+    heading: 'New 2027 Genesis Electrified GV70 Standard',
+    bodyText: `
+      Transmission
+      8-Speed Automatic with SHIFTRONIC
+      Engine
+      PDI Turbocharged DOHC
+      VIN
+      KMUMCET11VU013301
+      Stock Number
+      013301
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.model, 'Electrified GV70');
+  assert.equal(vehicle.engine, null);
+  assert.equal(vehicle.transmission, null);
+});
+
+test('rejects generic action text as a stocking location', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'used',
+    source: 'shared-used',
+    url: 'https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Tucson-example.htm',
+    heading: 'Used 2024 Hyundai Tucson SEL',
+    bodyText: `
+      Location
+      Details
+      VIN
+      5NMJB3DE0RH123456
+      Stock Number
+      HU12345
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.location, null);
+});
