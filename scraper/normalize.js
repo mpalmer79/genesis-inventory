@@ -50,7 +50,7 @@ function findJsonLdValue(objects, keys) {
 }
 
 function parseTitle(rawTitle, structuredName) {
-  const text = clean(structuredName) || clean(rawTitle) || '';
+  const text = clean(rawTitle) || clean(structuredName) || '';
   const normalized = text
     .replace(/^new\s+/i, '')
     .replace(/^used\s+/i, '')
@@ -137,12 +137,12 @@ export function normalizeVehicle(raw) {
     make: title.make,
     model: title.model,
     trim: title.trim,
-    exteriorColor: clean(extractByLabel(bodyText, ['Exterior Color', 'Exterior'])) ,
-    interiorColor: clean(extractByLabel(bodyText, ['Interior Color', 'Interior'])) ,
-    bodyStyle: clean(extractByLabel(bodyText, ['Body/Seating', 'Body Style', 'Body'])) ,
-    drivetrain: clean(extractByLabel(bodyText, ['Drivetrain', 'Drive Type'])) ,
-    transmission: clean(extractByLabel(bodyText, ['Transmission'])) ,
-    engine: clean(extractByLabel(bodyText, ['Engine'])) ,
+    exteriorColor: clean(extractByLabel(bodyText, ['Exterior Color', 'Exterior'])),
+    interiorColor: clean(extractByLabel(bodyText, ['Interior Color', 'Interior'])),
+    bodyStyle: clean(extractByLabel(bodyText, ['Body/Seating', 'Body Style', 'Body'])),
+    drivetrain: clean(extractByLabel(bodyText, ['Drivetrain', 'Drive Type'])),
+    transmission: clean(extractByLabel(bodyText, ['Transmission'])),
+    engine: clean(extractByLabel(bodyText, ['Engine'])),
     mileage: toNumber(mileageValue),
     msrp,
     price,
