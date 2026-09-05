@@ -1,8 +1,9 @@
-import { vehicleKey } from './normalize.js';
+import { parseUrlVehicleIdentity, vehicleKey } from './normalize.js';
 
 const GENESIS_MODELS = new Set(['G70', 'G80', 'G90', 'GV60', 'GV70', 'Electrified GV70', 'GV80', 'GV80 Coupe']);
 const CRITICAL_FIELDS = ['stockNumber', 'year', 'make', 'model', 'availability'];
 const QUALITY_FIELDS = ['stockNumber', 'year', 'make', 'model', 'availability', 'exteriorColor', 'interiorColor', 'imageUrl'];
+const IDENTITY_PATTERN = /^[A-Za-z0-9][A-Za-z0-9 .&'/-]*$/;
 
 function coverageRatio(actual, expected) {
   if (!Number.isFinite(expected) || expected <= 0) return null;
@@ -13,6 +14,34 @@ function completeness(vehicles, field) {
   if (!vehicles.length) return 0;
   const present = vehicles.filter((vehicle) => vehicle[field] !== null && vehicle[field] !== undefined && vehicle[field] !== '').length;
   return present / vehicles.length;
+}
+
+function compactIdentity(value) {
+  return String(value ?? '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function hasPlausibleIdentity(vehicle) {
+  const make = String(vehicle.make || '').trim();
+  const model = String(vehicle.model || '').trim();
+  if (!make || !model) return false;
+  if (!IDENTITY_PATTERN.test(make) || !IDENTITY_PATTERN.test(model)) return false;
+  if (/^Genesis(?:G(?:V)?\d|Electrified)/i.test(make)) return false;
+  if (/^Genesis(?:G(?:V)?\d|Electrified)/i.test(model)) return false;
+  return true;
+}
+
+function hasSuspiciousLocation(vehicle) {
+  const location = String(vehicle.location || '').trim();
+  if (!location) return false;
+  if (/^(details|view details|sales|service|parts|phone|call|text)\b/i.test(location)) return true;
+  return /\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}/.test(location);
+}
+
+function hasUrlIdentityMismatch(vehicle) {
+  const expected = parseUrlVehicleIdentity(vehicle.sourceUrl);
+  if (!expected) return false;
+  return compactIdentity(vehicle.make) !== compactIdentity(expected.make) ||
+    compactIdentity(vehicle.model) !== compactIdentity(expected.modelSlug);
 }
 
 export function validateInventory(vehicles, previousInventory, rules, expectedInventory = null) {
@@ -76,6 +105,23 @@ export function validateInventory(vehicles, previousInventory, rules, expectedIn
   const imageFloor = rules.minimumImageCompleteness ?? 0.8;
   if (fieldCompleteness.imageUrl < imageFloor) {
     warnings.push(`Vehicle image completeness is ${(fieldCompleteness.imageUrl * 100).toFixed(1)}%; target is ${(imageFloor * 100).toFixed(1)}%.`);
+  }
+
+  const invalidIdentities = vehicles.filter((vehicle) => !hasPlausibleIdentity(vehicle));
+  if (invalidIdentities.length) {
+    const examples = invalidIdentities.slice(0, 3).map((vehicle) => `${vehicle.stockNumber || vehicle.vin || 'unknown'} (${vehicle.make || 'null'} / ${vehicle.model || 'null'})`).join(', ');
+    errors.push(`${invalidIdentities.length} vehicle(s) have semantically invalid make/model values. Examples: ${examples}.`);
+  }
+
+  const urlIdentityMismatches = vehicles.filter(hasUrlIdentityMismatch);
+  if (urlIdentityMismatches.length) {
+    const examples = urlIdentityMismatches.slice(0, 3).map((vehicle) => `${vehicle.stockNumber || vehicle.vin || 'unknown'} (${vehicle.make || 'null'} / ${vehicle.model || 'null'})`).join(', ');
+    errors.push(`${urlIdentityMismatches.length} vehicle(s) disagree with make/model identity encoded in their VDP URLs. Examples: ${examples}.`);
+  }
+
+  const suspiciousLocations = vehicles.filter(hasSuspiciousLocation);
+  if (suspiciousLocations.length) {
+    errors.push(`${suspiciousLocations.length} vehicle(s) contain generic or phone-number text in the location field.`);
   }
 
   const invalidNewMake = newVehicles.filter((vehicle) => vehicle.make !== 'Genesis');
