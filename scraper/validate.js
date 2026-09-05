@@ -1,6 +1,11 @@
 import { vehicleKey } from './normalize.js';
 
-export function validateInventory(vehicles, previousInventory, rules) {
+function coverageRatio(actual, expected) {
+  if (!Number.isFinite(expected) || expected <= 0) return null;
+  return actual / expected;
+}
+
+export function validateInventory(vehicles, previousInventory, rules, expectedInventory = null) {
   const errors = [];
   const warnings = [];
   const total = vehicles.length;
@@ -20,11 +25,37 @@ export function validateInventory(vehicles, previousInventory, rules) {
   }
 
   if (preOwnedCount < rules.minimumPreOwnedVehicles) {
-    errors.push(`Only ${preOwnedCount} pre-owned vehicles were collected; minimum is ${rules.minimumPreOwnedVehicles}.`);
+    errors.push(`Only ${preOwnedCount} pre-owned vehicles were collected; minimum safety floor is ${rules.minimumPreOwnedVehicles}.`);
   }
 
   if (vinCompleteness < rules.minimumVinCompleteness) {
     errors.push(`VIN completeness is ${(vinCompleteness * 100).toFixed(1)}%; minimum is ${(rules.minimumVinCompleteness * 100).toFixed(1)}%.`);
+  }
+
+  const expectedTotal = Number(expectedInventory?.total);
+  const expectedNew = Number(expectedInventory?.new);
+  const expectedPreOwned = Number(expectedInventory?.preOwned);
+  const totalDiscoveryCoverage = coverageRatio(total, expectedTotal);
+  const newDiscoveryCoverage = coverageRatio(newCount, expectedNew);
+  const preOwnedDiscoveryCoverage = coverageRatio(preOwnedCount, expectedPreOwned);
+  const minimumDiscoveryCoverage = rules.minimumDiscoveryCoverage ?? 0.95;
+
+  if (totalDiscoveryCoverage !== null && totalDiscoveryCoverage < minimumDiscoveryCoverage) {
+    errors.push(
+      `Parsed inventory covers only ${(totalDiscoveryCoverage * 100).toFixed(1)}% of discovered VDPs; minimum is ${(minimumDiscoveryCoverage * 100).toFixed(1)}%.`
+    );
+  }
+
+  if (newDiscoveryCoverage !== null && newDiscoveryCoverage < minimumDiscoveryCoverage) {
+    errors.push(
+      `New inventory covers only ${(newDiscoveryCoverage * 100).toFixed(1)}% of discovered new VDPs; minimum is ${(minimumDiscoveryCoverage * 100).toFixed(1)}%.`
+    );
+  }
+
+  if (preOwnedDiscoveryCoverage !== null && preOwnedDiscoveryCoverage < minimumDiscoveryCoverage) {
+    errors.push(
+      `Pre-owned inventory covers only ${(preOwnedDiscoveryCoverage * 100).toFixed(1)}% of discovered pre-owned VDPs; minimum is ${(minimumDiscoveryCoverage * 100).toFixed(1)}%.`
+    );
   }
 
   const seen = new Map();
@@ -62,7 +93,12 @@ export function validateInventory(vehicles, previousInventory, rules) {
       preOwned: preOwnedCount,
       inStock: vehicles.filter((vehicle) => vehicle.availability === 'in-stock').length,
       inTransit: vehicles.filter((vehicle) => vehicle.availability === 'in-transit').length,
-      vinCompleteness: Number(vinCompleteness.toFixed(4))
+      vinCompleteness: Number(vinCompleteness.toFixed(4)),
+      discoveryCoverage: {
+        total: totalDiscoveryCoverage === null ? null : Number(totalDiscoveryCoverage.toFixed(4)),
+        new: newDiscoveryCoverage === null ? null : Number(newDiscoveryCoverage.toFixed(4)),
+        preOwned: preOwnedDiscoveryCoverage === null ? null : Number(preOwnedDiscoveryCoverage.toFixed(4))
+      }
     }
   };
 }

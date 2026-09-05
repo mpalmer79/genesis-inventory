@@ -2,7 +2,12 @@ import './globals.css';
 
 export const metadata = {
   title: 'Genesis Inventory Intelligence',
-  description: 'Fast inventory search and sales intelligence for Genesis of Manchester.'
+  description: 'Fast inventory search and sales intelligence for Genesis of Manchester.',
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true
+  }
 };
 
 export default function RootLayout({ children }) {
