@@ -44,8 +44,11 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Run tests
-        run: npm test
+      - name: Check search JavaScript
+        run: npm run check:search
+
+      - name: Run search tests
+        run: npm run test:search
 
       - name: Build application
         run: npm run build
