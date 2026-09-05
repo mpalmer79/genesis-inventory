@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { searchInventory } from '../lib/search.js';
 import styles from './InventoryExplorer.module.css';
 
@@ -143,6 +143,8 @@ function InventoryCard({ vehicle }) {
 export default function InventoryExplorer({ inventory }) {
   const vehicles = Array.isArray(inventory?.vehicles) ? inventory.vehicles : [];
   const metrics = inventory?.metrics || {};
+  const resultsRef = useRef(null);
+  const [queryInput, setQueryInput] = useState('');
   const [query, setQuery] = useState('');
   const [condition, setCondition] = useState('new');
   const [availability, setAvailability] = useState('all');
@@ -198,6 +200,27 @@ export default function InventoryExplorer({ inventory }) {
     setVisibleCount(INITIAL_VISIBLE);
   }
 
+  function scrollToResults() {
+    window.requestAnimationFrame(() => {
+      resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function submitSearch(nextQuery = queryInput) {
+    const normalized = String(nextQuery || '').trim();
+    if (!normalized) return;
+    setQueryInput(nextQuery);
+    setQuery(normalized);
+    setVisibleCount(INITIAL_VISIBLE);
+    scrollToResults();
+  }
+
+  function clearSearch() {
+    setQueryInput('');
+    setQuery('');
+    setVisibleCount(INITIAL_VISIBLE);
+  }
+
   const suggestions = [
     'Show me new black GV80s in stock under $80k',
     'Find in-transit GV70 AWD models',
@@ -233,27 +256,44 @@ export default function InventoryExplorer({ inventory }) {
 
       <section className="search-panel">
         <label htmlFor="inventory-search" className="search-label">Ask inventory</label>
-        <div className="search-row">
+        <form
+          className="search-row"
+          onSubmit={(event) => {
+            event.preventDefault();
+            submitSearch();
+          }}
+        >
           <input
             id="inventory-search"
             type="search"
-            value={query}
-            onChange={(event) => resetView(event.target.value, setQuery)}
+            value={queryInput}
+            onChange={(event) => setQueryInput(event.target.value)}
             placeholder="Example: black GV80 AWD in stock under $80k"
             autoComplete="off"
+            enterKeyHint="search"
           />
-          {query ? (
-            <button type="button" className="clear-button" onClick={() => resetView('', setQuery)}>Clear</button>
+          <button type="submit" className="search-button" disabled={!queryInput.trim()}>
+            Search
+          </button>
+          {queryInput || query ? (
+            <button type="button" className="clear-button" onClick={clearSearch}>Clear</button>
           ) : null}
-        </div>
+        </form>
 
         <div className="suggestion-row">
           {suggestions.map((suggestion) => (
-            <button key={suggestion} type="button" onClick={() => resetView(suggestion, setQuery)}>
+            <button key={suggestion} type="button" onClick={() => submitSearch(suggestion)}>
               {suggestion}
             </button>
           ))}
         </div>
+
+        {query ? (
+          <div className="search-feedback" role="status" aria-live="polite">
+            <strong>{filteredVehicles.length.toLocaleString()} matching vehicle{filteredVehicles.length === 1 ? '' : 's'}</strong>
+            <span>with the current Stock Type and filters</span>
+          </div>
+        ) : null}
 
         {searchState.parsed.labels?.length ? (
           <div className="interpretation-row">
@@ -302,7 +342,7 @@ export default function InventoryExplorer({ inventory }) {
         </label>
       </section>
 
-      <section className="results-header">
+      <section className="results-header" ref={resultsRef}>
         <div>
           <p className="eyebrow">Results</p>
           <h2>{filteredVehicles.length.toLocaleString()} matching vehicle{filteredVehicles.length === 1 ? '' : 's'}</h2>
