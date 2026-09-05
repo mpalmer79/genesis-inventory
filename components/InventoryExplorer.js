@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { searchInventory } from '../lib/search.js';
 import styles from './InventoryExplorer.module.css';
 
@@ -144,6 +144,7 @@ export default function InventoryExplorer({ inventory }) {
   const vehicles = Array.isArray(inventory?.vehicles) ? inventory.vehicles : [];
   const metrics = inventory?.metrics || {};
   const resultsRef = useRef(null);
+  const recognitionRef = useRef(null);
   const [queryInput, setQueryInput] = useState('');
   const [query, setQuery] = useState('');
   const [condition, setCondition] = useState('new');
@@ -151,6 +152,19 @@ export default function InventoryExplorer({ inventory }) {
   const [model, setModel] = useState('all');
   const [sort, setSort] = useState('model-year');
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE);
+  const [voiceSupported, setVoiceSupported] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [voiceMessage, setVoiceMessage] = useState('');
+
+  useEffect(() => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    setVoiceSupported(Boolean(SpeechRecognition));
+
+    return () => {
+      recognitionRef.current?.abort();
+      recognitionRef.current = null;
+    };
+  }, []);
 
   const models = useMemo(() => {
     return [...new Set(vehicles.map((vehicle) => vehicle.model).filter(Boolean))].sort((a, b) => a.localeCompare(b));
@@ -209,16 +223,85 @@ export default function InventoryExplorer({ inventory }) {
   function submitSearch(nextQuery = queryInput) {
     const normalized = String(nextQuery || '').trim();
     if (!normalized) return;
-    setQueryInput(nextQuery);
+    setQueryInput(normalized);
     setQuery(normalized);
     setVisibleCount(INITIAL_VISIBLE);
     scrollToResults();
   }
 
   function clearSearch() {
+    recognitionRef.current?.abort();
+    recognitionRef.current = null;
+    setIsListening(false);
+    setVoiceMessage('');
     setQueryInput('');
     setQuery('');
     setVisibleCount(INITIAL_VISIBLE);
+  }
+
+  function toggleVoiceSearch() {
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop();
+      return;
+    }
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setVoiceMessage('Voice search is not supported in this browser.');
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    let latestTranscript = '';
+    let shouldSubmit = true;
+
+    recognition.lang = 'en-US';
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = () => {
+      setVoiceMessage('');
+      setIsListening(true);
+    };
+
+    recognition.onresult = (event) => {
+      latestTranscript = Array.from(event.results)
+        .map((result) => result[0]?.transcript || '')
+        .join(' ')
+        .trim();
+
+      if (latestTranscript) setQueryInput(latestTranscript);
+    };
+
+    recognition.onerror = (event) => {
+      shouldSubmit = false;
+      setIsListening(false);
+
+      if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+        setVoiceMessage('Microphone access was blocked. Allow microphone permission and try again.');
+      } else if (event.error === 'no-speech') {
+        setVoiceMessage('I did not hear anything. Tap the microphone and try again.');
+      } else {
+        setVoiceMessage('Voice search could not start. Please try again.');
+      }
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+      recognitionRef.current = null;
+      if (shouldSubmit && latestTranscript) submitSearch(latestTranscript);
+    };
+
+    recognitionRef.current = recognition;
+
+    try {
+      recognition.start();
+    } catch {
+      recognitionRef.current = null;
+      setIsListening(false);
+      setVoiceMessage('Voice search could not start. Please try again.');
+    }
   }
 
   const suggestions = [
@@ -263,15 +346,30 @@ export default function InventoryExplorer({ inventory }) {
             submitSearch();
           }}
         >
-          <input
-            id="inventory-search"
-            type="search"
-            value={queryInput}
-            onChange={(event) => setQueryInput(event.target.value)}
-            placeholder="Example: black GV80 AWD in stock under $80k"
-            autoComplete="off"
-            enterKeyHint="search"
-          />
+          <div className={styles.searchInputWrap}>
+            <input
+              id="inventory-search"
+              type="search"
+              value={queryInput}
+              onChange={(event) => setQueryInput(event.target.value)}
+              placeholder="Example: black GV80 AWD in stock under $80k"
+              autoComplete="off"
+              enterKeyHint="search"
+            />
+            <button
+              type="button"
+              className={`${styles.voiceButton} ${isListening ? styles.listening : ''}`}
+              onClick={toggleVoiceSearch}
+              disabled={!voiceSupported}
+              aria-label={isListening ? 'Stop voice search' : 'Search inventory by voice'}
+              aria-pressed={isListening}
+              title={voiceSupported ? (isListening ? 'Stop listening' : 'Search by voice') : 'Voice search is not supported in this browser'}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 15.5a3.5 3.5 0 0 0 3.5-3.5V5a3.5 3.5 0 1 0-7 0v7a3.5 3.5 0 0 0 3.5 3.5Zm-1.8-10.5a1.8 1.8 0 1 1 3.6 0v7a1.8 1.8 0 1 1-3.6 0V5Zm7.8 6.2a.85.85 0 0 0-1.7 0v.8a4.3 4.3 0 0 1-8.6 0v-.8a.85.85 0 0 0-1.7 0v.8a6 6 0 0 0 5.15 5.94V20H8.7a.85.85 0 0 0 0 1.7h6.6a.85.85 0 1 0 0-1.7h-2.45v-2.06A6 6 0 0 0 18 12v-.8Z" />
+              </svg>
+            </button>
+          </div>
           <button type="submit" className="search-button" disabled={!queryInput.trim()}>
             Search
           </button>
@@ -279,6 +377,14 @@ export default function InventoryExplorer({ inventory }) {
             <button type="button" className="clear-button" onClick={clearSearch}>Clear</button>
           ) : null}
         </form>
+
+        {isListening ? (
+          <div className={styles.voiceStatus} role="status" aria-live="polite">
+            <span className={styles.listeningDot} /> Listening... speak your inventory request
+          </div>
+        ) : voiceMessage ? (
+          <div className={styles.voiceError} role="status" aria-live="polite">{voiceMessage}</div>
+        ) : null}
 
         <div className="suggestion-row">
           {suggestions.map((suggestion) => (
