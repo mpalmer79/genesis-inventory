@@ -1,80 +1,123 @@
 import { chromium } from 'playwright';
+import { mkdir, writeFile } from 'node:fs/promises';
 
-const TARGETS = [
-  'https://www.genesisofmanchester.com/used-inventory/shared-inventory.htm?start=24',
-  'https://www.genesisofmanchester.com/used-inventory/shared-inventory.htm?start=48'
-];
+const BASE_URL = 'https://www.genesisofmanchester.com/used-inventory/shared-inventory.htm';
+const OUTPUT_PATH = 'debug/shared-used-diagnostic.json';
 
 const browser = await chromium.launch({ headless: true });
-const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, locale: 'en-US' });
+const context = await browser.newContext({
+  viewport: { width: 1440, height: 1000 },
+  locale: 'en-US',
+  extraHTTPHeaders: { 'Accept-Language': 'en-US,en;q=0.9' }
+});
 
-for (const target of TARGETS) {
-  const page = await context.newPage();
-  const network = [];
+const page = await context.newPage();
+const network = [];
 
-  page.on('request', (request) => {
-    if (!['xhr', 'fetch'].includes(request.resourceType())) return;
-    const url = request.url();
-    if (!/inventory|vehicle|widget|dealer|search|api/i.test(url)) return;
-    network.push({
-      method: request.method(),
-      type: request.resourceType(),
-      url,
-      postData: request.postData()?.slice(0, 3000) ?? null
-    });
+page.on('request', (request) => {
+  if (!['xhr', 'fetch'].includes(request.resourceType())) return;
+  const url = request.url();
+  network.push({
+    method: request.method(),
+    type: request.resourceType(),
+    url,
+    postData: request.postData()?.slice(0, 4000) ?? null
   });
+});
 
-  await page.goto(target, { waitUntil: 'domcontentloaded', timeout: 45000 });
-  await page.waitForTimeout(5000);
-  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-  await page.waitForTimeout(2500);
-
-  const data = await page.evaluate(() => {
-    const hrefs = [...document.querySelectorAll('a[href]')]
-      .map((anchor) => ({
-        text: (anchor.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 180),
-        href: anchor.href
-      }));
-
-    const interestingLinks = hrefs.filter(({ text, href }) =>
-      /\/used\/|\/certified\/|20\d{2}|vehicle|inventory|vin|stock/i.test(`${text} ${href}`)
-    );
-
-    const bodyLines = (document.body.innerText || '')
-      .split('\n')
-      .map((line) => line.replace(/\s+/g, ' ').trim())
-      .filter(Boolean);
-
-    const interestingText = bodyLines.filter((line) =>
-      /\b20\d{2}\b|\bVIN\b|\bStock\b|\bMileage\b|\bOdometer\b|\$[\d,]+/.test(line)
-    );
-
-    const vehicleLikeElements = [...document.querySelectorAll('[data-vin], [data-stock-number], [data-vehicle-id], [class*="vehicle" i], [class*="inventory" i]')]
-      .slice(0, 80)
-      .map((element) => ({
-        tag: element.tagName,
-        className: typeof element.className === 'string' ? element.className.slice(0, 220) : '',
-        dataVin: element.getAttribute('data-vin'),
-        dataStock: element.getAttribute('data-stock-number'),
-        dataVehicleId: element.getAttribute('data-vehicle-id'),
-        text: (element.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 280)
-      }));
-
-    return {
-      currentUrl: location.href,
-      title: document.title,
-      anchorCount: hrefs.length,
-      interestingLinks: interestingLinks.slice(0, 160),
-      interestingText: interestingText.slice(0, 160),
-      vehicleLikeElements
-    };
-  });
-
-  console.log(`\n===== ${target} =====`);
-  console.log(JSON.stringify(data, null, 2));
-  console.log('NETWORK');
-  console.log(JSON.stringify(network.slice(0, 120), null, 2));
-  await page.close();
+async function settle() {
+  await page.waitForTimeout(1500);
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(500);
+  }
 }
 
-await browser.close();
+async function snapshot(label) {
+  return page.evaluate((snapshotLabel) => {
+    const allAnchors = [...document.querySelectorAll('a[href]')];
+    const vehicleLinks = allAnchors
+      .map((anchor) => anchor.href)
+      .filter((href) => /\/(used|certified)\//i.test(href));
+    const pagination = allAnchors
+      .map((anchor) => ({
+        text: (anchor.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80),
+        href: anchor.href,
+        ariaLabel: anchor.getAttribute('aria-label'),
+        rel: anchor.getAttribute('rel'),
+        className: typeof anchor.className === 'string' ? anchor.className.slice(0, 160) : ''
+      }))
+      .filter(({ text, href, ariaLabel, rel, className }) =>
+        /start=|next|previous|pagination/i.test(`${text} ${href} ${ariaLabel || ''} ${rel || ''} ${className}`)
+      );
+
+    const bodyText = document.body.innerText || '';
+    return {
+      label: snapshotLabel,
+      currentUrl: location.href,
+      title: document.title,
+      vehicleLinkCount: new Set(vehicleLinks).size,
+      sampleVehicleLinks: [...new Set(vehicleLinks)].slice(0, 8),
+      pagination: pagination.slice(0, 40),
+      bodySignals: {
+        hasNoMatches: /don't have any vehicles that match|no vehicles/i.test(bodyText),
+        textLength: bodyText.length
+      }
+    };
+  }, label);
+}
+
+async function clickStart(start) {
+  const selector = `a[href*="start=${start}"]`;
+  const locator = page.locator(selector).first();
+  const count = await page.locator(selector).count();
+  if (!count) return { clicked: false, reason: `No anchor matched ${selector}` };
+
+  const beforeUrl = page.url();
+  await locator.scrollIntoViewIfNeeded();
+  await Promise.all([
+    page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => null),
+    locator.click({ timeout: 10000 })
+  ]);
+  await settle();
+  return { clicked: true, beforeUrl, afterUrl: page.url(), matchedAnchors: count };
+}
+
+try {
+  await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 45000 });
+  await settle();
+
+  const snapshots = [await snapshot('page-1')];
+  const transitions = [];
+
+  transitions.push({ start: 24, ...(await clickStart(24)) });
+  snapshots.push(await snapshot('page-2-after-click'));
+
+  transitions.push({ start: 48, ...(await clickStart(48)) });
+  snapshots.push(await snapshot('page-3-after-click'));
+
+  const relevantNetwork = network.filter(({ url, postData }) =>
+    /inventory|vehicle|search|widget|api|start=|graphql/i.test(`${url} ${postData || ''}`)
+  );
+
+  const result = {
+    generatedAt: new Date().toISOString(),
+    snapshots,
+    transitions,
+    network: relevantNetwork.slice(-160)
+  };
+
+  await mkdir('debug', { recursive: true });
+  await writeFile(OUTPUT_PATH, `${JSON.stringify(result, null, 2)}\n`, 'utf8');
+
+  console.log('Shared inventory diagnostic complete.');
+  for (const item of snapshots) {
+    console.log(`${item.label}: ${item.vehicleLinkCount} vehicle links at ${item.currentUrl}`);
+  }
+  for (const transition of transitions) {
+    console.log(`start=${transition.start}: clicked=${transition.clicked}, after=${transition.afterUrl || transition.reason}`);
+  }
+  console.log(`Relevant XHR/fetch requests captured: ${relevantNetwork.length}`);
+} finally {
+  await browser.close();
+}
