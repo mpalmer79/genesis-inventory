@@ -58,6 +58,13 @@ try {
   assert(firstGroupYears.every((year, index) => index === 0 || firstGroupYears[index - 1] >= year), 'Model years are not sorted newest first.');
 
   const search = page.getByLabel('Ask inventory');
+
+  await search.fill('Lexus');
+  await page.getByRole('button', { name: 'Search', exact: true }).click();
+  await waitForSelectValue(page, 'Stock Type', 'all');
+  await waitForSelectValue(page, 'Make', 'LEXUS');
+  assert(await page.locator('.vehicle-card').count() > 0, 'Unqualified Lexus search should return inventory across stock types.');
+
   await search.fill('Used AWD SUVs under 30k miles');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
   await waitForSelectValue(page, 'Stock Type', 'used');
