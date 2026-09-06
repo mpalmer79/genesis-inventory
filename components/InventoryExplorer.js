@@ -242,6 +242,8 @@ export default function InventoryExplorer({ inventory }) {
       setCondition(parsed.filters.condition);
       if (!parsed.filters.make) setMake('all');
       if (!parsed.filters.model) setModel('all');
+    } else {
+      setCondition('all');
     }
     if (parsed.filters.availability) setAvailability(parsed.filters.availability);
     if (parsed.filters.make) setMake(parsed.filters.make);
