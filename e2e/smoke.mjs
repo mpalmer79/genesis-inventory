@@ -50,14 +50,19 @@ try {
   await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
   assert((await page.locator('h1').first().textContent())?.includes('Genesis of Manchester'), 'Hero title is missing.');
-  assert(await page.getByLabel('Stock Type').inputValue() === 'new', 'Default Stock Type must be New.');
-  assert(await page.locator('[data-model-group]').count() > 0, 'New inventory model groups are missing.');
+  assert(await page.getByLabel('Stock Type').inputValue() === 'all', 'Default Stock Type must be All.');
+  assert(await page.locator('.vehicle-card').count() > 0, 'Default all-stock inventory cards are missing.');
   assert(await page.getByRole('button', { name: 'Copy VIN / Stock' }).count() > 0, 'Vehicle copy action is missing.');
+
+  const search = page.getByLabel('Ask inventory');
+
+  await search.fill('Show me new Genesis vehicles');
+  await page.getByRole('button', { name: 'Search', exact: true }).click();
+  await waitForSelectValue(page, 'Stock Type', 'new');
+  assert(await page.locator('[data-model-group]').count() > 0, 'New inventory model groups are missing.');
 
   const firstGroupYears = await page.locator('[data-model-group]').first().locator('[data-model-year]').evaluateAll((cards) => cards.map((card) => Number(card.getAttribute('data-model-year'))).filter(Number.isFinite));
   assert(firstGroupYears.every((year, index) => index === 0 || firstGroupYears[index - 1] >= year), 'Model years are not sorted newest first.');
-
-  const search = page.getByLabel('Ask inventory');
 
   await search.fill('Lexus');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
