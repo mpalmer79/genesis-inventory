@@ -99,7 +99,8 @@
 }
 
 .voiceStatus,
-.voiceError {
+.voiceError,
+.voiceInterpretation {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -119,6 +120,19 @@
   border: 1px solid rgba(201, 120, 120, 0.35);
   background: rgba(201, 120, 120, 0.08);
   color: #e4aaaa;
+}
+
+.voiceInterpretation {
+  align-items: flex-start;
+  flex-direction: column;
+  border: 1px solid rgba(127, 178, 147, 0.3);
+  background: rgba(127, 178, 147, 0.08);
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.voiceInterpretation strong {
+  color: #b9dec6;
 }
 
 .listeningDot {
