@@ -12,10 +12,10 @@
     "start": "next start",
     "check": "npm run check:scraper && npm run check:search",
     "check:scraper": "node --check scraper/config.js && node --check scraper/normalize.js && node --check scraper/validate.js && node --check scraper/scrape.js && node --check scraper/normalize.test.js && node --check scraper/validate.test.js",
-    "check:search": "node --check lib/search.js && node --check lib/search.test.js",
-    "test": "node --test scraper/normalize.test.js scraper/validate.test.js lib/search.test.js",
+    "check:search": "node --check lib/search.js && node --check lib/search.test.js && node --check lib/voiceNormalize.js && node --check lib/voiceNormalize.test.js",
+    "test": "node --test scraper/normalize.test.js scraper/validate.test.js lib/search.test.js lib/voiceNormalize.test.js",
     "test:scraper": "node --test scraper/normalize.test.js scraper/validate.test.js",
-    "test:search": "node --test lib/search.test.js",
+    "test:search": "node --test lib/search.test.js lib/voiceNormalize.test.js",
     "test:e2e": "node e2e/smoke.mjs",
     "scrape": "node scraper/scrape.js"
   },
