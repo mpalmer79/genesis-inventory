@@ -1,97 +1,295 @@
-# Genesis Inventory Intelligence
+<p align="center">
+  <img src="public/images/genesis-showroom-hero.webp" alt="Genesis of Manchester showroom" width="100%" />
+</p>
 
-Private sales-tool inventory platform for Genesis of Manchester.
+<h1 align="center">Genesis Inventory Intelligence</h1>
 
-Production: `https://genesis-manchester.vercel.app`
+<p align="center">
+  A production-focused inventory intelligence and sales search platform for Genesis of Manchester.
+</p>
 
-The project has two independent layers:
+<p align="center">
+  <a href="https://genesis-manchester.vercel.app/">
+    <img src="https://img.shields.io/badge/Live%20App-Genesis%20Inventory-111111?style=for-the-badge&logo=vercel&logoColor=white" alt="Live application" />
+  </a>
+  <a href="https://github.com/mpalmer79/genesis-inventory">
+    <img src="https://img.shields.io/badge/GitHub-genesis--inventory-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub repository" />
+  </a>
+  <a href="https://www.linkedin.com/in/mpalmer1234/">
+    <img src="https://img.shields.io/badge/LinkedIn-Michael%20Palmer-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="Michael Palmer on LinkedIn" />
+  </a>
+</p>
 
-1. A validated Playwright inventory collector that reads public dealership inventory pages and maintains normalized current/change data.
-2. A Next.js sales interface with natural-language and voice inventory search, conventional filters, availability visibility, sorting, and direct VDP access.
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16.3.4-000000?logo=next.js&logoColor=white" alt="Next.js 16.3.4" />
+  <img src="https://img.shields.io/badge/React-19.2.8-61DAFB?logo=react&logoColor=111111" alt="React 19.2.8" />
+  <img src="https://img.shields.io/badge/Node.js-22.x-339933?logo=node.js&logoColor=white" alt="Node.js 22.x" />
+  <img src="https://img.shields.io/badge/Playwright-Tested-2EAD33?logo=playwright&logoColor=white" alt="Playwright tested" />
+</p>
+
+## Overview
+
+Genesis Inventory Intelligence is a private-purpose dealership sales tool that turns public Genesis of Manchester and shared pre-owned inventory into a fast, searchable working inventory for salespeople.
+
+The project combines two independent layers:
+
+1. **Validated inventory collection** using Playwright to discover public vehicle detail pages, normalize vehicle data, enforce quality gates, and preserve the last known-good dataset when a scrape is incomplete.
+2. **Inventory search application** using Next.js with natural-language search, voice search, inventory-aware voice normalization, conventional filters, model grouping, live inventory health, and direct vehicle-detail access.
+
+The production application is available at **[genesis-manchester.vercel.app](https://genesis-manchester.vercel.app/)**.
+
+## Key capabilities
+
+- Natural-language inventory search designed around dealership phrasing
+- Voice search with automotive and Genesis-specific transcript normalization
+- Inventory-aware correction for model names and common speech-recognition errors
+- VIN and stock-number lookup
+- New, pre-owned, and certified inventory filtering
+- In-stock and in-transit filtering
+- Model year, body style, drivetrain, EV, color, price, and mileage constraints
+- Engine-displacement searches such as `GV70 2.5`, `GV70 2.5L`, and `GV70 2.5T`
+- Exterior-color intent separated from interior-color intent
+- AWD/FWD/RWD/4WD normalization across multiple source formats
+- New inventory grouped by model with newest model years first
+- Direct links to the source vehicle detail page
+- Copy VIN / stock actions for fast salesperson workflows
+- Inventory-health status based on the last successful validated refresh
+- Fail-closed data collection so bad scrapes never replace production inventory
+
+## Search examples
+
+The parser is intentionally built around the way a salesperson is likely to ask for inventory:
+
+```text
+Show me new black GV80s in stock under $80k
+Find in-transit GV70 AWD models
+Used AWD SUVs under 30k miles
+Show me certified Genesis vehicles
+GV70 2.5L
+Lexus
+black interior GV80
+```
+
+An unqualified natural-language search searches across all stock types. Explicit terms such as `new`, `used`, or `certified` set the corresponding stock-type filter.
+
+### Voice intelligence
+
+Supported browsers use the Web Speech API for transcription. Before a voice transcript reaches the search engine, the application normalizes dealership-specific language and common recognition errors.
+
+Examples include:
+
+```text
+gavi eighty             -> GV80
+gee vee seventy         -> GV70
+all wheel drive         -> AWD
+rear wheel drive        -> RWD
+30 thousand miles       -> 30k miles
+certified pre owned     -> certified
+```
+
+The application can display both what it **heard** and what it is **searching**, making voice interpretation visible instead of silently changing the request.
 
 ## Inventory sources
 
-- New Genesis inventory: `https://www.genesisofmanchester.com/new-inventory/index.htm`
-- Shared pre-owned inventory: `https://www.autofairhyundai.com/used-inventory/index.htm`
-- Genesis Certified inventory: `https://www.genesisofmanchester.com/certified-inventory/index.htm`
+| Inventory | Public source |
+| --- | --- |
+| New Genesis | `https://www.genesisofmanchester.com/new-inventory/index.htm` |
+| Shared pre-owned | `https://www.autofairhyundai.com/used-inventory/index.htm` |
+| Genesis Certified | `https://www.genesisofmanchester.com/certified-inventory/index.htm` |
 
-The collector intentionally reads the AutoFair Hyundai source directly for the shared used pool because the Genesis shared-inventory proxy does not expose the complete paginated inventory reliably.
+The collector reads the AutoFair Hyundai source directly for the shared pre-owned pool because the Genesis shared-inventory proxy does not consistently expose the complete paginated inventory.
 
-## Generated data
+## Data pipeline
 
-- `data/inventory.json` - current normalized inventory used by the application
-- `data/inventory.csv` - spreadsheet-friendly current inventory
-- `data/changes.json` - vehicles added, removed, and price changes since the previous successful run
-- `data/history.json` - observation history retained for scraper continuity; it is not presented as dealer days-in-stock
+```text
+Public inventory pages
+        |
+        v
+VDP discovery and pagination
+        |
+        v
+Concurrent Playwright collection
+        |
+        v
+Normalization and deduplication
+        |
+        v
+Validation quality gates
+        |
+        +---- failure ----> keep previous validated dataset
+        |
+      success
+        |
+        v
+inventory.json / inventory.csv / changes.json / history.json
+        |
+        v
+Git commit -> Vercel deployment -> production search app
+```
+
+### Generated data
+
+| File | Purpose |
+| --- | --- |
+| `data/inventory.json` | Current normalized inventory consumed by the application |
+| `data/inventory.csv` | Spreadsheet-friendly representation of current inventory |
+| `data/changes.json` | Vehicles added, removed, and price changes since the previous successful run |
+| `data/history.json` | Observation history used for scraper continuity |
+
+`history.json` records observation history only. It is not presented as dealer-reported days in stock.
 
 ## Validation and data quality
 
-The scraper fails closed. A bad collection never replaces the last successful production dataset.
+The scraper **fails closed**. A bad or incomplete collection never replaces the last successful production dataset.
 
-Validation covers:
+Validation protects against:
 
-- minimum total, new, and pre-owned safety floors
-- discovered-VDP coverage
-- VIN completeness
-- critical field completeness for stock number, year, make, model, and availability
-- catastrophic inventory drops relative to the previous successful run
-- new-Genesis make/model sanity
-- image completeness warnings
-- suspicious electric powertrain text warnings
+- unexpected total, new, or pre-owned inventory drops
+- incomplete discovered-VDP coverage
+- missing VINs
+- weak critical-field completeness
+- invalid stock numbers, years, makes, or models
+- incorrect Genesis model normalization
+- suspicious availability gaps
+- malformed location data
+- invalid or generic vehicle images
+- obviously incorrect ICE powertrain fields on electric Genesis models
 
-VIN is the preferred vehicle identifier, followed by stock number and then VDP URL.
+VIN is the preferred vehicle identifier, followed by stock number and then source VDP URL.
 
-## Application
+For active shared-used and certified listing sources, listing membership can serve as an in-stock fallback when the individual VDP omits an explicit availability value. New Genesis vehicles do not receive that fallback because new inventory can legitimately include in-transit units.
+
+## Application behavior
 
 The Next.js application reads `data/inventory.json` at build time.
 
-Default view:
+The default view opens to **New** inventory, grouped by model and sorted with the newest model year first. Natural-language searches synchronize relevant visible filters so the parser and dropdown state do not contradict one another.
 
-- Stock Type: New
-- grouped by Model
-- Model Year descending within each model group
+For new inventory, MSRP is the primary price when available. If Dealer.com exposes a different website price, it is shown separately rather than being silently treated as MSRP.
 
-Search capabilities include:
+The interface also includes a customer-facing reminder:
 
-- VIN and stock-number lookup
-- natural-language model search
-- new, pre-owned, and certified condition constraints
-- in-stock and in-transit filtering
-- model year
-- drivetrain
-- SUV and sedan body type
-- EV intent
-- price ceilings and floors
-- mileage ceilings
-- common color terms
-- voice input in supported browsers
+> Always verify before proceeding forward with your customer
 
-Natural-language condition, availability, and Genesis model intent synchronize the visible UI filters so the parser and dropdowns do not conflict.
+## Automation and deployment
 
-For New inventory, price filtering and the primary card price use MSRP. A differing Dealer.com price is shown separately as Website Price rather than being silently treated as MSRP.
+GitHub Actions handles collection, validation, and application verification.
 
-## Automation
+| Workflow | Responsibility |
+| --- | --- |
+| `.github/workflows/inventory-sync.yml` | Scheduled inventory collection and validated data commits |
+| `.github/workflows/scraper-ci.yml` | Scraper syntax and unit tests |
+| `.github/workflows/app-ci.yml` | Search tests, production Next.js build, and Playwright smoke testing |
 
-`.github/workflows/inventory-sync.yml` performs the nightly inventory collection and commits only validated data changes.
+Vercel is connected to `main`, so successful commits automatically deploy to production.
 
-`.github/workflows/scraper-ci.yml` runs fast scraper syntax and unit tests.
+### Inventory health
 
-`.github/workflows/app-ci.yml` runs search tests, a production Next.js build, and a Playwright production smoke test.
+The UI communicates freshness based on the most recent successful inventory timestamp:
 
-Vercel is connected to `main`, so successful commits automatically deploy to the production domain.
+- **Inventory current:** up to 26 hours old
+- **Inventory refresh delayed:** more than 26 and up to 36 hours old
+- **Inventory may be stale:** more than 36 hours old
 
-## Operational behavior
+If a collection fails validation, the previous validated inventory remains live rather than publishing an unreliable replacement.
 
-If a nightly scrape fails, the previous validated inventory remains live. The UI shows inventory health based on the last successful sync timestamp:
+See [`OPERATIONS.md`](OPERATIONS.md) for the operational runbook.
 
-- current through 26 hours
-- refresh delayed from 26 to 36 hours
-- potentially stale after 36 hours
+## Local development
 
-See `OPERATIONS.md` for runbook details.
+### Requirements
+
+- Node.js 22.x
+- npm
+- Playwright Chromium for scraper and end-to-end workflows
+
+### Install
+
+```text
+npm ci
+```
+
+### Run the application
+
+```text
+npm run dev
+```
+
+### Build for production
+
+```text
+npm run build
+npm start
+```
+
+### Verification
+
+```text
+npm run check
+npm test
+npm run test:e2e
+```
+
+### Inventory collection
+
+```text
+npm run scrape
+```
+
+## Project structure
+
+```text
+app/                         Next.js application shell and global presentation
+components/                  Inventory explorer UI and interaction logic
+lib/search.js                Natural-language inventory parser and matcher
+lib/voiceNormalize.js        Voice transcript normalization
+scraper/                     Discovery, collection, normalization, and validation
+data/                        Current and historical generated inventory artifacts
+e2e/                         Production-style browser smoke tests
+.github/workflows/           CI and scheduled inventory automation
+public/images/               Application imagery and hero assets
+OPERATIONS.md                Operational runbook
+```
 
 ## Access boundary
 
-The collector uses only publicly accessible dealership pages. It does not attempt authentication, CAPTCHA bypass, session impersonation, or access to dealer-only systems.
+The collector reads only publicly accessible dealership pages. It does not attempt authentication, CAPTCHA bypass, session impersonation, or access to dealer-only systems.
 
-The web app is marked `noindex`/`nofollow` and sends basic browser security headers. It is still reachable by anyone who knows the production URL unless deployment authentication is added later.
+The application is configured with `noindex` / `nofollow` metadata. It should still be treated as reachable by anyone who knows the production URL unless deployment-level authentication is enabled.
+
+## Technology
+
+- **Frontend:** Next.js 16, React 19
+- **Inventory collection:** Playwright
+- **Runtime:** Node.js 22
+- **Testing:** Node test runner and Playwright end-to-end checks
+- **Automation:** GitHub Actions
+- **Deployment:** Vercel
+- **Data model:** JSON and CSV generated artifacts committed after successful validation
+
+## Author
+
+**Michael Palmer**  
+Automotive retail technology, software engineering, AI-assisted workflows, and dealership systems.
+
+<p>
+  <a href="https://www.linkedin.com/in/mpalmer1234/">
+    <img src="https://img.shields.io/badge/Connect%20on%20LinkedIn-Michael%20Palmer-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="Connect with Michael Palmer on LinkedIn" />
+  </a>
+  <a href="https://github.com/mpalmer79">
+    <img src="https://img.shields.io/badge/GitHub-mpalmer79-181717?style=for-the-badge&logo=github&logoColor=white" alt="Michael Palmer on GitHub" />
+  </a>
+</p>
+
+---
+
+<p align="center">
+  <strong>Genesis Inventory Intelligence</strong><br />
+  Built by Michael Palmer for faster, more accurate dealership inventory discovery.
+</p>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/mpalmer1234/">
+    <img src="https://img.shields.io/badge/LinkedIn-Michael%20Palmer-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="Michael Palmer LinkedIn" />
+  </a>
+</p>
