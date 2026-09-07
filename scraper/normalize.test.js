@@ -253,3 +253,43 @@ test('uses the VDP URL to preserve multi-word used models', () => {
   assert.equal(vehicle.model, 'Santa Fe');
   assert.equal(vehicle.trim, 'SEL AWD');
 });
+
+test('treats an active shared-used listing VDP as in stock when the VDP omits availability text', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'used',
+    source: 'shared-used',
+    url: 'https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Tucson-1234567890abcdef1234567890abcdef.htm',
+    heading: 'Used 2024 Hyundai Tucson SEL AWD',
+    bodyText: `
+      Used 2024 Hyundai Tucson SEL AWD
+      VIN
+      5NMJB3DE0RH123456
+      Stock Number
+      HY20001T
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.availability, 'in-stock');
+});
+
+test('does not invent availability for a new vehicle when the VDP provides no availability signal', () => {
+  const vehicle = normalizeVehicle({
+    condition: 'new',
+    source: 'new',
+    url: 'https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV80-1234567890abcdef1234567890abcdef.htm',
+    heading: 'New 2026 Genesis GV80 2.5T',
+    bodyText: `
+      New 2026 Genesis GV80 2.5T
+      VIN
+      KMUHFESB8TU355697
+      Stock Number
+      GM260787
+    `,
+    jsonLd: [],
+    images: []
+  });
+
+  assert.equal(vehicle.availability, null);
+});
