@@ -168,8 +168,30 @@
 
 .search-row input {
   height: 66px;
+  border-color: #d8d1cf;
   border-radius: 16px;
-  background: #0f0f0f;
+  background: #faf6f5;
+  color: #171515;
+}
+
+.search-row input::placeholder {
+  color: #746d6b;
+  opacity: 1;
+}
+
+.search-row input:focus {
+  border-color: #a56b4f;
+  box-shadow: 0 0 0 3px rgba(165, 107, 79, 0.2);
+}
+
+.search-row::after {
+  content: 'Always verify before proceeding forward with your customer';
+  display: block;
+  margin-top: -2px;
+  color: #b9b3ae;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .search-button {
@@ -315,6 +337,10 @@
 
   .search-row input {
     height: 60px;
+  }
+
+  .search-row::after {
+    font-size: 0.7rem;
   }
 
   .search-button {
