@@ -327,7 +327,7 @@ function parsePrice(bodyText, jsonLd, labels) {
   return null;
 }
 
-function parseAvailability(bodyText, jsonLd) {
+function parseAvailability(bodyText, jsonLd, source) {
   const structured = clean(findJsonLdValue(jsonLd, ['availability']))?.toLowerCase() || '';
   if (/instock|in_stock/.test(structured)) return 'in-stock';
   if (/preorder|pre-order|intransit|in_transit/.test(structured)) return 'in-transit';
@@ -336,6 +336,12 @@ function parseAvailability(bodyText, jsonLd) {
   const upperVehicleSection = bodyText.slice(0, 12000);
   if (/\bin transit\b/i.test(upperVehicleSection)) return 'in-transit';
   if (/\bin stock\b/i.test(upperVehicleSection)) return 'in-stock';
+
+  // A VDP discovered from the active shared-used or certified inventory listing is
+  // currently being advertised as available inventory even when that VDP omits an
+  // explicit availability label. Use the listing membership as the fallback signal.
+  if (source === 'shared-used' || source === 'certified') return 'in-stock';
+
   return null;
 }
 
@@ -400,7 +406,7 @@ export function normalizeVehicle(raw) {
     stockNumber,
     condition,
     certified: condition === 'certified',
-    availability: parseAvailability(bodyText, jsonLd),
+    availability: parseAvailability(bodyText, jsonLd, raw.source),
     year: title.year,
     make: title.make,
     model: title.model,
