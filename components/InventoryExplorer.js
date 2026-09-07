@@ -151,7 +151,7 @@ export default function InventoryExplorer({ inventory }) {
   const recognitionRef = useRef(null);
   const [queryInput, setQueryInput] = useState('');
   const [query, setQuery] = useState('');
-  const [condition, setCondition] = useState('new');
+  const [condition, setCondition] = useState('all');
   const [availability, setAvailability] = useState('all');
   const [make, setMake] = useState('all');
   const [model, setModel] = useState('all');
