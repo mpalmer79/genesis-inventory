@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { effectiveVehiclePrice, parseInventoryQuery, searchInventory } from '../lib/search.js';
+import { chooseVoiceInventoryQuery } from '../lib/voiceNormalize.js';
 import styles from './InventoryExplorer.module.css';
 
 const INITIAL_VISIBLE = 24;
@@ -159,6 +160,7 @@ export default function InventoryExplorer({ inventory }) {
   const [voiceSupported, setVoiceSupported] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [voiceMessage, setVoiceMessage] = useState('');
+  const [voiceInterpretation, setVoiceInterpretation] = useState(null);
 
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -260,6 +262,7 @@ export default function InventoryExplorer({ inventory }) {
     recognitionRef.current = null;
     setIsListening(false);
     setVoiceMessage('');
+    setVoiceInterpretation(null);
     setQueryInput('');
     setQuery('');
     setVisibleCount(INITIAL_VISIBLE);
@@ -279,15 +282,23 @@ export default function InventoryExplorer({ inventory }) {
 
     const recognition = new SpeechRecognition();
     let latestTranscript = '';
+    let latestAlternatives = [];
     let shouldSubmit = true;
     recognition.lang = 'en-US';
     recognition.continuous = false;
     recognition.interimResults = true;
-    recognition.maxAlternatives = 1;
+    recognition.maxAlternatives = 3;
 
-    recognition.onstart = () => { setVoiceMessage(''); setIsListening(true); };
+    recognition.onstart = () => {
+      setVoiceMessage('');
+      setVoiceInterpretation(null);
+      setIsListening(true);
+    };
     recognition.onresult = (event) => {
-      latestTranscript = Array.from(event.results).map((result) => result[0]?.transcript || '').join(' ').trim();
+      const results = Array.from(event.results);
+      latestTranscript = results.map((result) => result[0]?.transcript || '').join(' ').trim();
+      const lastResult = results.at(-1);
+      latestAlternatives = lastResult ? Array.from(lastResult).map((alternative) => alternative?.transcript || '').filter(Boolean) : [];
       if (latestTranscript) setQueryInput(latestTranscript);
     };
     recognition.onerror = (event) => {
@@ -300,7 +311,15 @@ export default function InventoryExplorer({ inventory }) {
     recognition.onend = () => {
       setIsListening(false);
       recognitionRef.current = null;
-      if (shouldSubmit && latestTranscript) submitSearch(latestTranscript);
+      if (!shouldSubmit || !latestTranscript) return;
+
+      const candidates = latestAlternatives.length ? latestAlternatives : [latestTranscript];
+      if (!candidates.includes(latestTranscript)) candidates.unshift(latestTranscript);
+      const interpreted = chooseVoiceInventoryQuery(candidates, vehicles);
+      if (!interpreted.query) return;
+
+      setVoiceInterpretation(interpreted);
+      submitSearch(interpreted.query);
     };
     recognitionRef.current = recognition;
     try { recognition.start(); } catch {
@@ -335,9 +354,9 @@ export default function InventoryExplorer({ inventory }) {
 
       <section className="search-panel">
         <label htmlFor="inventory-search" className="search-label">Ask inventory</label>
-        <form className="search-row" onSubmit={(event) => { event.preventDefault(); submitSearch(); }}>
+        <form className="search-row" onSubmit={(event) => { event.preventDefault(); setVoiceInterpretation(null); submitSearch(); }}>
           <div className={styles.searchInputWrap}>
-            <input id="inventory-search" type="search" value={queryInput} onChange={(event) => setQueryInput(event.target.value)} placeholder="Example: black GV80 AWD in stock under $80k" autoComplete="off" enterKeyHint="search" />
+            <input id="inventory-search" type="search" value={queryInput} onChange={(event) => { setVoiceInterpretation(null); setQueryInput(event.target.value); }} placeholder="Example: black GV80 AWD in stock under $80k" autoComplete="off" enterKeyHint="search" />
             <button type="button" className={`${styles.voiceButton} ${isListening ? styles.listening : ''}`} onClick={toggleVoiceSearch} disabled={!voiceSupported} aria-label={isListening ? 'Stop voice search' : 'Search inventory by voice'} aria-pressed={isListening} title={voiceSupported ? (isListening ? 'Stop listening' : 'Search by voice') : 'Voice search is not supported in this browser'}>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 0 0 3.5-3.5V5a3.5 3.5 0 1 0-7 0v7a3.5 3.5 0 0 0 3.5 3.5Zm-1.8-10.5a1.8 1.8 0 1 1 3.6 0v7a1.8 1.8 0 1 1-3.6 0V5Zm7.8 6.2a.85.85 0 0 0-1.7 0v.8a4.3 4.3 0 0 1-8.6 0v-.8a.85.85 0 0 0-1.7 0v.8a6 6 0 0 0 5.15 5.94V20H8.7a.85.85 0 0 0 0 1.7h6.6a.85.85 0 1 0 0-1.7h-2.45v-2.06A6 6 0 0 0 18 12v-.8Z" /></svg>
             </button>
@@ -347,8 +366,14 @@ export default function InventoryExplorer({ inventory }) {
         </form>
 
         {isListening ? <div className={styles.voiceStatus} role="status" aria-live="polite"><span className={styles.listeningDot} /> Listening... speak your inventory request</div> : voiceMessage ? <div className={styles.voiceError} role="status" aria-live="polite">{voiceMessage}</div> : null}
+        {voiceInterpretation ? (
+          <div className={styles.voiceInterpretation} role="status" aria-live="polite">
+            <span><strong>Heard:</strong> {voiceInterpretation.heard}</span>
+            <span><strong>Searching:</strong> {voiceInterpretation.query}</span>
+          </div>
+        ) : null}
 
-        <div className="suggestion-row">{suggestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => submitSearch(suggestion)}>{suggestion}</button>)}</div>
+        <div className="suggestion-row">{suggestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => { setVoiceInterpretation(null); submitSearch(suggestion); }}>{suggestion}</button>)}</div>
         {query ? <div className="search-feedback" role="status" aria-live="polite"><strong>{filteredVehicles.length.toLocaleString()} matching vehicle{filteredVehicles.length === 1 ? '' : 's'}</strong><span>with the interpreted request and visible filters</span></div> : null}
         {searchState.parsed.labels?.length ? <div className="interpretation-row"><span>Interpreted as</span>{searchState.parsed.labels.map((label) => <strong key={label}>{label}</strong>)}</div> : null}
       </section>
