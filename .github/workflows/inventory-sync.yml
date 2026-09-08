@@ -2,9 +2,13 @@ name: Nightly Inventory Sync
 
 on:
   schedule:
-    # GitHub Actions schedules use UTC. 11:17 UTC is 7:17 AM EDT / 6:17 AM EST.
-    # Using an off-minute reduces contention and schedule delays.
+    # GitHub Actions schedules use UTC.
+    # Primary: 11:17 UTC = 7:17 AM EDT / 6:17 AM EST.
+    # Backup: 12:17 UTC = 8:17 AM EDT / 7:17 AM EST.
+    # Off-minute schedules reduce contention. The backup exits early if today's
+    # inventory has already been refreshed in America/New_York.
     - cron: '17 11 * * *'
+    - cron: '17 12 * * *'
   workflow_dispatch:
   push:
     branches:
@@ -31,28 +35,60 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Decide whether backup scrape is needed
+        id: refresh
+        shell: bash
+        run: |
+          should_scrape=true
+
+          if [[ "${{ github.event_name }}" == "schedule" && "${{ github.event.schedule }}" == "17 12 * * *" ]]; then
+            today=$(TZ=America/New_York date +%F)
+            generated_at=$(grep -m1 '"generatedAt"' data/inventory.json | sed -E 's/.*"generatedAt": "([^"]+)".*/\1/')
+
+            if [[ -n "$generated_at" ]]; then
+              generated_day=$(TZ=America/New_York date -d "$generated_at" +%F 2>/dev/null || true)
+              if [[ "$generated_day" == "$today" ]]; then
+                echo "Today's inventory is already current. Backup scrape will exit early."
+                should_scrape=false
+              else
+                echo "Today's inventory is missing. Backup scrape will run."
+              fi
+            else
+              echo "Could not determine the last inventory date. Backup scrape will run."
+            fi
+          fi
+
+          echo "should_scrape=$should_scrape" >> "$GITHUB_OUTPUT"
+
       - name: Set up Node.js
+        if: steps.refresh.outputs.should_scrape == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
+        if: steps.refresh.outputs.should_scrape == 'true'
         run: npm ci --no-audit --no-fund
 
       - name: Check scraper JavaScript
+        if: steps.refresh.outputs.should_scrape == 'true'
         run: npm run check:scraper
 
       - name: Run scraper tests
+        if: steps.refresh.outputs.should_scrape == 'true'
         run: npm run test:scraper
 
       - name: Install Chromium
+        if: steps.refresh.outputs.should_scrape == 'true'
         run: npx playwright install --with-deps chromium
 
       - name: Scrape inventory
+        if: steps.refresh.outputs.should_scrape == 'true'
         run: npm run scrape
 
       - name: Commit inventory changes
+        if: steps.refresh.outputs.should_scrape == 'true'
         run: |
           git config user.name "genesis-inventory-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
