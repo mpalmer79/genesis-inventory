@@ -168,3 +168,197 @@
   .search-button { min-height:54px; }
   .metric-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
+
+/* Creative depth pass: keep Genesis dark, but avoid flat black surfaces. */
+body {
+  background:
+    radial-gradient(circle at 10% 18%, rgba(163, 107, 79, 0.20), transparent 28rem),
+    radial-gradient(circle at 92% 38%, rgba(163, 107, 79, 0.11), transparent 34rem),
+    linear-gradient(180deg, #11100f 0%, #0c0b0b 40%, #080808 100%);
+}
+
+.app-shell {
+  position: relative;
+}
+
+.app-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(125deg, transparent 0 62%, rgba(163, 107, 79, 0.05) 62.2%, transparent 62.5%),
+    radial-gradient(ellipse at 50% 68%, rgba(163, 107, 79, 0.08), transparent 48%);
+}
+
+.hero-panel {
+  background:
+    linear-gradient(180deg, rgba(4, 5, 7, 0.02) 0%, rgba(6, 7, 9, 0.08) 38%, rgba(8, 7, 7, 0.70) 76%, rgba(11, 8, 7, 0.94) 100%),
+    url('/images/genesis-showroom-hero.webp') center 44% / cover no-repeat;
+}
+
+.hero-panel::after {
+  background:
+    radial-gradient(circle at 9% 88%, rgba(163, 107, 79, 0.26), transparent 24%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.26) 0%, rgba(0, 0, 0, 0.05) 58%, transparent 100%);
+}
+
+.search-panel {
+  overflow: hidden;
+  margin-top: 18px;
+  border: 1px solid rgba(184, 142, 120, 0.32);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 94% 0%, rgba(163, 107, 79, 0.20), transparent 25rem),
+    radial-gradient(circle at 8% 100%, rgba(163, 107, 79, 0.11), transparent 22rem),
+    linear-gradient(145deg, rgba(28, 26, 24, 0.98), rgba(12, 12, 12, 0.98) 54%, rgba(24, 18, 16, 0.98));
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.search-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(201, 142, 110, 0.08), transparent 28%, transparent 72%, rgba(163, 107, 79, 0.08));
+}
+
+.search-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.search-label {
+  color: #d79b7c;
+}
+
+.search-row input {
+  border: 1px solid rgba(190, 132, 102, 0.68);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(24, 23, 23, 0.98), rgba(12, 12, 12, 0.98));
+  color: var(--genesis-white);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.search-row input::placeholder {
+  color: #9d9a98;
+}
+
+.search-row input:focus {
+  border-color: #cf8b68;
+  box-shadow:
+    0 0 0 2px rgba(163, 107, 79, 0.18),
+    0 12px 26px rgba(0, 0, 0, 0.24);
+}
+
+.search-button {
+  border-radius: 14px;
+  background:
+    linear-gradient(100deg, #c58765 0%, #a36b4f 52%, #5e3a2d 100%);
+  box-shadow: 0 14px 30px rgba(73, 40, 27, 0.26);
+}
+
+.search-button:hover {
+  background:
+    linear-gradient(100deg, #d59a78 0%, #b67858 50%, #724736 100%);
+  color: var(--genesis-white);
+}
+
+.clear-button,
+.suggestion-row button,
+.interpretation-row strong,
+.primary-link,
+.copy-button,
+.load-more {
+  border-radius: 12px;
+}
+
+.suggestion-row {
+  padding-top: 24px;
+  border-top: 1px solid rgba(163, 107, 79, 0.24);
+}
+
+.suggestion-row::before {
+  content: 'OR TRY';
+  width: 100%;
+  margin: -34px 0 8px;
+  color: #8f8985;
+  font-family: var(--font-head);
+  font-size: 0.66rem;
+  letter-spacing: 0.28em;
+  text-align: center;
+}
+
+.suggestion-row button {
+  border-color: rgba(194, 130, 96, 0.72);
+  background:
+    linear-gradient(100deg, rgba(28, 25, 24, 0.96), rgba(14, 14, 14, 0.98));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.metric-grid,
+.filter-bar {
+  gap: 10px;
+  background: transparent;
+}
+
+.metric-card,
+.filter-bar label {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(163, 107, 79, 0.10), transparent 14rem),
+    linear-gradient(145deg, #171616, #0f0f0f 72%);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
+}
+
+.vehicle-card {
+  border-radius: 16px;
+  border-color: rgba(255, 255, 255, 0.07);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(163, 107, 79, 0.08), transparent 16rem),
+    linear-gradient(155deg, #171616 0%, #0f0f0f 72%);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.20);
+}
+
+.empty-state {
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(163, 107, 79, 0.08), transparent 24rem),
+    linear-gradient(180deg, rgba(24, 23, 23, 0.88), rgba(11, 11, 11, 0.92));
+}
+
+@media (max-width: 780px) {
+  .hero-panel {
+    background:
+      linear-gradient(180deg, rgba(4, 5, 7, 0.02) 0%, rgba(6, 7, 9, 0.08) 36%, rgba(8, 7, 7, 0.72) 76%, rgba(11, 8, 7, 0.96) 100%),
+      url('/images/genesis-showroom-hero.webp') 58% center / cover no-repeat;
+  }
+
+  .search-panel {
+    margin-top: 12px;
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at 100% 0%, rgba(163, 107, 79, 0.20), transparent 19rem),
+      radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.10), transparent 17rem),
+      linear-gradient(150deg, #1b1918 0%, #0c0c0c 58%, #18110f 100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .search-panel {
+    margin-inline: 0;
+    border-radius: 20px;
+  }
+
+  .search-row input,
+  .search-button,
+  .suggestion-row button {
+    border-radius: 12px;
+  }
+}
