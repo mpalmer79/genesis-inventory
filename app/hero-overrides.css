@@ -37,14 +37,23 @@
 .hero-copy { max-width: 900px; padding: 0; border: 0; background: transparent; box-shadow: none; }
 
 .hero-panel .eyebrow {
-  margin-bottom: 12px;
+  position: absolute;
+  top: clamp(34px, 4vw, 54px);
+  left: 50%;
+  width: max-content;
+  max-width: calc(100% - 48px);
+  margin: 0;
+  transform: translateX(-50%);
   color: var(--genesis-copper);
+  opacity: 0.68;
   font-family: var(--font-head);
   font-size: 0.72rem;
   font-weight: 400;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.28em;
+  text-align: center;
   text-transform: uppercase;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.65);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  white-space: nowrap;
 }
 
 .hero-panel h1 {
@@ -136,6 +145,7 @@
   .app-shell { width:min(100% - 24px,1480px); padding-top:12px; }
   .hero-panel { min-height:470px; gap:12px; padding:30px 24px 32px; background:linear-gradient(180deg,rgba(0,0,0,.02) 0%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.78) 78%,rgba(0,0,0,.96) 100%),url('/images/genesis-showroom-hero.webp') 58% center / cover no-repeat; }
   .hero-panel::after { background:linear-gradient(90deg,rgba(0,0,0,.16),transparent 86%); }
+  .hero-panel .eyebrow { top: 30px; max-width: calc(100% - 40px); font-size: .68rem; letter-spacing: .27em; }
   .hero-panel h1 { max-width:520px; font-size:clamp(2.35rem,9.8vw,3.7rem); line-height:1.02; }
   .hero-subtitle { max-width:540px; margin-top:14px; font-size:.93rem; line-height:1.55; }
   .hero-panel .sync-card { flex-wrap:wrap; gap:8px 10px; }
@@ -146,7 +156,7 @@
 
 @media (max-width:480px) {
   .hero-panel { min-height:430px; padding:26px 20px 28px; background-position:60% center; }
-  .hero-panel .eyebrow { margin-bottom:8px; font-size:.66rem; }
+  .hero-panel .eyebrow { top: 24px; max-width: calc(100% - 32px); font-size:.64rem; letter-spacing:.24em; }
   .hero-panel h1 { max-width:330px; font-size:clamp(2.15rem,10.5vw,2.9rem); }
   .hero-subtitle { max-width:340px; font-size:.88rem; line-height:1.5; }
   .hero-panel .sync-card { display:grid; grid-template-columns:auto auto; justify-content:start; }
