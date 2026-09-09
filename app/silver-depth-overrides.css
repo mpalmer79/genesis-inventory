@@ -14,30 +14,12 @@ body {
   background-repeat: no-repeat;
 }
 
-body {
-  position: relative;
-}
+body { position: relative; }
+.app-shell { position: relative; z-index: 1; }
+.app-shell::before { content: none; }
 
-.app-shell {
-  position: relative;
-  z-index: 1;
-}
-
-/* Remove the old negative-z-index decorative layer. It could render behind
-   the body background and effectively disappear. */
-.app-shell::before {
-  content: none;
-}
-
-/* Keep the existing hero/header treatment unchanged. */
-.hero-panel,
-.hero-panel::after,
-.hero-panel .eyebrow,
-.hero-panel h1,
-.hero-subtitle,
-.hero-panel .sync-card {
-  /* Deliberately no visual overrides here. */
-}
+/* Keep the hero image clean. The dealership signage supplies the branding. */
+.hero-panel .eyebrow { display: none; }
 
 .search-panel {
   border-color: rgba(225, 229, 233, 0.24);
@@ -45,38 +27,28 @@ body {
     radial-gradient(circle at 100% 0%, rgba(231, 234, 237, 0.12), transparent 23rem),
     radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.10), transparent 22rem),
     linear-gradient(145deg, rgba(44, 45, 46, 0.94), rgba(22, 23, 24, 0.96) 58%, rgba(33, 31, 30, 0.95));
-  box-shadow:
-    0 24px 56px rgba(0, 0, 0, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
 }
-
-.search-panel::before {
-  background:
-    linear-gradient(135deg, rgba(238, 241, 244, 0.065), transparent 32%, transparent 70%, rgba(163, 107, 79, 0.07));
+.search-panel::before { background: linear-gradient(135deg, rgba(238, 241, 244, 0.065), transparent 32%, transparent 70%, rgba(163, 107, 79, 0.07)); }
+.search-button {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .16em;
+  box-shadow: 0 12px 30px rgba(73, 40, 27, .32), inset 0 1px 0 rgba(255,255,255,.14);
 }
+.search-button:not(:disabled):hover { filter: brightness(1.08); }
 
 .metric-grid,
-.filter-bar {
-  background: transparent;
-}
-
+.filter-bar { background: transparent; }
 .metric-card,
 .filter-bar label {
   border-color: rgba(224, 228, 232, 0.16);
-  background:
-    radial-gradient(circle at 100% 0%, rgba(233, 236, 240, 0.10), transparent 13rem),
-    linear-gradient(145deg, rgba(39, 41, 42, 0.94), rgba(20, 21, 22, 0.97) 72%);
-  box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: radial-gradient(circle at 100% 0%, rgba(233, 236, 240, 0.10), transparent 13rem), linear-gradient(145deg, rgba(39, 41, 42, 0.94), rgba(20, 21, 22, 0.97) 72%);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(6px);
 }
-
-.results-header {
-  position: relative;
-}
-
+.results-header { position: relative; }
 .results-header::before {
   content: '';
   position: absolute;
@@ -86,51 +58,101 @@ body {
   height: 1px;
   background: linear-gradient(90deg, rgba(225, 229, 233, 0.52), rgba(163, 107, 79, 0.40), transparent);
 }
-
+.results-header > p { color: #c4c4c4; }
 .vehicle-card {
   border-color: rgba(224, 228, 232, 0.15);
-  background:
-    radial-gradient(circle at 100% 0%, rgba(230, 233, 237, 0.08), transparent 15rem),
-    linear-gradient(155deg, rgba(34, 36, 37, 0.96) 0%, rgba(17, 18, 19, 0.98) 74%);
-  box-shadow:
-    0 20px 44px rgba(0, 0, 0, 0.20),
-    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  background: radial-gradient(circle at 100% 0%, rgba(230, 233, 237, 0.08), transparent 15rem), linear-gradient(155deg, rgba(34, 36, 37, 0.96) 0%, rgba(17, 18, 19, 0.98) 74%);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.035);
   backdrop-filter: blur(5px);
 }
-
-.vehicle-facts {
-  border-color: rgba(220, 224, 228, 0.12);
-}
-
+.vehicle-facts { border-color: rgba(220, 224, 228, 0.12); }
 .copy-button,
-.load-more {
-  border-color: rgba(220, 224, 228, 0.22);
-  background: rgba(255, 255, 255, 0.018);
-}
-
+.load-more { border-color: rgba(220, 224, 228, 0.22); background: rgba(255, 255, 255, 0.018); }
 .empty-state {
   border-color: rgba(220, 224, 228, 0.18);
-  background:
-    radial-gradient(circle at 50% 0%, rgba(224, 227, 231, 0.10), transparent 24rem),
-    linear-gradient(180deg, rgba(36, 38, 39, 0.92), rgba(17, 18, 19, 0.96));
+  background: radial-gradient(circle at 50% 0%, rgba(224, 227, 231, 0.10), transparent 24rem), linear-gradient(180deg, rgba(36, 38, 39, 0.92), rgba(17, 18, 19, 0.96));
 }
 
 @media (max-width: 780px) {
   html,
   body {
     background-color: #202225;
-    background-image:
-      linear-gradient(rgba(11, 12, 13, 0.20), rgba(11, 12, 13, 0.20)),
-      url('/images/genesis-silver-depth-bg.svg');
+    background-image: linear-gradient(rgba(11, 12, 13, 0.20), rgba(11, 12, 13, 0.20)), url('/images/genesis-silver-depth-bg.svg');
     background-position: 42% top;
     background-size: auto 100%;
     background-attachment: fixed;
   }
 
+  .app-shell { padding-bottom: 52px; }
   .search-panel {
-    background:
-      radial-gradient(circle at 100% 0%, rgba(230, 233, 237, 0.11), transparent 18rem),
-      radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.08), transparent 17rem),
-      linear-gradient(150deg, rgba(39, 40, 41, 0.96), rgba(20, 21, 22, 0.98) 60%, rgba(31, 29, 28, 0.97));
+    background: radial-gradient(circle at 100% 0%, rgba(230, 233, 237, 0.11), transparent 18rem), radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.08), transparent 17rem), linear-gradient(150deg, rgba(39, 40, 41, 0.96), rgba(20, 21, 22, 0.98) 60%, rgba(31, 29, 28, 0.97));
   }
+
+  /* Suggestions become one compact swipeable row instead of stacking. */
+  .suggestion-row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-right: -20px;
+    padding: 8px 20px 6px 0;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .suggestion-row::-webkit-scrollbar { display: none; }
+  .suggestion-row button {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 78vw;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+
+  /* Prioritize the actual inventory. Keep filters compact and put summary metrics
+     into a horizontal strip rather than several tall dashboard rows. */
+  .filter-bar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 12px 0 10px;
+  }
+  .filter-bar label { padding: 10px 11px; min-width: 0; }
+  .filter-bar label span { font-size: .58rem; }
+  .filter-bar select { font-size: .84rem; }
+
+  .metric-grid {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin: 8px 0 16px;
+    padding-bottom: 3px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .metric-grid::-webkit-scrollbar { display: none; }
+  .metric-card {
+    flex: 0 0 112px;
+    min-height: 68px;
+    padding: 11px 13px;
+    border-radius: 12px;
+  }
+  .metric-card span { margin-bottom: 5px; font-size: .58rem; }
+  .metric-card strong { font-size: 1.35rem; }
+
+  .results-header {
+    flex-direction: row;
+    align-items: end;
+    gap: 10px;
+    margin: 26px 2px 10px;
+  }
+  .results-header h2 { font-size: 1.55rem; }
+  .results-header > p { margin-left: auto; font-size: .74rem; white-space: nowrap; }
+  .results-header::before { top: -13px; }
+}
+
+@media (max-width: 520px) {
+  .filter-bar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .filter-bar label:nth-child(2),
+  .filter-bar label:last-child { grid-column: span 1; }
+  .results-header h2 { font-size: 1.4rem; }
 }
