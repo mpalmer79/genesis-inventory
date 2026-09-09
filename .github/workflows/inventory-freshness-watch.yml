@@ -1,0 +1,48 @@
+name: Inventory Freshness Watchdog
+
+on:
+  schedule:
+    # Independent staggered checks. If the main scheduler was delayed or missed,
+    # this workflow dispatches the inventory sync only when today's data is stale.
+    - cron: '47 12 * * *'
+    - cron: '17 14 * * *'
+    - cron: '47 16 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: inventory-freshness-watchdog
+  cancel-in-progress: false
+
+jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check inventory date and recover if stale
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          today=$(TZ=America/New_York date +%F)
+          generated_at=$(grep -m1 '"generatedAt"' data/inventory.json | sed -E 's/.*"generatedAt": "([^"]+)".*/\1/')
+          generated_day=""
+
+          if [[ -n "$generated_at" ]]; then
+            generated_day=$(TZ=America/New_York date -d "$generated_at" +%F 2>/dev/null || true)
+          fi
+
+          if [[ "$generated_day" == "$today" ]]; then
+            echo "Inventory is current for $today. No recovery needed."
+            exit 0
+          fi
+
+          echo "Inventory is stale or unreadable (last day: ${generated_day:-unknown}). Dispatching recovery sync."
+          gh workflow run inventory-sync.yml --ref main
