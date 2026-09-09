@@ -1,0 +1,127 @@
+/* Subtle silver-depth treatment inspired by the approved preview.
+   Intentionally leaves the hero/header treatment unchanged. */
+
+html,
+body {
+  background:
+    radial-gradient(circle at 8% 22%, rgba(220, 224, 228, 0.10), transparent 24rem),
+    radial-gradient(circle at 92% 44%, rgba(188, 194, 201, 0.09), transparent 30rem),
+    radial-gradient(circle at 48% 78%, rgba(230, 232, 235, 0.055), transparent 38rem),
+    linear-gradient(180deg, #151515 0%, #111212 28%, #181919 58%, #101111 100%);
+}
+
+.app-shell {
+  position: relative;
+}
+
+.app-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(128deg, transparent 0 58%, rgba(226, 229, 233, 0.045) 58.4%, transparent 59%),
+    linear-gradient(306deg, transparent 0 72%, rgba(163, 107, 79, 0.035) 72.4%, transparent 73%),
+    radial-gradient(ellipse at 50% 66%, rgba(210, 214, 219, 0.07), transparent 52%);
+}
+
+/* Keep the existing hero/header exactly as-is. */
+.hero-panel,
+.hero-panel::after,
+.hero-panel .eyebrow,
+.hero-panel h1,
+.hero-subtitle,
+.hero-panel .sync-card {
+  /* Deliberately no visual overrides here. */
+}
+
+.search-panel {
+  border-color: rgba(210, 214, 219, 0.15);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(221, 224, 228, 0.08), transparent 23rem),
+    radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.08), transparent 22rem),
+    linear-gradient(145deg, rgba(34, 33, 32, 0.97), rgba(18, 19, 19, 0.98) 58%, rgba(27, 25, 24, 0.97));
+  box-shadow:
+    0 24px 56px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.search-panel::before {
+  background:
+    linear-gradient(135deg, rgba(230, 233, 236, 0.045), transparent 32%, transparent 70%, rgba(163, 107, 79, 0.06));
+}
+
+.metric-grid,
+.filter-bar {
+  background: transparent;
+}
+
+.metric-card,
+.filter-bar label {
+  border-color: rgba(220, 224, 228, 0.10);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(223, 226, 230, 0.07), transparent 13rem),
+    linear-gradient(145deg, rgba(29, 30, 30, 0.97), rgba(17, 18, 18, 0.98) 72%);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.results-header {
+  position: relative;
+}
+
+.results-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -20px;
+  width: min(180px, 42vw);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(210, 214, 219, 0.34), rgba(163, 107, 79, 0.34), transparent);
+}
+
+.vehicle-card {
+  border-color: rgba(220, 224, 228, 0.10);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(225, 228, 232, 0.055), transparent 15rem),
+    linear-gradient(155deg, rgba(28, 29, 29, 0.98) 0%, rgba(14, 15, 15, 0.99) 74%);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.17),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.vehicle-facts {
+  border-color: rgba(220, 224, 228, 0.09);
+}
+
+.copy-button,
+.load-more {
+  border-color: rgba(220, 224, 228, 0.16);
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.empty-state {
+  border-color: rgba(220, 224, 228, 0.12);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(224, 227, 231, 0.07), transparent 24rem),
+    linear-gradient(180deg, rgba(28, 29, 29, 0.90), rgba(14, 15, 15, 0.94));
+}
+
+@media (max-width: 780px) {
+  html,
+  body {
+    background:
+      radial-gradient(circle at 6% 24%, rgba(220, 224, 228, 0.09), transparent 19rem),
+      radial-gradient(circle at 96% 54%, rgba(198, 203, 209, 0.07), transparent 22rem),
+      linear-gradient(180deg, #151515 0%, #111212 34%, #171818 68%, #101111 100%);
+  }
+
+  .search-panel {
+    background:
+      radial-gradient(circle at 100% 0%, rgba(223, 226, 230, 0.075), transparent 18rem),
+      radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.07), transparent 17rem),
+      linear-gradient(150deg, rgba(31, 30, 29, 0.98), rgba(17, 18, 18, 0.99) 60%, rgba(25, 23, 22, 0.98));
+  }
+}
