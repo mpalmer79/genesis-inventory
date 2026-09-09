@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-label="Abstract dark silver Genesis-inspired background">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4b4e52"/>
+      <stop offset="0.28" stop-color="#26292c"/>
+      <stop offset="0.58" stop-color="#17191b"/>
+      <stop offset="0.82" stop-color="#2d3033"/>
+      <stop offset="1" stop-color="#111214"/>
+    </linearGradient>
+    <radialGradient id="silverGlow" cx="18%" cy="18%" r="58%">
+      <stop offset="0" stop-color="#d8dde2" stop-opacity="0.30"/>
+      <stop offset="0.28" stop-color="#aeb5bc" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#5a6066" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lowerGlow" cx="82%" cy="78%" r="54%">
+      <stop offset="0" stop-color="#c7cdd2" stop-opacity="0.17"/>
+      <stop offset="0.42" stop-color="#848b91" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#222629" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="copperLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a36b4f" stop-opacity="0"/>
+      <stop offset="0.48" stop-color="#c58b6c" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#a36b4f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="0.45" stop-color="#dbe0e4" stop-opacity="0.035"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.08"/>
+    </linearGradient>
+    <pattern id="brush" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0 1H8M0 5H8" stroke="#ffffff" stroke-opacity="0.018" stroke-width="1"/>
+    </pattern>
+    <filter id="blur30"><feGaussianBlur stdDeviation="30"/></filter>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#base)"/>
+  <rect width="1600" height="1200" fill="url(#silverGlow)"/>
+  <rect width="1600" height="1200" fill="url(#lowerGlow)"/>
+  <rect width="1600" height="1200" fill="url(#brush)"/>
+
+  <path d="M-120 910 L610 180 L840 180 L110 910 Z" fill="url(#panel)" opacity="0.58"/>
+  <path d="M470 1200 L1360 310 L1640 310 L750 1200 Z" fill="url(#panel)" opacity="0.38"/>
+  <path d="M1030 -40 L1640 570 L1640 780 L820 -40 Z" fill="#d9dde1" opacity="0.035"/>
+
+  <path d="M-40 770 L520 210" stroke="#e3e6e9" stroke-opacity="0.11" stroke-width="2"/>
+  <path d="M930 1200 L1510 620" stroke="#e3e6e9" stroke-opacity="0.08" stroke-width="2"/>
+  <path d="M250 1010 L1350 1010" stroke="url(#copperLine)" stroke-width="2"/>
+
+  <ellipse cx="1260" cy="170" rx="310" ry="120" fill="#dce1e5" opacity="0.035" filter="url(#blur30)"/>
+  <ellipse cx="280" cy="1030" rx="360" ry="140" fill="#c88b68" opacity="0.045" filter="url(#blur30)"/>
+</svg>
