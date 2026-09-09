@@ -53,49 +53,70 @@
 }
 
 .searchInputWrap input {
-  padding-right: 72px;
+  padding-right: 96px;
 }
 
 .voiceButton {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 50%;
+  right: 10px;
   display: inline-flex;
-  width: 46px;
-  height: 46px;
+  width: 64px;
+  height: 64px;
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid rgba(165, 107, 79, 0.65);
+  border: 1px solid rgba(163, 107, 79, 0.72);
   border-radius: 50%;
-  background: rgba(165, 107, 79, 0.12);
-  color: var(--accent-light);
-  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+  background: rgba(250, 246, 245, 0.96);
+  color: #8f573b;
+  transform: translateY(-50%);
+  box-shadow:
+    0 0 0 0 rgba(163, 107, 79, 0.28),
+    0 8px 18px rgba(79, 47, 33, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  animation: voiceIdlePulse 1.8s ease-in-out infinite;
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .voiceButton svg {
-  width: 22px;
-  height: 22px;
+  width: 31px;
+  height: 31px;
   fill: currentColor;
 }
 
 .voiceButton:hover:not(:disabled) {
-  transform: scale(1.04);
-  border-color: var(--accent-light);
-  background: rgba(165, 107, 79, 0.2);
+  transform: translateY(-50%) scale(1.04);
+  border-color: #bc7a59;
+  background: #fffaf8;
+  color: #75442f;
+}
+
+.voiceButton:active:not(:disabled) {
+  transform: translateY(-50%) scale(0.98);
 }
 
 .voiceButton:disabled {
   cursor: not-allowed;
   opacity: 0.35;
+  animation: none;
 }
 
 .listening {
-  border-color: #d7ad96;
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 0 0 0 rgba(165, 107, 79, 0.48);
-  animation: voicePulse 1.4s ease-out infinite;
+  border-color: #efaa7f;
+  background: linear-gradient(145deg, #bd7856 0%, #9f5e42 100%);
+  color: #ffffff;
+  box-shadow:
+    0 0 0 8px rgba(213, 138, 98, 0.14),
+    0 0 0 16px rgba(213, 138, 98, 0.08),
+    0 10px 24px rgba(88, 43, 27, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: voiceListeningPulse 1.05s ease-in-out infinite;
 }
 
 .voiceStatus,
@@ -144,15 +165,35 @@
   box-shadow: 0 0 0 4px rgba(215, 173, 150, 0.12);
 }
 
-@keyframes voicePulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(165, 107, 79, 0.48);
+@keyframes voiceIdlePulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0 rgba(163, 107, 79, 0.22),
+      0 8px 18px rgba(79, 47, 33, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
-  70% {
-    box-shadow: 0 0 0 12px rgba(165, 107, 79, 0);
+  50% {
+    box-shadow:
+      0 0 0 9px rgba(163, 107, 79, 0.10),
+      0 10px 24px rgba(79, 47, 33, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
   }
-  100% {
-    box-shadow: 0 0 0 0 rgba(165, 107, 79, 0);
+}
+
+@keyframes voiceListeningPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 7px rgba(213, 138, 98, 0.14),
+      0 0 0 15px rgba(213, 138, 98, 0.06),
+      0 10px 24px rgba(88, 43, 27, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 0 12px rgba(213, 138, 98, 0.20),
+      0 0 0 22px rgba(213, 138, 98, 0.09),
+      0 12px 28px rgba(88, 43, 27, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
   }
 }
 
@@ -269,6 +310,21 @@
     flex-direction: column;
     gap: 7px;
     padding: 14px 16px;
+  }
+
+  .searchInputWrap input {
+    padding-right: 92px;
+  }
+
+  .voiceButton {
+    right: 8px;
+    width: 62px;
+    height: 62px;
+  }
+
+  .voiceButton svg {
+    width: 30px;
+    height: 30px;
   }
 
   :global(.search-button) {
