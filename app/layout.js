@@ -1,5 +1,6 @@
 import './globals.css';
 import './hero-overrides.css';
+import './silver-depth-overrides.css';
 
 const title = 'Genesis Inventory Intelligence';
 const description = 'Live inventory search for Genesis of Manchester.';
