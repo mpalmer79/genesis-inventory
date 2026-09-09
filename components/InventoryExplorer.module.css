@@ -313,18 +313,19 @@
   }
 
   .searchInputWrap input {
-    padding-right: 106px;
+    padding-right: 82px;
   }
 
   .voiceButton {
-    right: 7px;
-    width: 72px;
-    height: 72px;
+    right: 0;
+    width: 62px;
+    height: 62px;
+    border-radius: 14px;
   }
 
   .voiceButton svg {
-    width: 37px;
-    height: 37px;
+    width: 34px;
+    height: 34px;
   }
 
   :global(.search-button) {
