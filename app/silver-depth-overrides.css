@@ -1,32 +1,35 @@
-/* Subtle silver-depth treatment inspired by the approved preview.
-   Intentionally leaves the hero/header treatment unchanged. */
+/* Silver depth treatment based on the approved preview.
+   This file intentionally loads last so it can override the darker base theme. */
 
 html,
 body {
-  background:
-    radial-gradient(circle at 8% 22%, rgba(220, 224, 228, 0.10), transparent 24rem),
-    radial-gradient(circle at 92% 44%, rgba(188, 194, 201, 0.09), transparent 30rem),
-    radial-gradient(circle at 48% 78%, rgba(230, 232, 235, 0.055), transparent 38rem),
-    linear-gradient(180deg, #151515 0%, #111212 28%, #181919 58%, #101111 100%);
+  min-height: 100%;
+  background-color: #202225;
+  background-image:
+    linear-gradient(rgba(12, 13, 14, 0.18), rgba(12, 13, 14, 0.18)),
+    url('/images/genesis-silver-depth-bg.svg');
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+body {
+  position: relative;
 }
 
 .app-shell {
   position: relative;
+  z-index: 1;
 }
 
+/* Remove the old negative-z-index decorative layer. It could render behind
+   the body background and effectively disappear. */
 .app-shell::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    linear-gradient(128deg, transparent 0 58%, rgba(226, 229, 233, 0.045) 58.4%, transparent 59%),
-    linear-gradient(306deg, transparent 0 72%, rgba(163, 107, 79, 0.035) 72.4%, transparent 73%),
-    radial-gradient(ellipse at 50% 66%, rgba(210, 214, 219, 0.07), transparent 52%);
+  content: none;
 }
 
-/* Keep the existing hero/header exactly as-is. */
+/* Keep the existing hero/header treatment unchanged. */
 .hero-panel,
 .hero-panel::after,
 .hero-panel .eyebrow,
@@ -37,19 +40,20 @@ body {
 }
 
 .search-panel {
-  border-color: rgba(210, 214, 219, 0.15);
+  border-color: rgba(225, 229, 233, 0.24);
   background:
-    radial-gradient(circle at 100% 0%, rgba(221, 224, 228, 0.08), transparent 23rem),
-    radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.08), transparent 22rem),
-    linear-gradient(145deg, rgba(34, 33, 32, 0.97), rgba(18, 19, 19, 0.98) 58%, rgba(27, 25, 24, 0.97));
+    radial-gradient(circle at 100% 0%, rgba(231, 234, 237, 0.12), transparent 23rem),
+    radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.10), transparent 22rem),
+    linear-gradient(145deg, rgba(44, 45, 46, 0.94), rgba(22, 23, 24, 0.96) 58%, rgba(33, 31, 30, 0.95));
   box-shadow:
-    0 24px 56px rgba(0, 0, 0, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    0 24px 56px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
 }
 
 .search-panel::before {
   background:
-    linear-gradient(135deg, rgba(230, 233, 236, 0.045), transparent 32%, transparent 70%, rgba(163, 107, 79, 0.06));
+    linear-gradient(135deg, rgba(238, 241, 244, 0.065), transparent 32%, transparent 70%, rgba(163, 107, 79, 0.07));
 }
 
 .metric-grid,
@@ -59,13 +63,14 @@ body {
 
 .metric-card,
 .filter-bar label {
-  border-color: rgba(220, 224, 228, 0.10);
+  border-color: rgba(224, 228, 232, 0.16);
   background:
-    radial-gradient(circle at 100% 0%, rgba(223, 226, 230, 0.07), transparent 13rem),
-    linear-gradient(145deg, rgba(29, 30, 30, 0.97), rgba(17, 18, 18, 0.98) 72%);
+    radial-gradient(circle at 100% 0%, rgba(233, 236, 240, 0.10), transparent 13rem),
+    linear-gradient(145deg, rgba(39, 41, 42, 0.94), rgba(20, 21, 22, 0.97) 72%);
   box-shadow:
-    0 14px 34px rgba(0, 0, 0, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+    0 14px 34px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
 }
 
 .results-header {
@@ -77,51 +82,55 @@ body {
   position: absolute;
   left: 0;
   top: -20px;
-  width: min(180px, 42vw);
+  width: min(220px, 48vw);
   height: 1px;
-  background: linear-gradient(90deg, rgba(210, 214, 219, 0.34), rgba(163, 107, 79, 0.34), transparent);
+  background: linear-gradient(90deg, rgba(225, 229, 233, 0.52), rgba(163, 107, 79, 0.40), transparent);
 }
 
 .vehicle-card {
-  border-color: rgba(220, 224, 228, 0.10);
+  border-color: rgba(224, 228, 232, 0.15);
   background:
-    radial-gradient(circle at 100% 0%, rgba(225, 228, 232, 0.055), transparent 15rem),
-    linear-gradient(155deg, rgba(28, 29, 29, 0.98) 0%, rgba(14, 15, 15, 0.99) 74%);
+    radial-gradient(circle at 100% 0%, rgba(230, 233, 237, 0.08), transparent 15rem),
+    linear-gradient(155deg, rgba(34, 36, 37, 0.96) 0%, rgba(17, 18, 19, 0.98) 74%);
   box-shadow:
-    0 20px 44px rgba(0, 0, 0, 0.17),
-    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    0 20px 44px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(5px);
 }
 
 .vehicle-facts {
-  border-color: rgba(220, 224, 228, 0.09);
+  border-color: rgba(220, 224, 228, 0.12);
 }
 
 .copy-button,
 .load-more {
-  border-color: rgba(220, 224, 228, 0.16);
-  background: rgba(255, 255, 255, 0.012);
+  border-color: rgba(220, 224, 228, 0.22);
+  background: rgba(255, 255, 255, 0.018);
 }
 
 .empty-state {
-  border-color: rgba(220, 224, 228, 0.12);
+  border-color: rgba(220, 224, 228, 0.18);
   background:
-    radial-gradient(circle at 50% 0%, rgba(224, 227, 231, 0.07), transparent 24rem),
-    linear-gradient(180deg, rgba(28, 29, 29, 0.90), rgba(14, 15, 15, 0.94));
+    radial-gradient(circle at 50% 0%, rgba(224, 227, 231, 0.10), transparent 24rem),
+    linear-gradient(180deg, rgba(36, 38, 39, 0.92), rgba(17, 18, 19, 0.96));
 }
 
 @media (max-width: 780px) {
   html,
   body {
-    background:
-      radial-gradient(circle at 6% 24%, rgba(220, 224, 228, 0.09), transparent 19rem),
-      radial-gradient(circle at 96% 54%, rgba(198, 203, 209, 0.07), transparent 22rem),
-      linear-gradient(180deg, #151515 0%, #111212 34%, #171818 68%, #101111 100%);
+    background-color: #202225;
+    background-image:
+      linear-gradient(rgba(11, 12, 13, 0.20), rgba(11, 12, 13, 0.20)),
+      url('/images/genesis-silver-depth-bg.svg');
+    background-position: 42% top;
+    background-size: auto 100%;
+    background-attachment: fixed;
   }
 
   .search-panel {
     background:
-      radial-gradient(circle at 100% 0%, rgba(223, 226, 230, 0.075), transparent 18rem),
-      radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.07), transparent 17rem),
-      linear-gradient(150deg, rgba(31, 30, 29, 0.98), rgba(17, 18, 18, 0.99) 60%, rgba(25, 23, 22, 0.98));
+      radial-gradient(circle at 100% 0%, rgba(230, 233, 237, 0.11), transparent 18rem),
+      radial-gradient(circle at 0% 100%, rgba(163, 107, 79, 0.08), transparent 17rem),
+      linear-gradient(150deg, rgba(39, 40, 41, 0.96), rgba(20, 21, 22, 0.98) 60%, rgba(31, 29, 28, 0.97));
   }
 }
