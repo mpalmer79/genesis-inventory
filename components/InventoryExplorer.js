@@ -73,6 +73,35 @@ function compareModelYear(a, b) {
   return (a.stockNumber || '').localeCompare(b.stockNumber || '');
 }
 
+function compareNewModelTrim(a, b) {
+  const modelCompare = (a.model || 'Other').localeCompare(b.model || 'Other', undefined, { numeric: true });
+  if (modelCompare !== 0) return modelCompare;
+  const trimCompare = (a.trim || '').localeCompare(b.trim || '', undefined, { numeric: true, sensitivity: 'base' });
+  if (trimCompare !== 0) return trimCompare;
+  const yearCompare = (Number(b.year) || 0) - (Number(a.year) || 0);
+  if (yearCompare !== 0) return yearCompare;
+  return (a.stockNumber || '').localeCompare(b.stockNumber || '');
+}
+
+function comparePreOwnedMakeModel(a, b) {
+  const makeCompare = (a.make || 'Other').localeCompare(b.make || 'Other', undefined, { sensitivity: 'base' });
+  if (makeCompare !== 0) return makeCompare;
+  const modelCompare = (a.model || 'Other').localeCompare(b.model || 'Other', undefined, { numeric: true, sensitivity: 'base' });
+  if (modelCompare !== 0) return modelCompare;
+  const yearCompare = (Number(b.year) || 0) - (Number(a.year) || 0);
+  if (yearCompare !== 0) return yearCompare;
+  const trimCompare = (a.trim || '').localeCompare(b.trim || '', undefined, { numeric: true, sensitivity: 'base' });
+  if (trimCompare !== 0) return trimCompare;
+  return (a.stockNumber || '').localeCompare(b.stockNumber || '');
+}
+
+function compareDefaultAll(a, b) {
+  const aNew = a.condition === 'new';
+  const bNew = b.condition === 'new';
+  if (aNew !== bNew) return aNew ? -1 : 1;
+  return aNew ? compareNewModelTrim(a, b) : comparePreOwnedMakeModel(a, b);
+}
+
 function groupByModel(vehicles) {
   const groups = new Map();
   for (const vehicle of vehicles) {
@@ -81,8 +110,32 @@ function groupByModel(vehicles) {
     groups.get(modelName).push(vehicle);
   }
   return [...groups.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([modelName, modelVehicles]) => ({ modelName, vehicles: modelVehicles }));
+    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+    .map(([modelName, modelVehicles]) => ({ modelName, vehicles: [...modelVehicles].sort(compareNewModelTrim) }));
+}
+
+function groupPreOwnedByMakeModel(vehicles) {
+  const makeGroups = new Map();
+  for (const vehicle of vehicles) {
+    const makeName = vehicle.make || 'Other';
+    if (!makeGroups.has(makeName)) makeGroups.set(makeName, new Map());
+    const modelGroups = makeGroups.get(makeName);
+    const modelName = vehicle.model || 'Other';
+    if (!modelGroups.has(modelName)) modelGroups.set(modelName, []);
+    modelGroups.get(modelName).push(vehicle);
+  }
+
+  return [...makeGroups.entries()]
+    .sort(([a], [b]) => a.localeCompare(b, undefined, { sensitivity: 'base' }))
+    .map(([makeName, modelGroups]) => ({
+      makeName,
+      models: [...modelGroups.entries()]
+        .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+        .map(([modelName, modelVehicles]) => ({
+          modelName,
+          vehicles: [...modelVehicles].sort(comparePreOwnedMakeModel)
+        }))
+    }));
 }
 
 function InventoryCard({ vehicle }) {
@@ -201,15 +254,21 @@ export default function InventoryExplorer({ inventory }) {
       return true;
     });
 
-    if (sort === 'model-year') list.sort(compareModelYear);
-    else if (sort === 'price-low') list.sort((a, b) => (effectiveVehiclePrice(a) ?? Number.MAX_SAFE_INTEGER) - (effectiveVehiclePrice(b) ?? Number.MAX_SAFE_INTEGER));
+    if (sort === 'model-year') {
+      if (condition === 'all') list.sort(compareDefaultAll);
+      else if (condition === 'new') list.sort(compareNewModelTrim);
+      else if (condition === 'used' || condition === 'certified') list.sort(comparePreOwnedMakeModel);
+      else list.sort(compareModelYear);
+    } else if (sort === 'price-low') list.sort((a, b) => (effectiveVehiclePrice(a) ?? Number.MAX_SAFE_INTEGER) - (effectiveVehiclePrice(b) ?? Number.MAX_SAFE_INTEGER));
     else if (sort === 'price-high') list.sort((a, b) => (effectiveVehiclePrice(b) ?? 0) - (effectiveVehiclePrice(a) ?? 0));
     else if (sort === 'mileage-low') list.sort((a, b) => (Number(a.mileage) || 0) - (Number(b.mileage) || 0));
     return list;
   }, [searchState.results, condition, availability, make, model, sort]);
 
-  const groupedNewVehicles = useMemo(() => condition === 'new' ? groupByModel(filteredVehicles) : [], [condition, filteredVehicles]);
-  const visibleVehicles = condition === 'new' ? filteredVehicles : filteredVehicles.slice(0, visibleCount);
+  const groupedNewVehicles = useMemo(() => groupByModel(filteredVehicles.filter((vehicle) => vehicle.condition === 'new')), [filteredVehicles]);
+  const groupedPreOwnedVehicles = useMemo(() => groupPreOwnedByMakeModel(filteredVehicles.filter((vehicle) => ['used', 'certified'].includes(vehicle.condition))), [filteredVehicles]);
+  const isDefaultHierarchy = sort === 'model-year' && (condition === 'all' || condition === 'new');
+  const visibleVehicles = isDefaultHierarchy ? filteredVehicles : filteredVehicles.slice(0, visibleCount);
   const preOwned = Number(metrics.preOwned ?? ((metrics.used || 0) + (metrics.certified || 0)));
   const health = inventoryHealth(inventory?.generatedAt);
 
@@ -396,13 +455,29 @@ export default function InventoryExplorer({ inventory }) {
 
       <section className="results-header" ref={resultsRef}><div><p className="eyebrow">Results</p><h2>{filteredVehicles.length.toLocaleString()} matching vehicle{filteredVehicles.length === 1 ? '' : 's'}</h2></div><p>Showing {visibleVehicles.length.toLocaleString()} of {filteredVehicles.length.toLocaleString()}</p></section>
 
-      {visibleVehicles.length ? condition === 'new' ? (
+      {filteredVehicles.length ? condition === 'all' && sort === 'model-year' ? (
+        <section className={styles.modelGroups} aria-label="Inventory grouped by stock type, model and make">
+          {groupedNewVehicles.length ? (
+            <section className={styles.modelGroup} aria-label="New inventory">
+              <header className={styles.modelGroupHeader}><div><p className={styles.kicker}>Stock Type</p><h3>New Inventory</h3></div><span className={styles.count}>{groupedNewVehicles.reduce((sum, group) => sum + group.vehicles.length, 0).toLocaleString()} vehicles</span></header>
+              {groupedNewVehicles.map((group) => <section className={styles.modelGroup} key={`new-${group.modelName}`} data-model-group={group.modelName}><header className={styles.modelGroupHeader}><div><p className={styles.kicker}>New Inventory</p><h3>{group.modelName}</h3></div><span className={styles.count}>{group.vehicles.length.toLocaleString()} vehicle{group.vehicles.length === 1 ? '' : 's'}</span></header><div className="inventory-grid">{group.vehicles.map((vehicle) => <InventoryCard key={vehicle.vin || vehicle.stockNumber || vehicle.sourceUrl} vehicle={vehicle} />)}</div></section>)}
+            </section>
+          ) : null}
+
+          {groupedPreOwnedVehicles.length ? (
+            <section className={styles.modelGroup} aria-label="Pre-owned inventory">
+              <header className={styles.modelGroupHeader}><div><p className={styles.kicker}>Stock Type</p><h3>Pre-Owned Inventory</h3></div><span className={styles.count}>{groupedPreOwnedVehicles.reduce((sum, makeGroup) => sum + makeGroup.models.reduce((modelSum, modelGroup) => modelSum + modelGroup.vehicles.length, 0), 0).toLocaleString()} vehicles</span></header>
+              {groupedPreOwnedVehicles.map((makeGroup) => <section className={styles.modelGroup} key={`used-${makeGroup.makeName}`}><header className={styles.modelGroupHeader}><div><p className={styles.kicker}>Pre-Owned Make</p><h3>{makeGroup.makeName}</h3></div><span className={styles.count}>{makeGroup.models.reduce((sum, modelGroup) => sum + modelGroup.vehicles.length, 0).toLocaleString()} vehicle{makeGroup.models.reduce((sum, modelGroup) => sum + modelGroup.vehicles.length, 0) === 1 ? '' : 's'}</span></header>{makeGroup.models.map((modelGroup) => <section className={styles.modelGroup} key={`${makeGroup.makeName}-${modelGroup.modelName}`} data-model-group={modelGroup.modelName}><header className={styles.modelGroupHeader}><div><p className={styles.kicker}>{makeGroup.makeName}</p><h3>{modelGroup.modelName}</h3></div><span className={styles.count}>{modelGroup.vehicles.length.toLocaleString()} vehicle{modelGroup.vehicles.length === 1 ? '' : 's'}</span></header><div className="inventory-grid">{modelGroup.vehicles.map((vehicle) => <InventoryCard key={vehicle.vin || vehicle.stockNumber || vehicle.sourceUrl} vehicle={vehicle} />)}</div></section>)}</section>)}
+            </section>
+          ) : null}
+        </section>
+      ) : condition === 'new' && sort === 'model-year' ? (
         <section className={styles.modelGroups} aria-label="New inventory grouped by model">
           {groupedNewVehicles.map((group) => <section className={styles.modelGroup} key={group.modelName} data-model-group={group.modelName}><header className={styles.modelGroupHeader}><div><p className={styles.kicker}>New Inventory</p><h3>{group.modelName}</h3></div><span className={styles.count}>{group.vehicles.length.toLocaleString()} vehicle{group.vehicles.length === 1 ? '' : 's'}</span></header><div className="inventory-grid">{group.vehicles.map((vehicle) => <InventoryCard key={vehicle.vin || vehicle.stockNumber || vehicle.sourceUrl} vehicle={vehicle} />)}</div></section>)}
         </section>
       ) : <section className="inventory-grid">{visibleVehicles.map((vehicle) => <InventoryCard key={vehicle.vin || vehicle.stockNumber || vehicle.sourceUrl} vehicle={vehicle} />)}</section> : <section className="empty-state"><h2>No exact matches</h2><p>Remove one constraint or clear the natural-language search to broaden the inventory.</p></section>}
 
-      {condition !== 'new' && visibleCount < filteredVehicles.length ? <div className="load-more-wrap"><button type="button" className="load-more" onClick={() => setVisibleCount((count) => count + INITIAL_VISIBLE)}>Show 24 More</button></div> : null}
+      {!isDefaultHierarchy && visibleCount < filteredVehicles.length ? <div className="load-more-wrap"><button type="button" className="load-more" onClick={() => setVisibleCount((count) => count + INITIAL_VISIBLE)}>Show 24 More</button></div> : null}
     </main>
   );
 }
