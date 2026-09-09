@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/inventory-watchdog",
+      "schedule": "31 14 * * *"
+    },
+    {
+      "path": "/api/inventory-watchdog",
+      "schedule": "31 15 * * *"
+    }
+  ]
+}
