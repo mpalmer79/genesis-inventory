@@ -2,14 +2,23 @@ name: Nightly Inventory Sync
 
 on:
   schedule:
-    # GitHub Actions schedules use UTC.
-    # Primary: 11:17 UTC = 7:17 AM EDT / 6:17 AM EST.
-    # Backup: 12:17 UTC = 8:17 AM EDT / 7:17 AM EST.
-    # Off-minute schedules reduce contention. The backup exits early if today's
-    # inventory has already been refreshed in America/New_York.
-    - cron: '17 11 * * *'
-    - cron: '17 12 * * *'
+    # GitHub Actions schedules are best-effort, so use multiple staggered
+    # morning recovery windows. The freshness guard below makes these idempotent.
+    # UTC windows cover roughly 7:00 AM through late morning in New Hampshire
+    # across daylight-saving changes without repeatedly scraping current data.
+    - cron: '7 11 * * *'
+    - cron: '23 12 * * *'
+    - cron: '41 13 * * *'
+    - cron: '53 14 * * *'
+    - cron: '11 15 * * *'
+    - cron: '29 16 * * *'
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force a scrape even if inventory is already current today'
+        required: false
+        default: false
+        type: boolean
   push:
     branches:
       - main
@@ -24,7 +33,7 @@ permissions:
 
 concurrency:
   group: inventory-sync
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   scrape:
@@ -35,26 +44,36 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Decide whether backup scrape is needed
+      - name: Decide whether inventory needs refresh
         id: refresh
         shell: bash
         run: |
           should_scrape=true
+          event_name="${{ github.event_name }}"
+          force_refresh="${{ inputs.force || false }}"
 
-          if [[ "${{ github.event_name }}" == "schedule" && "${{ github.event.schedule }}" == "17 12 * * *" ]]; then
+          if [[ "$event_name" == "schedule" ]]; then
+            local_hour=$(TZ=America/New_York date +%H)
+            if (( 10#$local_hour < 7 )); then
+              echo "Scheduled recovery window fired before 7 AM local time. Skipping."
+              should_scrape=false
+            fi
+          fi
+
+          if [[ "$should_scrape" == "true" && ( "$event_name" == "schedule" || "$event_name" == "workflow_dispatch" ) && "$force_refresh" != "true" ]]; then
             today=$(TZ=America/New_York date +%F)
             generated_at=$(grep -m1 '"generatedAt"' data/inventory.json | sed -E 's/.*"generatedAt": "([^"]+)".*/\1/')
 
             if [[ -n "$generated_at" ]]; then
               generated_day=$(TZ=America/New_York date -d "$generated_at" +%F 2>/dev/null || true)
               if [[ "$generated_day" == "$today" ]]; then
-                echo "Today's inventory is already current. Backup scrape will exit early."
+                echo "Inventory is already current for $today. Skipping duplicate scrape."
                 should_scrape=false
               else
-                echo "Today's inventory is missing. Backup scrape will run."
+                echo "Inventory is stale ($generated_day). Refresh will run for $today."
               fi
             else
-              echo "Could not determine the last inventory date. Backup scrape will run."
+              echo "Could not determine inventory freshness. Refresh will run defensively."
             fi
           fi
 
