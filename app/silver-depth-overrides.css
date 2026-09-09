@@ -21,6 +21,13 @@ body { position: relative; }
 /* Keep the hero image clean. The dealership signage supplies the branding. */
 .hero-panel .eyebrow { display: none; }
 
+/* The stock-type heading already establishes these vehicles as New, and the cards
+   reinforce that with MSRP. Keep model group headers focused on the model name. */
+section[aria-label="New inventory"] > section > header > div > p:first-child,
+section[aria-label="New inventory grouped by model"] > section > header > div > p:first-child {
+  display: none;
+}
+
 .search-panel {
   border-color: rgba(225, 229, 233, 0.24);
   background:
