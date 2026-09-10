@@ -3,11 +3,15 @@
   "crons": [
     {
       "path": "/api/inventory-watchdog",
-      "schedule": "31 14 * * *"
+      "schedule": "15 12 * * *"
     },
     {
       "path": "/api/inventory-watchdog",
-      "schedule": "31 15 * * *"
+      "schedule": "45 12 * * *"
+    },
+    {
+      "path": "/api/inventory-watchdog",
+      "schedule": "15 13 * * *"
     }
   ]
 }
