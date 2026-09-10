@@ -4,7 +4,11 @@ const INVENTORY_URL =
   'https://raw.githubusercontent.com/mpalmer79/genesis-inventory/main/data/inventory.json';
 const DISPATCH_URL =
   'https://api.github.com/repos/mpalmer79/genesis-inventory/actions/workflows/inventory-sync.yml/dispatches';
-const ALLOWED_CRON_SCHEDULES = new Set(['31 14 * * *', '31 15 * * *']);
+const ALLOWED_CRON_SCHEDULES = new Set([
+  '15 12 * * *',
+  '45 12 * * *',
+  '15 13 * * *'
+]);
 
 function newYorkDay(value = new Date()) {
   return new Intl.DateTimeFormat('en-CA', {
