@@ -2,16 +2,15 @@ name: Nightly Inventory Sync
 
 on:
   schedule:
-    # GitHub Actions schedules are best-effort, so use multiple staggered
-    # morning recovery windows. The freshness guard below makes these idempotent.
-    # UTC windows cover roughly 7:00 AM through late morning in New Hampshire
-    # across daylight-saving changes without repeatedly scraping current data.
+    # GitHub Actions schedules are best-effort. Run staggered morning checks
+    # across the New Hampshire opening window. The date guard below makes
+    # duplicate scheduled runs inexpensive once today's scrape has succeeded.
     - cron: '7 11 * * *'
-    - cron: '23 12 * * *'
-    - cron: '41 13 * * *'
-    - cron: '53 14 * * *'
-    - cron: '11 15 * * *'
-    - cron: '29 16 * * *'
+    - cron: '7 12 * * *'
+    - cron: '7 13 * * *'
+    - cron: '7 14 * * *'
+    - cron: '7 15 * * *'
+    - cron: '7 16 * * *'
   workflow_dispatch:
     inputs:
       force:
