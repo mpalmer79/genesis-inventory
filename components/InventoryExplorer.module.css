@@ -108,15 +108,21 @@
 }
 
 .listening {
-  border-color: #ffd0b5;
-  background: linear-gradient(145deg, #d8895f 0%, #b65337 52%, #7f2f24 100%);
-  color: #ffffff;
+  border-color: #b87856;
+  background: linear-gradient(145deg, #fffdfb 0%, #f7eee9 55%, #ead8ce 100%);
+  color: #9a5c40;
   box-shadow:
-    0 0 0 9px rgba(232, 139, 94, 0.18),
-    0 0 0 18px rgba(232, 139, 94, 0.09),
-    0 12px 30px rgba(88, 43, 27, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+    0 0 0 9px rgba(255, 247, 242, 0.22),
+    0 0 0 18px rgba(184, 120, 86, 0.14),
+    0 12px 30px rgba(88, 43, 27, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82);
   animation: voiceListeningPulse 1.05s ease-in-out infinite;
+}
+
+.voiceButton.listening:hover:not(:disabled) {
+  border-color: #c98762;
+  background: linear-gradient(145deg, #ffffff 0%, #faefe9 55%, #ead3c7 100%);
+  color: #8d5138;
 }
 
 .voiceStatus,
@@ -183,17 +189,17 @@
 @keyframes voiceListeningPulse {
   0%, 100% {
     box-shadow:
-      0 0 0 8px rgba(232, 139, 94, 0.18),
-      0 0 0 17px rgba(232, 139, 94, 0.08),
-      0 12px 30px rgba(88, 43, 27, 0.42),
-      inset 0 1px 0 rgba(255, 255, 255, 0.26);
+      0 0 0 8px rgba(255, 247, 242, 0.22),
+      0 0 0 17px rgba(184, 120, 86, 0.12),
+      0 12px 30px rgba(88, 43, 27, 0.32),
+      inset 0 1px 0 rgba(255, 255, 255, 0.82);
   }
   50% {
     box-shadow:
-      0 0 0 14px rgba(232, 139, 94, 0.24),
-      0 0 0 25px rgba(232, 139, 94, 0.11),
-      0 14px 34px rgba(88, 43, 27, 0.48),
-      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      0 0 0 14px rgba(255, 250, 247, 0.28),
+      0 0 0 25px rgba(184, 120, 86, 0.16),
+      0 14px 34px rgba(88, 43, 27, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.90);
   }
 }
 
