@@ -4,9 +4,13 @@ on:
   schedule:
     # Independent staggered checks. If the main scheduler was delayed or missed,
     # this workflow dispatches the inventory sync only when today's data is stale.
-    - cron: '47 12 * * *'
-    - cron: '17 14 * * *'
-    - cron: '47 16 * * *'
+    # Keep these away from the top of the hour to reduce GitHub scheduler pressure.
+    - cron: '53 8 * * *'
+      timezone: 'America/New_York'
+    - cron: '38 10 * * *'
+      timezone: 'America/New_York'
+    - cron: '23 12 * * *'
+      timezone: 'America/New_York'
   workflow_dispatch:
 
 permissions:
