@@ -13,6 +13,7 @@ const CHANGES_PATH = resolve(DATA_DIR, 'changes.json');
 const HISTORY_PATH = resolve(DATA_DIR, 'history.json');
 const BASE_HOSTNAME = new URL(CONFIG.baseUrl).hostname;
 const VDP_PATH_PATTERN = /^\/(new|used|certified)\/[^/]+\/20\d{2}-[^/]+-[a-f0-9]{32}\.htm$/i;
+const AUTHORITATIVE_INVENTORY_URL = new URL('/all-inventory/index.htm', CONFIG.baseUrl).toString();
 
 const sleep = (ms) => new Promise((resolvePromise) => setTimeout(resolvePromise, ms));
 
@@ -76,7 +77,38 @@ async function settleListingPage(page, source) {
   }
 }
 
-async function discoverPagination(page) {
+function parseAdvertisedVehicleCount(text) {
+  const counts = [];
+  const patterns = [
+    /\b([\d,]+)\s+Vehicles?\b/gi,
+    /\bof\s+([\d,]+)\s+(?:Vehicles?|Results?)\b/gi
+  ];
+
+  for (const pattern of patterns) {
+    for (const match of String(text || '').matchAll(pattern)) {
+      const value = Number(match[1].replace(/,/g, ''));
+      if (Number.isInteger(value) && value > 0) counts.push(value);
+    }
+  }
+
+  return counts.length ? Math.max(...counts) : null;
+}
+
+async function readAdvertisedVehicleCount(page, label, required = false) {
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    const bodyText = await page.locator('body').innerText().catch(() => '');
+    const count = parseAdvertisedVehicleCount(bodyText);
+    if (count !== null) return count;
+    await page.waitForTimeout(250);
+  }
+
+  if (required) {
+    throw new Error(`${label}: could not read the dealer-advertised vehicle count.`);
+  }
+  return null;
+}
+
+async function discoverListingMetadata(page, source, firstPageLinks) {
   const starts = await page.locator('a[href*="start="]').evaluateAll((anchors) =>
     anchors
       .map((anchor) => {
@@ -89,15 +121,16 @@ async function discoverPagination(page) {
       .filter((value) => Number.isInteger(value) && value > 0)
   );
 
-  if (!starts.length) return [0];
+  const pageSizeFromPagination = starts.length ? Math.min(...starts) : null;
+  const pageSize = Number.isInteger(pageSizeFromPagination) && pageSizeFromPagination > 0
+    ? pageSizeFromPagination
+    : firstPageLinks.size;
+  const advertisedCount = await readAdvertisedVehicleCount(page, source.name, source.condition === 'new');
 
-  const pageSize = Math.min(...starts);
-  const maxStart = Math.max(...starts);
-  if (!Number.isFinite(pageSize) || pageSize <= 0) return [0];
-
-  const pages = [];
-  for (let start = 0; start <= maxStart; start += pageSize) pages.push(start);
-  return pages;
+  return {
+    pageSize: Number.isInteger(pageSize) && pageSize > 0 ? pageSize : null,
+    advertisedCount
+  };
 }
 
 async function extractVehicleLinks(page, source) {
@@ -112,6 +145,14 @@ async function extractVehicleLinks(page, source) {
 
 function linkSignature(links) {
   return [...links].sort().slice(0, 8).join('|');
+}
+
+function targetKey(target) {
+  try {
+    return new URL(target.url).pathname.toLowerCase();
+  } catch {
+    return target.url;
+  }
 }
 
 async function waitForListingChange(page, source, previousSignature) {
@@ -170,18 +211,32 @@ async function collectVehicleLinks(page, source) {
   await navigate(page, source.url);
   await settleListingPage(page, source);
 
-  const starts = await discoverPagination(page);
-  console.log(`${source.name}: ${starts.length} listing page${starts.length === 1 ? '' : 's'} detected.`);
+  const firstPageLinks = await extractVehicleLinks(page, source);
+  if (!firstPageLinks.size) {
+    throw new Error(`${source.name}: first listing page exposed no canonical vehicle detail links.`);
+  }
+
+  const metadata = await discoverListingMetadata(page, source, firstPageLinks);
+  const pageSize = metadata.pageSize || firstPageLinks.size;
+  const estimatedPages = metadata.advertisedCount
+    ? Math.ceil(metadata.advertisedCount / pageSize)
+    : 1;
+  const maxPages = Math.min(60, Math.max(estimatedPages + 2, 12));
+
+  console.log(
+    `${source.name}: dealer advertises ${metadata.advertisedCount ?? 'unknown'} vehicles; ` +
+    `page size ${pageSize}; crawl budget ${maxPages} pages.`
+  );
 
   const links = new Set();
   const hostCounts = new Map();
   let consecutiveNoProgress = 0;
 
-  for (let pageIndex = 0; pageIndex < starts.length; pageIndex += 1) {
+  for (let pageIndex = 0; pageIndex < maxPages; pageIndex += 1) {
     if (pageIndex > 0) {
       const previousPageLinks = await extractVehicleLinks(page, source);
       const previousSignature = linkSignature(previousPageLinks);
-      const start = starts[pageIndex];
+      const start = pageIndex * pageSize;
 
       if (source.name === 'shared-used') {
         const advanced = await advanceSharedListingPage(page, source, start, previousSignature);
@@ -196,7 +251,7 @@ async function collectVehicleLinks(page, source) {
       await sleep(CONFIG.requestDelayMs);
     }
 
-    const pageLinks = await extractVehicleLinks(page, source);
+    const pageLinks = pageIndex === 0 ? firstPageLinks : await extractVehicleLinks(page, source);
     const beforeCount = links.size;
     for (const link of pageLinks) {
       links.add(link);
@@ -206,10 +261,18 @@ async function collectVehicleLinks(page, source) {
 
     const added = links.size - beforeCount;
     consecutiveNoProgress = added === 0 ? consecutiveNoProgress + 1 : 0;
-    console.log(`${source.name}: page ${pageIndex + 1}/${starts.length}, ${pageLinks.size} VDPs, ${added} new, ${links.size} unique.`);
+    console.log(
+      `${source.name}: page ${pageIndex + 1}/${maxPages}, ${pageLinks.size} VDPs, ` +
+      `${added} new, ${links.size} unique.`
+    );
 
-    if (source.name === 'shared-used' && consecutiveNoProgress >= 2) {
-      console.warn('shared-used: two consecutive pages added no new VDPs; stopping to prevent a pagination loop.');
+    if (metadata.advertisedCount && links.size >= metadata.advertisedCount) {
+      console.log(`${source.name}: reached dealer-advertised count of ${metadata.advertisedCount}.`);
+      break;
+    }
+
+    if (consecutiveNoProgress >= 2) {
+      console.warn(`${source.name}: two consecutive pages added no new VDPs; stopping pagination.`);
       break;
     }
   }
@@ -223,7 +286,41 @@ async function collectVehicleLinks(page, source) {
   }
 
   console.log(`Found ${links.size} canonical ${source.name} vehicle detail links.`);
-  return [...links].map((url) => ({ url, source: source.name, condition: source.condition }));
+  return {
+    source: source.name,
+    condition: source.condition,
+    advertisedCount: metadata.advertisedCount,
+    targets: [...links].map((url) => ({ url, source: source.name, condition: source.condition }))
+  };
+}
+
+async function collectAuthoritativeInventoryTotal(page) {
+  console.log(`Reading authoritative inventory total from ${AUTHORITATIVE_INVENTORY_URL}`);
+  await navigate(page, AUTHORITATIVE_INVENTORY_URL);
+  const total = await readAdvertisedVehicleCount(page, 'all-inventory', true);
+  console.log(`Genesis of Manchester advertises ${total} total vehicles.`);
+  return total;
+}
+
+function assertDiscoveryCoverage(discovered, expected, minimumCoverage) {
+  const checks = [
+    ['total', discovered.total, expected.total],
+    ['new', discovered.new, expected.new],
+    ['pre-owned', discovered.preOwned, expected.preOwned]
+  ];
+
+  for (const [label, actual, target] of checks) {
+    if (!Number.isFinite(target) || target <= 0) {
+      throw new Error(`Invalid authoritative ${label} inventory count: ${target}.`);
+    }
+    const coverage = actual / target;
+    if (coverage < minimumCoverage) {
+      throw new Error(
+        `Listing discovery found only ${actual}/${target} ${label} vehicles ` +
+        `(${(coverage * 100).toFixed(1)}%); minimum is ${(minimumCoverage * 100).toFixed(1)}%.`
+      );
+    }
+  }
 }
 
 async function parseJsonLd(page) {
@@ -476,21 +573,47 @@ async function main() {
   const discoveryPage = await context.newPage();
 
   try {
+    const authoritativeTotal = await collectAuthoritativeInventoryTotal(discoveryPage);
     const targets = [];
+    const discoveries = [];
+
     for (const source of CONFIG.listingPages) {
-      targets.push(...await collectVehicleLinks(discoveryPage, source));
+      const discovery = await collectVehicleLinks(discoveryPage, source);
+      discoveries.push(discovery);
+      targets.push(...discovery.targets);
       await sleep(CONFIG.requestDelayMs);
     }
     await discoveryPage.close();
 
-    const uniqueTargets = [...new Map(targets.map((target) => [target.url, target])).values()];
-    const expectedInventory = {
+    const uniqueTargets = [...new Map(targets.map((target) => [targetKey(target), target])).values()];
+    const discoveredInventory = {
       total: uniqueTargets.length,
       new: uniqueTargets.filter((target) => target.condition === 'new').length,
       preOwned: uniqueTargets.filter((target) => ['used', 'certified'].includes(target.condition)).length
     };
+
+    const newDiscovery = discoveries.find((discovery) => discovery.condition === 'new');
+    const authoritativeNew = Number(newDiscovery?.advertisedCount);
+    if (!Number.isFinite(authoritativeNew) || authoritativeNew <= 0) {
+      throw new Error('Could not establish the dealer-advertised new inventory count.');
+    }
+
+    const authoritativePreOwned = authoritativeTotal - authoritativeNew;
+    const expectedInventory = {
+      total: authoritativeTotal,
+      new: authoritativeNew,
+      preOwned: authoritativePreOwned
+    };
+
     console.log(`Collected ${uniqueTargets.length} unique canonical VDP links across all sources.`);
-    console.log('Discovered inventory targets:', expectedInventory);
+    console.log('Dealer-advertised inventory:', expectedInventory);
+    console.log('Discovered inventory targets:', discoveredInventory);
+
+    assertDiscoveryCoverage(
+      discoveredInventory,
+      expectedInventory,
+      CONFIG.validation.minimumDiscoveryCoverage ?? 0.95
+    );
 
     const vehicles = await collectVehiclesConcurrently(context, uniqueTargets);
     console.log(`Parsed ${vehicles.length}/${uniqueTargets.length} VDPs.`);
