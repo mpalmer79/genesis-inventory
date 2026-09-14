@@ -2,15 +2,22 @@ name: Nightly Inventory Sync
 
 on:
   schedule:
-    # GitHub Actions schedules are best-effort. Run staggered morning checks
-    # across the New Hampshire opening window. The date guard below makes
-    # duplicate scheduled runs inexpensive once today's scrape has succeeded.
-    - cron: '7 11 * * *'
-    - cron: '7 12 * * *'
-    - cron: '7 13 * * *'
-    - cron: '7 14 * * *'
-    - cron: '7 15 * * *'
-    - cron: '7 16 * * *'
+    # GitHub Actions schedules are best-effort. Spread recovery attempts across
+    # the New Hampshire morning and keep them away from the top of the hour.
+    # The freshness guard below makes later attempts inexpensive once today's
+    # scrape has succeeded.
+    - cron: '17 7 * * *'
+      timezone: 'America/New_York'
+    - cron: '32 8 * * *'
+      timezone: 'America/New_York'
+    - cron: '47 9 * * *'
+      timezone: 'America/New_York'
+    - cron: '22 10 * * *'
+      timezone: 'America/New_York'
+    - cron: '37 11 * * *'
+      timezone: 'America/New_York'
+    - cron: '52 12 * * *'
+      timezone: 'America/New_York'
   workflow_dispatch:
     inputs:
       force:
