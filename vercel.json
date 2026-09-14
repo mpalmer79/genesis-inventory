@@ -7,11 +7,19 @@
     },
     {
       "path": "/api/inventory-watchdog",
-      "schedule": "45 12 * * *"
+      "schedule": "35 13 * * *"
     },
     {
       "path": "/api/inventory-watchdog",
-      "schedule": "15 13 * * *"
+      "schedule": "5 15 * * *"
+    },
+    {
+      "path": "/api/inventory-watchdog",
+      "schedule": "25 16 * * *"
+    },
+    {
+      "path": "/api/inventory-watchdog",
+      "schedule": "45 17 * * *"
     }
   ]
 }
