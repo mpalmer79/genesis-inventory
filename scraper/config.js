@@ -8,11 +8,6 @@ export const CONFIG = {
     },
     {
       name: 'shared-used',
-      url: 'https://www.genesisofmanchester.com/used-inventory/index.htm',
-      condition: 'used'
-    },
-    {
-      name: 'shared-used',
       url: 'https://www.autofairhyundai.com/used-inventory/index.htm',
       condition: 'used'
     },
@@ -29,7 +24,7 @@ export const CONFIG = {
     minimumTotalVehicles: 100,
     minimumNewVehicles: 50,
     minimumPreOwnedVehicles: 50,
-    minimumDiscoveryCoverage: 0.95,
+    minimumDiscoveryCoverage: 1,
     minimumVinCompleteness: 0.85,
     minimumRetainedRatio: 0.45,
     minimumCriticalFieldCompleteness: 0.95,

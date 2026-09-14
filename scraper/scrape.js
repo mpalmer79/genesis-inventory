@@ -68,13 +68,32 @@ async function navigate(page, url) {
 async function settleListingPage(page, source) {
   if (source.name !== 'shared-used') return;
 
-  for (let attempt = 0; attempt < 8; attempt += 1) {
-    const candidateCount = await page.locator('a[href*="/used/"]').count();
-    if (candidateCount >= 12) return;
+  let previousCount = -1;
+  let stableChecks = 0;
 
-    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    await page.evaluate(() => {
+      const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      window.scrollTo(0, height);
+    });
     await page.waitForTimeout(500);
+
+    const currentLinks = await extractVehicleLinks(page, source);
+    const currentCount = currentLinks.size;
+
+    if (currentCount > 0 && currentCount === previousCount) stableChecks += 1;
+    else stableChecks = 0;
+
+    if (stableChecks >= 2) {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.waitForTimeout(100);
+      return;
+    }
+
+    previousCount = currentCount;
   }
+
+  await page.evaluate(() => window.scrollTo(0, 0));
 }
 
 function parseAdvertisedVehicleCount(text) {
