@@ -6,8 +6,10 @@ const DISPATCH_URL =
   'https://api.github.com/repos/mpalmer79/genesis-inventory/actions/workflows/inventory-sync.yml/dispatches';
 const ALLOWED_CRON_SCHEDULES = new Set([
   '15 12 * * *',
-  '45 12 * * *',
-  '15 13 * * *'
+  '35 13 * * *',
+  '5 15 * * *',
+  '25 16 * * *',
+  '45 17 * * *'
 ]);
 
 function newYorkDay(value = new Date()) {
@@ -27,8 +29,8 @@ function isAuthorizedCron(request) {
     return authorization === `Bearer ${cronSecret}`;
   }
 
-  // Vercel supplies the configured cron expression on scheduled invocations.
-  // This fallback keeps the watchdog usable before a CRON_SECRET is configured.
+  // Vercel includes the configured cron expression on scheduled invocations.
+  // Keep this fallback so the watchdog remains usable before CRON_SECRET is configured.
   const schedule = request.headers.get('x-vercel-cron-schedule');
   return ALLOWED_CRON_SCHEDULES.has(schedule);
 }
