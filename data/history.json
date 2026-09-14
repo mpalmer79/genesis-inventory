@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-13T16:10:33.188Z",
+  "updatedAt": "2026-09-14T14:52:22.997Z",
   "vehicles": {
     "KMTG34SCXTU172443": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG34SCXTU172443",
@@ -31,8 +31,8 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-a861aab3ac183da746fed083405b6ecc.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/e1ee78af0038b76814224c8d08015e32.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG34SC4TU173586": {
@@ -70,7 +70,7 @@
     },
     "KMTG24SE4TU174922": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG24SE4TU174922",
@@ -97,13 +97,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-5dcc3762ac184fb5b994269c1c25e9bf.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/0317b80895385e2963a1d406d1510c49.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG24SEXTU174911": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG24SEXTU174911",
@@ -130,8 +130,8 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-5dcc3031ac1828b6a6f15d4c95ceb4f8.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0545/65e21a4c1fe0c81b45fcf0fb8aa63e94x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE1TU176294": {
@@ -169,7 +169,7 @@
     },
     "KMTG54SE7TU176316": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE7TU176316",
@@ -196,13 +196,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-1620d62eac1839c95d9eeb811e98aa2f.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0922/bbb81480519ca676611719ed938b942ax.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE0TU176349": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE0TU176349",
@@ -229,13 +229,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-2aba8adcac1837a5dcecb048b08b644f.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/944f118bc53d1ed6738c7d3b216e74c3.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE5TU176220": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE5TU176220",
@@ -262,13 +262,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-0bd4234dac184469d1e6af0f19defa38.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/0bf3db31e847b3c0a6db3d8c320043bc.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE5TU176346": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE5TU176346",
@@ -295,13 +295,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-b570ff50ac184b703a7f6e3f085f7c48.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1963/122f1bb3877f71730b247b470fcc36ecx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE6TU177165": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE6TU177165",
@@ -328,13 +328,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-b570fde6ac1817e23fdc224a3eaf5806.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0922/bbb81480519ca676611719ed938b942ax.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG24SEXTU177128": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG24SEXTU177128",
@@ -361,13 +361,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-86deb386ac185005b9496b41d0fe99b5.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0545/65e21a4c1fe0c81b45fcf0fb8aa63e94x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE7TU176297": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE7TU176297",
@@ -394,13 +394,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-92e3307aac180aac8449eac6861edef1.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/bd32c21916f8a966daccd57510e8cd6c.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE7TU178194": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE7TU178194",
@@ -427,13 +427,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-8dbc5d1dac180aac8449eac69d7eb324.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1576/122f1bb3877f71730b247b470fcc36ecx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG24SE2TU178564": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG24SE2TU178564",
@@ -460,13 +460,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-8dbc6071ac1840e460b67eb23a45b904.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/49abf0d342c461eb0f4c2b65e92644e9.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE5TU178095": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE5TU178095",
@@ -493,13 +493,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-8dbc5e67ac180aac8449eac62582233c.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/8705af112dfc555801d91981c441672f.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG34SC9TU178962": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG34SC9TU178962",
@@ -526,13 +526,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-3109c736ac1806192e06a5e8963ae186.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/55b75c6f51d8fc8afb741ffea3f8913f.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG64SCXTU179156": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG64SCXTU179156",
@@ -559,13 +559,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-8dbc5be7ac185d005aaedd2082c516aa.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1637/6dfe40d1855d2f1abbad6394f4f68577x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG64SC4TU177483": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG64SC4TU177483",
@@ -592,13 +592,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-e548307aac184a64f5d1c0fe76307c1f.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1786/6757d6e61f7e8f2eb55d620f5c73b656x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE6TU178767": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE6TU178767",
@@ -625,13 +625,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-d18ad2d2ac18393f5dd5a4976b5f8446.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0922/bbb81480519ca676611719ed938b942ax.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG64SC0TU179537": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG64SC0TU179537",
@@ -658,13 +658,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-69af9800ac18083a2914417f70e03a9d.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1786/6757d6e61f7e8f2eb55d620f5c73b656x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG24SE8TU177127": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG24SE8TU177127",
@@ -691,13 +691,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-ff0927e4ac18003fe20877a2bc6f0ad3.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0545/65e21a4c1fe0c81b45fcf0fb8aa63e94x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE4TU178542": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE4TU178542",
@@ -724,13 +724,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-ff092142ac184a64f5d1c0fe5f3e012e.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0264/ccfb2b78368f850af72d989887a402ebx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG54SE6TU177103": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54SE6TU177103",
@@ -757,13 +757,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-042e8e34ac1829bdcb8ca515ac9cb993.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1944/8565c933376ce18d5350479f0b2ad173x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGB4SC4TU333937": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGB4SC4TU333937",
@@ -790,14 +790,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G80-5dcc3157ac1849d2c697a70af6c58ffd.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/e154162652396babb7c5f5181ce746e9.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMADTBXRH008025": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NMMADTBXRH008025",
         "stockNumber": "GM20014T",
@@ -862,7 +862,7 @@
     },
     "KMTG34TA7PU112946": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG34TA7PU112946",
@@ -889,13 +889,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2023-Genesis-G70-5bbadba2ac181e63234f4fee23d3c4da.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0343/c07e5d8e083a8486ffed2aed9998d3f8x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMCDTC8RH005708": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMCDTC8RH005708",
@@ -922,13 +922,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2024-Genesis-GV70-64bd60d2ac18155969bd56a9a75bda29.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1538/556334f08e3d0143896f4ba052aa0fc3x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG34SC2TU160836": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG34SC2TU160836",
@@ -955,13 +955,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2026-Genesis-G70-904f58f5ac1814e012e1fffc97133a92.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1820/76fa8fc46f50ce4f75543ea4c270e55ex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMADTB2NU067263": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMADTB2NU067263",
@@ -988,13 +988,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2022-Genesis-GV70-25a7a331ac182cb634fa901d5d8db279.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0627/6472389829684a53b69f5d5fa06de1e1x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMADTB0NU032348": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMADTB0NU032348",
@@ -1014,15 +1014,15 @@
         "engine": "I-4 cyl",
         "mileage": 50066,
         "msrp": null,
-        "price": 33499,
+        "price": 32499,
         "location": null,
         "rawTitle": "Used | 2022 | GenesisGV70 2.5T",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2022-Genesis-GV70-6e9c2fe3ac183b721f3e022366f56a19.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1661/127229767029ec742f67c1174080d8c8x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMFDTB0TH053080": {
@@ -1093,7 +1093,7 @@
     },
     "KMUHEESC1SU273207": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHEESC1SU273207",
@@ -1120,13 +1120,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2025-Genesis-GV80-4c5d0c58ac18354f7eff0f5162ddcb41.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1025/aacf6f47b07d166f4bbb61c44f854b72x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMEDTC1TH038518": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMEDTC1TH038518",
@@ -1153,13 +1153,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2026-Genesis-GV70-332636ceac182e35bbb4ded200b21938.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1554/7b1c17d663e07eb3bdf89cf1d0a4bd8dx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUHCESC4RU162795": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHCESC4RU162795",
@@ -1186,13 +1186,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2024-Genesis-GV80-f306dbe7ac184a64f5d1c0fee67e28c5.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0686/548341a726ab32a63f851ce5c7f2699cx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUHDESC1SU273484": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHDESC1SU273484",
@@ -1219,13 +1219,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2025-Genesis-GV80-4c5d04b5ac1819e614f9dda5a8009799.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1568/02f61f68a38f454ae59ae020754adcafx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUHCESC8TU314648": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHCESC8TU314648",
@@ -1252,8 +1252,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2026-Genesis-GV80-7c7d26d2ac180ec81ee31fd023f4dec8.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1011/99c3ae85ea34ca26574fded8721ce5bex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "WA1EABFY6N2110570": {
@@ -1322,7 +1322,7 @@
     },
     "2HKRW2H55LH692619": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "2HKRW2H55LH692619",
@@ -1349,13 +1349,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Honda/2020-Honda-CR-V-0277513fac1829bdcb8ca515c0cbbe55.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0076/968a35347293981980c6e3e27b1940aex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD4VU340674": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD4VU340674",
@@ -1382,13 +1382,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-3109c474ac18424fa430750e410b8359.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0337/e383bccafe89ec7322282f7dca6092eex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTFC4SD7TU063572": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTFC4SD7TU063572",
@@ -1415,8 +1415,8 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G90-e5482f34ac182cb6d83888abd25da9c1.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1531/aa5b43279f28b444ac6fac3636ad2a70x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMEDTC6TH069067": {
@@ -1454,7 +1454,7 @@
     },
     "KMUHBESB4TU335748": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHBESB4TU335748",
@@ -1481,13 +1481,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV80-6048a313ac18160793fbd8909a39628e.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/67935a314771a9dec0435937dab04651.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "1GKKNULS8NZ153764": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "1GKKNULS8NZ153764",
@@ -1514,13 +1514,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/GMC/2022-GMC-Acadia-e924df49ac180771dd7429cb79de5246.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0115/f2f4cf68e10971661d135cc4df379419x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMADTB0TH068127": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMADTB0TH068127",
@@ -1547,13 +1547,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-10a0ae7cac181da0dd1bebc3dc8b1025.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/fe705da53bf9dd2c3256b61772f7e38c.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "2HKRW2H99LH647248": {
       "firstSeen": "2026-09-05T00:09:53.304Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "2HKRW2H99LH647248",
@@ -1580,13 +1580,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Honda/2020-Honda-CR-V-30d048eaac183b953cbae2d1e6e55e29.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0329/a64456cb0668e8d4e6eec59e6ebb6e6ex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:09:53.304Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMEDTC0TH057366": {
       "firstSeen": "2026-09-05T00:19:18.849Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMEDTC0TH057366",
@@ -1613,14 +1613,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-eefc7139ac18160781e3847587858717.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/ff8aeb130bb6bf0d2c5ee8e0cbf212d3.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T00:19:18.849Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMCET11VU013301": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCET11VU013301",
         "stockNumber": "013301",
@@ -1653,7 +1653,7 @@
     "KMUMCET17VU013304": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCET17VU013304",
         "stockNumber": "013304",
@@ -1685,7 +1685,7 @@
     },
     "KMTG64SC7TU179454": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG64SC7TU179454",
@@ -1712,14 +1712,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G70-b1c94f73ac18065879bcb5eba3c3abc6.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/686f118bfec5a801fb1ce6cef4bb3efa.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGF4SD9VU350765": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMTGF4SD9VU350765",
         "stockNumber": "350765",
@@ -1751,7 +1751,7 @@
     },
     "KMTGG4SD6TU336378": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD6TU336378",
@@ -1778,13 +1778,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-G80-5dcc2cf8ac182bd95ba357c7d5438b06.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/01779c1c41d4a39aac66775d8345fe4d.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD1VU340728": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD1VU340728",
@@ -1811,13 +1811,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-3109c95eac185abe565e24b07d63da88.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0362/94ce9f31c6578679287fa97f32ce7a11x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD9VU341836": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD9VU341836",
@@ -1844,13 +1844,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-86deb187ac1825bc039c1527dcee6d31.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1097/fbbb6640dcd6f071d51ca05cc0f01cdcx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGA4SC0VU343841": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGA4SC0VU343841",
@@ -1877,13 +1877,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-5a3c9500ac183ebb689d7c6d89ed2fe6.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0678/0200a9f42ebd1bebde6fdfff59766399x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SC2VU343849": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC2VU343849",
@@ -1910,13 +1910,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-5a3c9627ac184bdbc2704395f068b255.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1886/6c0e9a082c6c53a3ef6c730f59875988x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD9VU349354": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD9VU349354",
@@ -1943,13 +1943,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-8dbc5aa5ac181c46cdfd0dfea981fe02.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0922/35d093d0f998461191b29994455c2882x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGA4SC3VU343610": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGA4SC3VU343610",
@@ -1976,13 +1976,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-ff092938ac1846fa1e332511e2b3be7f.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0585/6ccd978367d4df9c8350809b08ecd7b9x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGB4SC1VU343876": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGB4SC1VU343876",
@@ -2009,13 +2009,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-e5483e68ac185c8404187ace3c26deef.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0821/987048543ee508eb2c8926739d02ff25x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SC4VU349264": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC4VU349264",
@@ -2042,13 +2042,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-69af9a3aac18013719a6da34e401e804.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1817/77352d4cefbc27f78e666e15b9924099x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SC5VU349113": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC5VU349113",
@@ -2075,13 +2075,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-69af9585ac183586ac64e56a9503590c.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1043/a0a6735ea991dc1abe1c086554b2e812x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SC9VU349292": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC9VU349292",
@@ -2108,13 +2108,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-8dbc617bac18221a7f70d51edabb985d.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1989/0c115d2c78613f78f165045bc7cf7b1bx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SCXVU349107": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SCXVU349107",
@@ -2141,13 +2141,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-69af9937ac183586ac64e56ad1e3e286.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0788/92982efcf6436defec81c857dceecffbx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD6VU341583": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD6VU341583",
@@ -2174,13 +2174,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-17105d24ac1846fa1e332511cdb6022e.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1097/fbbb6640dcd6f071d51ca05cc0f01cdcx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD9VU341853": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD9VU341853",
@@ -2207,13 +2207,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-3109c591ac1818e15e383b479c137968.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1637/0cd883f60a29b71fdc99bdb2518b8eb8x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SC8VU343788": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC8VU343788",
@@ -2240,13 +2240,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-98094ddcac184d2b5dd6c162564b0ba2.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1048/8e64e88292c1b8854d41ff35fba2639fx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD4VU349438": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD4VU349438",
@@ -2273,13 +2273,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-69af9695ac185d005aaedd20d1129eca.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1678/e26f3a1895b3dd24275f109396682efdx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGA4SC3VU350198": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGA4SC3VU350198",
@@ -2306,13 +2306,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-b1c9518fac1809a22d7424232a96c575.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/a2bef5a8eb55149504574e6078028e3e.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SC2VU349473": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC2VU349473",
@@ -2339,13 +2339,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-042e8d04ac184a64f5d1c0fe996b8e76.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/dfccc68205ef40f5216994d1ded79a0e.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SC4VU349278": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC4VU349278",
@@ -2372,13 +2372,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-e54833e6ac1849ee428c30afba80aabc.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1800/5d83d47ba5754dc089db33cf7595b9a2x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD5VU349318": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD5VU349318",
@@ -2405,13 +2405,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-b1c949a2ac1810ac5033d1c6070b6199.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0291/f71d64c08b9ea96a33f0f4273dee5c1bx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD7VU349501": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD7VU349501",
@@ -2438,13 +2438,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-b1c94e2fac1843b4d08f34f92ea692a3.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1350/5165831202930717e5b7f099b1d54f7ax.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGF4SD4VU340662": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGF4SD4VU340662",
@@ -2471,13 +2471,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-e5484342ac18341fab2e75cb3bf37ecf.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0666/4f9a6c69de769b1e9a5165adcbda628dx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGC4SC5VU349211": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC5VU349211",
@@ -2504,13 +2504,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-042e8bc3ac1829bdcb8ca515740085ab.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/171b710f5af330561df70d1c33f8f3b3.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD6VU350669": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD6VU350669",
@@ -2537,13 +2537,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-c13bd074ac1843b4d08f34f9169ab837.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1097/fbbb6640dcd6f071d51ca05cc0f01cdcx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTGG4SD7VU350776": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGG4SD7VU350776",
@@ -2570,14 +2570,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-c13bcd7cac185a7cf19ec641231142da.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/6469c329055645a3a3daa534bf9573ae.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTFD4SD5TU065088": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMTFD4SD5TU065088",
         "stockNumber": "065088",
@@ -2609,7 +2609,7 @@
     },
     "KMUKB4SA2VU032588": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUKB4SA2VU032588",
@@ -2636,14 +2636,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV60-e5482e34ac185c3035c89e2303acc582.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1472/2c3730e850305bd936d570c5d076d41ex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMCDTB0VU301300": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB0VU301300",
         "stockNumber": "301300",
@@ -2676,7 +2676,7 @@
     "KMUMCDTB7VU301374": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB7VU301374",
         "stockNumber": "301374",
@@ -2709,7 +2709,7 @@
     "KMUMBDTBXVU301436": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTBXVU301436",
         "stockNumber": "301436",
@@ -2742,7 +2742,7 @@
     "KMUMCDTB7VU301519": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB7VU301519",
         "stockNumber": "301519",
@@ -2775,7 +2775,7 @@
     "KMUMFDTC8VU301528": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMFDTC8VU301528",
         "stockNumber": "301528",
@@ -2808,7 +2808,7 @@
     "KMUMCDTB2VU301752": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB2VU301752",
         "stockNumber": "301752",
@@ -2873,7 +2873,7 @@
     },
     "KMUMCDTB2VU302173": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMCDTB2VU302173",
@@ -2900,14 +2900,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV70-1dee6e25ac181da0dd1bebc3df3dc540.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/071202c095ea079e0951e73dc4ff92e2.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMCDTB3VU302344": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB3VU302344",
         "stockNumber": "302344",
@@ -2940,7 +2940,7 @@
     "KMUMCDTB5VU302376": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB5VU302376",
         "stockNumber": "302376",
@@ -2973,7 +2973,7 @@
     "KMUMCDTB6VU302404": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB6VU302404",
         "stockNumber": "302404",
@@ -3006,7 +3006,7 @@
     "KMUMCDTBXVU302437": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTBXVU302437",
         "stockNumber": "302437",
@@ -3039,7 +3039,7 @@
     "KMUMCDTB4VU302594": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB4VU302594",
         "stockNumber": "302594",
@@ -3072,7 +3072,7 @@
     "KMUMCDTBXVU302597": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTBXVU302597",
         "stockNumber": "302597",
@@ -3105,7 +3105,7 @@
     "KMUMCDTBXVU302602": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTBXVU302602",
         "stockNumber": "302602",
@@ -3138,7 +3138,7 @@
     "KMUMCDTB8VU302615": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB8VU302615",
         "stockNumber": "302615",
@@ -3171,7 +3171,7 @@
     "KMUMDDTB0VU302668": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMDDTB0VU302668",
         "stockNumber": "302668",
@@ -3204,7 +3204,7 @@
     "KMUMCDTB4VU302675": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB4VU302675",
         "stockNumber": "302675",
@@ -3237,7 +3237,7 @@
     "KMUMCDTB4VU302692": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB4VU302692",
         "stockNumber": "302692",
@@ -3270,7 +3270,7 @@
     "KMUMCDTB8VU303800": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB8VU303800",
         "stockNumber": "303800",
@@ -3303,7 +3303,7 @@
     "KMUMCDTB0VU303855": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB0VU303855",
         "stockNumber": "303855",
@@ -3336,7 +3336,7 @@
     "KMUMCDTB2VU304201": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB2VU304201",
         "stockNumber": "304201",
@@ -3369,7 +3369,7 @@
     "KMUMCDTB4VU304202": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB4VU304202",
         "stockNumber": "304202",
@@ -3434,7 +3434,7 @@
     },
     "KMUMEDTC0TU274308": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMEDTC0TU274308",
@@ -3461,13 +3461,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-f422cbc0ac185b54f99274c23ba432fe.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/7bdd38f9074e086a066b1c4be33343ed.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMEDTC8TH059009": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMEDTC8TH059009",
@@ -3494,8 +3494,8 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-3482257fac180fbb4f0b0eeaae9ecc91.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/20b84fbd139848206d144f744f79c293.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMEDTC9TU273948": {
@@ -3533,7 +3533,7 @@
     },
     "KMUMEDTC2TU280353": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMEDTC2TU280353",
@@ -3560,13 +3560,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-98eebc60ac184d4c7240f9fe6d2d1e1c.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/7bdd38f9074e086a066b1c4be33343ed.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMEDTC1TU282630": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMEDTC1TU282630",
@@ -3593,13 +3593,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-cd4a8766ac18507099e703838290462e.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/7bdd38f9074e086a066b1c4be33343ed.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMEDTC8TU288716": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMEDTC8TU288716",
@@ -3626,13 +3626,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-95466cf7ac1837f47d123b9063a6ef85.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/7bdd38f9074e086a066b1c4be33343ed.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMEDTC9TU288689": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMEDTC9TU288689",
@@ -3659,13 +3659,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-5dcc1f9bac185f3310451e5996bacbe8.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/7bdd38f9074e086a066b1c4be33343ed.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMEDTC8TH061228": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMEDTC8TH061228",
@@ -3692,8 +3692,8 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV70-110e873eac1829bdac25aaf1cd18245b.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/dfa1976bbafe8d6d88bc43bd7b84a6e0.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMADTB9VU294322": {
@@ -3732,7 +3732,7 @@
     "KMUMGDTC0VU290585": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMGDTC0VU290585",
         "stockNumber": "GM270004",
@@ -3765,7 +3765,7 @@
     "KMUMGDTCXVU290769": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMGDTCXVU290769",
         "stockNumber": "GM270006",
@@ -3798,7 +3798,7 @@
     "KMUMFDTC5VU293095": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMFDTC5VU293095",
         "stockNumber": "GM270007",
@@ -3831,7 +3831,7 @@
     "KMUMGDTC7VU292060": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMGDTC7VU292060",
         "stockNumber": "GM270009",
@@ -3864,7 +3864,7 @@
     "KMUMBDTB9VU292728": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTB9VU292728",
         "stockNumber": "GM270011",
@@ -3897,7 +3897,7 @@
     "KMUMBDTB0VU294321": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTB0VU294321",
         "stockNumber": "GM270040",
@@ -3929,7 +3929,7 @@
     },
     "KMUMADTB3VU297782": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMADTB3VU297782",
@@ -3956,14 +3956,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV70-5fd0bc70ac184bdbc27043952be057d2.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/95f4d8c52417d0ffe54dfd20d666da71.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMBDTB4VU294130": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTB4VU294130",
         "stockNumber": "GM270054",
@@ -4062,7 +4062,7 @@
     "KMUMDDTB8VU297042": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMDDTB8VU297042",
         "stockNumber": "GM270059",
@@ -4095,7 +4095,7 @@
     "KMUMGDTC2VU297909": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMGDTC2VU297909",
         "stockNumber": "GM270069",
@@ -4128,7 +4128,7 @@
     "KMUMGDTC5VU294325": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMGDTC5VU294325",
         "stockNumber": "GM270070",
@@ -4161,7 +4161,7 @@
     "KMUMGDTC6VU299615": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMGDTC6VU299615",
         "stockNumber": "GM270071",
@@ -4194,7 +4194,7 @@
     "KMUMBDTBXVU299364": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTBXVU299364",
         "stockNumber": "GM270078",
@@ -4227,7 +4227,7 @@
     "KMUMCDTB4VU298000": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB4VU298000",
         "stockNumber": "GM270079",
@@ -4260,7 +4260,7 @@
     "KMUMCDTB5VU299785": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB5VU299785",
         "stockNumber": "GM270081",
@@ -4293,7 +4293,7 @@
     "KMUMCDTB7VU299805": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB7VU299805",
         "stockNumber": "GM270082",
@@ -4359,7 +4359,7 @@
     "KMUMBDTB9VU299873": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTB9VU299873",
         "stockNumber": "GM270098",
@@ -4424,7 +4424,7 @@
     },
     "KMUMCDTB0VU300888": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMCDTB0VU300888",
@@ -4451,8 +4451,8 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV70-ff091443ac185c8404187aced97a3d58.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0988/ebedeb07b0226d3cb633229f78b0c2efx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMCDTB0VU300891": {
@@ -4491,7 +4491,7 @@
     "KMUMDDTB8VU297607": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMDDTB8VU297607",
         "stockNumber": "GM270113",
@@ -4524,7 +4524,7 @@
     "KMUMDDTBXVU300331": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMDDTBXVU300331",
         "stockNumber": "GM270114",
@@ -4590,7 +4590,7 @@
     "KMUMGDTC5VU300219": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMGDTC5VU300219",
         "stockNumber": "GM270116",
@@ -4656,7 +4656,7 @@
     "KMUMBDTB0VU299020": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTB0VU299020",
         "stockNumber": "GM270127",
@@ -4722,7 +4722,7 @@
     "KMUMBDTB2VU299228": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTB2VU299228",
         "stockNumber": "GM270129",
@@ -4755,7 +4755,7 @@
     "KMUMBDTB4VU299005": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMBDTB4VU299005",
         "stockNumber": "GM270130",
@@ -4788,7 +4788,7 @@
     "KMUMCDTB2VU299064": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB2VU299064",
         "stockNumber": "GM270131",
@@ -4820,7 +4820,7 @@
     },
     "KMUMCDTB9VU300579": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMCDTB9VU300579",
@@ -4847,14 +4847,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV70-ff0903d3ac180936a0a72ed812e67319.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/b4db2949b5dabe8e4be6e29eb2bed5bf.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMFDTC6VU300488": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMFDTC6VU300488",
         "stockNumber": "GM270133",
@@ -4887,7 +4887,7 @@
     "KMUMCDTB0VU302009": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB0VU302009",
         "stockNumber": "GM270138",
@@ -4953,7 +4953,7 @@
     "KMUMCDTB1VU302066": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB1VU302066",
         "stockNumber": "GM270140",
@@ -4986,7 +4986,7 @@
     "KMUMCDTB2VU301864": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB2VU301864",
         "stockNumber": "GM270141",
@@ -5019,7 +5019,7 @@
     "KMUMCDTB2VU302089": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB2VU302089",
         "stockNumber": "GM270142",
@@ -5052,7 +5052,7 @@
     "KMUMCDTB4VU301784": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB4VU301784",
         "stockNumber": "GM270143",
@@ -5084,7 +5084,7 @@
     },
     "KMUMCDTB4VU302045": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMCDTB4VU302045",
@@ -5111,14 +5111,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV70-1dee7474ac185c3035c89e23dc2b262e.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/d82aa1e85fa6d66b67d885e515828bf1.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUMCDTB5VU301552": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB5VU301552",
         "stockNumber": "GM270145",
@@ -5151,7 +5151,7 @@
     "KMUMCDTB7VU302363": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB7VU302363",
         "stockNumber": "GM270146",
@@ -5184,7 +5184,7 @@
     "KMUMCDTB8VU302064": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB8VU302064",
         "stockNumber": "GM270147",
@@ -5217,7 +5217,7 @@
     "KMUMCDTB8VU302095": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMCDTB8VU302095",
         "stockNumber": "GM270148",
@@ -5250,7 +5250,7 @@
     "KMUMFDTC5VU301647": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUMFDTC5VU301647",
         "stockNumber": "GM270149",
@@ -5283,7 +5283,7 @@
     "KMUHFESB9VU363603": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHFESB9VU363603",
         "stockNumber": "363603",
@@ -5316,7 +5316,7 @@
     "KMUHEESC4VU363634": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHEESC4VU363634",
         "stockNumber": "GM270155",
@@ -5349,7 +5349,7 @@
     "KMUHBESB2VU363969": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHBESB2VU363969",
         "stockNumber": "GM270154",
@@ -5382,7 +5382,7 @@
     "KMUHBESB2VU364118": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHBESB2VU364118",
         "stockNumber": "364118",
@@ -5415,7 +5415,7 @@
     "KMUHDESC4VU364706": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC4VU364706",
         "stockNumber": "364706",
@@ -5448,7 +5448,7 @@
     "KMUHGESB8VU365050": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHGESB8VU365050",
         "stockNumber": "365050",
@@ -5546,7 +5546,7 @@
     },
     "KMUHEESC3TU350547": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHEESC3TU350547",
@@ -5571,10 +5571,10 @@
         "rawTitle": "New 2026 GV80 3.5T Prestige",
         "source": "new",
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV80-0bd420e2ac1822957fb0b48b482958d1.htm",
-        "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/7c89a0c0c9b30ddea79619be5a1f5a82.jpg?impolicy=resize&w=1024",
+        "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/bd5d611f8232852ef1b5cdadad7553f4.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUHBESB5TU352168": {
@@ -5613,7 +5613,7 @@
     "KMUHGESB4VU356703": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHGESB4VU356703",
         "stockNumber": "GM270010",
@@ -5646,7 +5646,7 @@
     "KMUHGESB5VU356466": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHGESB5VU356466",
         "stockNumber": "GM270016",
@@ -5712,7 +5712,7 @@
     "KMUHDESC1VU356384": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC1VU356384",
         "stockNumber": "GM270023",
@@ -5745,7 +5745,7 @@
     "KMUHDESC3VU358010": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC3VU358010",
         "stockNumber": "GM270024",
@@ -5778,7 +5778,7 @@
     "KMUHDESC4VU357304": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC4VU357304",
         "stockNumber": "GM270025",
@@ -5844,7 +5844,7 @@
     "KMUHFESB6VU358519": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHFESB6VU358519",
         "stockNumber": "GM270027",
@@ -5877,7 +5877,7 @@
     "KMUHBESB1VU359251": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHBESB1VU359251",
         "stockNumber": "GM270029",
@@ -5910,7 +5910,7 @@
     "KMUHBESB4VU359051": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHBESB4VU359051",
         "stockNumber": "GM270031",
@@ -5943,7 +5943,7 @@
     "KMUHDESC0VU359213": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC0VU359213",
         "stockNumber": "GM270032",
@@ -5976,7 +5976,7 @@
     "KMUHDESC1VU358510": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC1VU358510",
         "stockNumber": "GM270034",
@@ -6009,7 +6009,7 @@
     "KMUHEESC9VU358932": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHEESC9VU358932",
         "stockNumber": "GM270036",
@@ -6042,7 +6042,7 @@
     "KMUHGESB6VU359506": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHGESB6VU359506",
         "stockNumber": "GM270037",
@@ -6075,7 +6075,7 @@
     "KMUHBESBXVU360320": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHBESBXVU360320",
         "stockNumber": "GM270043",
@@ -6108,7 +6108,7 @@
     "KMUHCESC0VU360980": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHCESC0VU360980",
         "stockNumber": "GM270044",
@@ -6141,7 +6141,7 @@
     "KMUHDESC2VU359231": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC2VU359231",
         "stockNumber": "GM270045",
@@ -6174,7 +6174,7 @@
     "KMUHDESCXVU361373": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESCXVU361373",
         "stockNumber": "GM270046",
@@ -6207,7 +6207,7 @@
     "KMUHEESCXVU357739": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHEESCXVU357739",
         "stockNumber": "GM270047",
@@ -6240,7 +6240,7 @@
     "KMUHFESB8VU360451": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHFESB8VU360451",
         "stockNumber": "GM270049",
@@ -6273,7 +6273,7 @@
     "KMUHFESB8VU360661": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHFESB8VU360661",
         "stockNumber": "GM270050",
@@ -6306,7 +6306,7 @@
     "KMUHGESB9VU360052": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHGESB9VU360052",
         "stockNumber": "GM270051",
@@ -6339,7 +6339,7 @@
     "KMUHCESB6VU361736": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHCESB6VU361736",
         "stockNumber": "GM270062",
@@ -6372,7 +6372,7 @@
     "KMUHCESB7VU361843": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHCESB7VU361843",
         "stockNumber": "GM270063",
@@ -6405,7 +6405,7 @@
     "KMUHDESC5VU361765": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC5VU361765",
         "stockNumber": "GM270064",
@@ -6438,7 +6438,7 @@
     "KMUHEESC3VU362295": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHEESC3VU362295",
         "stockNumber": "GM270065",
@@ -6504,7 +6504,7 @@
     "KMUHFESBXVU360872": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHFESBXVU360872",
         "stockNumber": "GM270097",
@@ -6537,7 +6537,7 @@
     "KMUHDESC6VU363444": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHDESC6VU363444",
         "stockNumber": "GM270105",
@@ -6570,7 +6570,7 @@
     "KMUHEESC5VU363397": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHEESC5VU363397",
         "stockNumber": "GM270106",
@@ -6603,7 +6603,7 @@
     "KMUHEESC7VU363207": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHEESC7VU363207",
         "stockNumber": "GM270120",
@@ -6636,7 +6636,7 @@
     "KMUHEESCXVU363024": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHEESCXVU363024",
         "stockNumber": "GM270121",
@@ -6669,7 +6669,7 @@
     "KMUHCESB0VU361926": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHCESB0VU361926",
         "stockNumber": "GM270123",
@@ -6702,7 +6702,7 @@
     "KMUHCESB5VU362974": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHCESB5VU362974",
         "stockNumber": "GM270124",
@@ -6735,7 +6735,7 @@
     "KMUHCESBXVU361979": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUHCESBXVU361979",
         "stockNumber": "GM270125",
@@ -6767,7 +6767,7 @@
     },
     "KMUHCESC3VU360665": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHCESC3VU360665",
@@ -6794,13 +6794,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV80-b1c94d05ac184b2fa8c895f9f4a2fc67.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/5dc558338ecc08bbeee94a15795c6eda.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUHCESC9VU363912": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHCESC9VU363912",
@@ -6827,13 +6827,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV80-c13bd171ac1829477e81ca7093e42639.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/1f906be34146a83a61d3ca2faac04239.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUJBESCXVU363955": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUJBESCXVU363955",
@@ -6860,13 +6860,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV80-Coupe-d5d55cdfac184d711ce89ad0a205ed08.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/46681d061a00f87113f3cb947bdd6191.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUJBESC8VU364425": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUJBESC8VU364425",
@@ -6893,13 +6893,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV80-Coupe-3287c86dac1829bdebbeb559dedbec86.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/afb415142ecd4c91a117efa5301a8160.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUJBESCXTU307513": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUJBESCXTU307513",
@@ -6926,13 +6926,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV80-Coupe-705ff11dac181c7ea8bbb837c84b2e68.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/fe3a4522614b529c8ae5fabf738e1f82.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUJBESC6TU316922": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUJBESC6TU316922",
@@ -6959,13 +6959,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV80-Coupe-7c7d1e90ac1842321f1961a9568a3daa.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/fe3a4522614b529c8ae5fabf738e1f82.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUJBESC8TU314623": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUJBESC8TU314623",
@@ -6992,13 +6992,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV80-Coupe-7c7d138aac180390169ccca11caa304c.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/573d1dfb575c1a94c46cf8877ef46745.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMUJDESC6VU363817": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUJDESC6VU363817",
@@ -7025,14 +7025,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-GV80-Coupe-c13bce7cac1809a92caa6c072de09043.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/31a6866208ecbc16d1f7d7ba5901814c.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMTG34SC5TU162547": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMTG34SC5TU162547",
         "stockNumber": "GM260101L",
@@ -7064,7 +7064,7 @@
     },
     "5NMMBDTB9TH052568": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMBDTB9TH052568",
@@ -7091,13 +7091,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/certified/Genesis/2026-Genesis-GV70-77564fb7ac1842321f1961a97cfec636.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0914/f45b5e2251451d65d23de5a5cb566fb6x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMFDTB6TH052953": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMFDTB6TH052953",
@@ -7124,13 +7124,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/certified/Genesis/2026-Genesis-GV70-ac1f83b7ac180c4ef1f8d829135232ba.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0292/ecdcea0c1d47966fa19215d0b02649e7x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMFDTB3TH058242": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMFDTB3TH058242",
@@ -7157,8 +7157,8 @@
         "sourceUrl": "https://www.genesisofmanchester.com/certified/Genesis/2026-Genesis-GV70-0de272f7ac184e44d02e9e831e516943.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1744/62c9d2bc07ba604df367e32f1593a5d6x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMMBDTB4TH064465": {
@@ -7196,7 +7196,7 @@
     },
     "5NMMFDTB3TH065028": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMFDTB3TH065028",
@@ -7223,14 +7223,14 @@
         "sourceUrl": "https://www.genesisofmanchester.com/certified/Genesis/2026-Genesis-GV70-4d2d3551ac1857715e05f4fd3d14e428.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1431/4ec32783f85b1607e2e6e3d7b99882e2x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "WAUL2AF26LN002491": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "WAUL2AF26LN002491",
         "stockNumber": "GM20149T",
@@ -7328,7 +7328,7 @@
     },
     "5UXTY5C07M9E28083": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5UXTY5C07M9E28083",
@@ -7348,20 +7348,20 @@
         "engine": "I-4 cyl",
         "mileage": 77192,
         "msrp": null,
-        "price": 22999,
+        "price": 22499,
         "location": null,
         "rawTitle": "Used | 2021 | BMWX3 xDrive30i",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/BMW/2021-BMW-X3-47214974ac185c30e41528d4f2e91d75.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0364/7c81dec557db0bc9db7ec3a191724a26x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "1G6KB5RSXLU111997": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "1G6KB5RSXLU111997",
@@ -7388,8 +7388,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/CADILLAC/2020-CADILLAC-CT6-40442464ac184d5f647218b29ae695d5.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1259/4b3b5763770afb69a09c800a77238818x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "3GNKBLRS5LS580830": {
@@ -7428,7 +7428,7 @@
     "KL8CD6S93DC505933": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KL8CD6S93DC505933",
         "stockNumber": "HY19163W",
@@ -7527,7 +7527,7 @@
     "KMTG34TA3NU101181": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMTG34TA3NU101181",
         "stockNumber": "HY19232T",
@@ -7592,7 +7592,7 @@
     },
     "SHHFK7H56JU428623": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "SHHFK7H56JU428623",
@@ -7619,13 +7619,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Honda/2018-Honda-Civic-5531b677ac180b7620d871aeba3e41ea.htm",
         "imageUrl": "https://images.dealer.com/ddc/vehicles/2018/Honda/Civic/Hatchback/trim_EX_9c7cb9/color/Crystal%20Black%20Pearl-BK-29%2C29%2C29-640-en_US.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "19XFB2F56FE212467": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "19XFB2F56FE212467",
@@ -7652,8 +7652,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Honda/2015-Honda-Civic-6e84b223ac181fe2458d26f2a3fc469d.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0042/c6fdafe0d0bdbf62d0619794b03b71cdx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "2HKRS4H45RH425276": {
@@ -7725,7 +7725,7 @@
     "5FNYG1H61SB051153": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5FNYG1H61SB051153",
         "stockNumber": "HY19170T",
@@ -7757,7 +7757,7 @@
     },
     "5FNYG1H75RB034195": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5FNYG1H75RB034195",
@@ -7777,21 +7777,21 @@
         "engine": "V-6 cyl",
         "mileage": 83354,
         "msrp": null,
-        "price": 36999,
+        "price": 36499,
         "location": null,
         "rawTitle": "Used | 2024 | HondaPilot Touring",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Honda/2024-Honda-Pilot-4c9cb2d0ac182f002812faebe5dc42b1.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1815/1ace47229ebc1976d1f3ad40ef0a6fd1x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5FPYK3F74KB004776": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5FPYK3F74KB004776",
         "stockNumber": "HY19264T",
@@ -7824,7 +7824,7 @@
     "KMHLM4DG1RU730825": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMHLM4DG1RU730825",
         "stockNumber": "HY19137T",
@@ -7889,7 +7889,7 @@
     },
     "5NPD84LF4JH262898": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NPD84LF4JH262898",
@@ -7916,13 +7916,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2018-Hyundai-Elantra-5c0fe4e1ac183155ec8122528c001847.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1861/6b3a78248ae0961dfd52e35c2e285139x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KMHLM4DG5SU938700": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMHLM4DG5SU938700",
@@ -7940,7 +7940,7 @@
         "drivetrain": "Front-Wheel Drive",
         "transmission": "CVT",
         "engine": "I-4 cyl",
-        "mileage": 15402,
+        "mileage": null,
         "msrp": null,
         "price": 21999,
         "location": null,
@@ -7949,14 +7949,14 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2025-Hyundai-Elantra-706ed149ac184811bc6de529df2a06e3.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1711/7f88775ae38694625b97ebc3f4bca904x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "7YAKPDDC5SY032391": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "7YAKPDDC5SY032391",
         "stockNumber": "HY19205T",
@@ -7989,7 +7989,7 @@
     "KM8HCCAB0RU072605": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KM8HCCAB0RU072605",
         "stockNumber": "HY19145T",
@@ -8022,7 +8022,7 @@
     "KM8HCCAB2RU044529": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KM8HCCAB2RU044529",
         "stockNumber": "HY19257T",
@@ -8054,7 +8054,7 @@
     },
     "KM8HACA33RU069776": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KM8HACA33RU069776",
@@ -8081,13 +8081,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Kona-5f10de8fac183155ec812252c60c0ada.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1092/39abb166adfd3a119431145beeccc3c6x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KM8HBCAB9SU324568": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KM8HBCAB9SU324568",
@@ -8114,8 +8114,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2025-Hyundai-Kona-e259bcaeac1809750fe694897f1c3ba9.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1573/232110445aed7fb8b3d31ed585a0492ex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KM8HBCAB0SU279617": {
@@ -8154,7 +8154,7 @@
     "KM8R4DGE3SU905568": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KM8R4DGE3SU905568",
         "stockNumber": "HY19241T",
@@ -8186,7 +8186,7 @@
     },
     "5NMS5CAAXKH093650": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMS5CAAXKH093650",
@@ -8206,21 +8206,21 @@
         "engine": "I-4 cyl",
         "mileage": 84212,
         "msrp": null,
-        "price": 15499,
+        "price": 16999,
         "location": null,
         "rawTitle": "Used | 2019 | HyundaiSanta Fe Ultimate 2.0T",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2019-Hyundai-Santa-Fe-4569bec7ac18005db88bfdc44ff4334a.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0129/1f15742dea974b1331060529b6caa0c1x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMS5DA16PH010275": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NMS5DA16PH010275",
         "stockNumber": "HY19191T",
@@ -8253,7 +8253,7 @@
     "5NMS2DAJ5PH617535": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NMS2DAJ5PH617535",
         "stockNumber": "HY19227T",
@@ -8286,7 +8286,7 @@
     "5NMP3DGL3SH148028": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NMP3DGL3SH148028",
         "stockNumber": "HY19248T",
@@ -8318,7 +8318,7 @@
     },
     "5NMP2DGL5SH114546": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMP2DGL5SH114546",
@@ -8345,13 +8345,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2025-Hyundai-Santa-Fe-4fa04942ac181e63234f4fee96005c16.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1415/9f8e3c6095ace3fbb97a0f2da5ef2b67x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5XYZUDLB8HG497661": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5XYZUDLB8HG497661",
@@ -8378,13 +8378,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2017-Hyundai-Santa-Fe-Sport-54c403a1ac184d85f547ecd93d0de7c8.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0018/b2d1ead9db1d6e3be17c3f6dd7f8e0bcx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NTJADDE7SH152511": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NTJADDE7SH152511",
@@ -8396,7 +8396,7 @@
         "make": "Hyundai",
         "model": "Santa Cruz",
         "trim": "SE",
-        "exteriorColor": "Sage",
+        "exteriorColor": "Sage Gray",
         "interiorColor": "Black",
         "bodyStyle": "Truck Crew Cab/5 seats",
         "drivetrain": "All-Wheel Drive",
@@ -8409,10 +8409,10 @@
         "rawTitle": "Used | 2025 | HyundaiSanta Cruz SE",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2025-Hyundai-Santa-Cruz-5a5858d3ac183e41ab1f3dd1ed34f9d2.htm",
-        "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto/2025/USD50HYT012A0.jpg?impolicy=resize&w=1024",
+        "imageUrl": "https://images.dealer.com/ddc/vehicles/2025/Hyundai/Santa%20Cruz/Truck/trim_SE_65f429/color/Sage%20Gray-SY9-98%2C101%2C92-640-en_US.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMS1DAJ0PH631300": {
@@ -8451,7 +8451,7 @@
     "5NPE34AF5KH792935": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NPE34AF5KH792935",
         "stockNumber": "HY19181C",
@@ -8484,7 +8484,7 @@
     "KMHL54JJ6SA117989": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMHL54JJ6SA117989",
         "stockNumber": "HY19308T",
@@ -8517,7 +8517,7 @@
     "5NMJBCDE7SH513514": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NMJBCDE7SH513514",
         "stockNumber": "HY19192C",
@@ -8549,7 +8549,7 @@
     },
     "KM8JCCD11RU201598": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KM8JCCD11RU201598",
@@ -8576,14 +8576,14 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Tucson-Hybrid-695f4694ac1859f7ab7450ad657d2011.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0617/a552b03865d685d54c66b68e927bdca2x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMJBCDE5RH426091": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NMJBCDE5RH426091",
         "stockNumber": "HY19238T",
@@ -8616,7 +8616,7 @@
     "5NMJFCDE7SH506146": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NMJFCDE7SH506146",
         "stockNumber": "HY19258T",
@@ -8648,7 +8648,7 @@
     },
     "KM8J3CA44HU449583": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KM8J3CA44HU449583",
@@ -8675,8 +8675,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2017-Hyundai-Tucson-45c0643dac1858c9a0e64925ff2d83a9.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0852/37c63ac2af86c1af9526f4b52f52cdcex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5NMJCCDE2SH590921": {
@@ -8714,7 +8714,7 @@
     },
     "5NMJFCDE7RH328233": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMJFCDE7RH328233",
@@ -8741,8 +8741,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Tucson-499bb543ac1858c9a0e649257a801181.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1883/0f5311fd8741affaf5596b60cc509f48x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KM8J3CA41HU519606": {
@@ -8814,7 +8814,7 @@
     "KMHRC8A39RU286339": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMHRC8A39RU286339",
         "stockNumber": "HY19218T",
@@ -8846,7 +8846,7 @@
     },
     "1C4RJFJG2KC671660": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "1C4RJFJG2KC671660",
@@ -8873,14 +8873,14 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Jeep/2019-Jeep-Grand-Cherokee-2c17d2bdac1827bd9540ac67478adb97.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1214/9c58c1dd7c946f852fb69e55209923f8x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "KNAG64J78S5351158": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KNAG64J78S5351158",
         "stockNumber": "HY19265T",
@@ -9176,7 +9176,7 @@
     },
     "JTJCHMAA9P2005553": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "JTJCHMAA9P2005553",
@@ -9203,13 +9203,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/LEXUS/2023-LEXUS-RX-350-e390c563ac185184d8a067b10946bdb7.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0278/692b7e6d192bcf263b59eb5987efc755x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "3MVDMBCM8RM604937": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "3MVDMBCM8RM604937",
@@ -9236,14 +9236,14 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Mazda/2024-Mazda-CX-30-4fa04a8aac184f13ed91f8cb10e7e22c.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1679/5f653010695ec871d3d4629a8fb8b302x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "JM3KFBCM2P0157791": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "JM3KFBCM2P0157791",
         "stockNumber": "HY19245T",
@@ -9275,7 +9275,7 @@
     },
     "W1K3G4FB0LW045956": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "W1K3G4FB0LW045956",
@@ -9302,14 +9302,14 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Mercedes-Benz/2020-Mercedes-Benz-A-Class-fda5abc6ac1829bdcb8ca51527288fc7.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0484/778311a4f55d38dbae148c204c42925fx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5N1DR3DK6PC218453": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5N1DR3DK6PC218453",
         "stockNumber": "HY19239T",
@@ -9341,7 +9341,7 @@
     },
     "5N1DR2MM3KC592703": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5N1DR2MM3KC592703",
@@ -9368,13 +9368,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Nissan/2019-Nissan-Pathfinder-5c0fe66bac18005db88bfdc464aff0a3.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0813/ff3078157b8a901b605be26bad1c901ax.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "4S4BTGNDXN3127649": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "4S4BTGNDXN3127649",
@@ -9394,15 +9394,15 @@
         "engine": "H-4 cyl",
         "mileage": 58774,
         "msrp": null,
-        "price": 25499,
+        "price": 23999,
         "location": null,
         "rawTitle": "Used | 2022 | SubaruOutback Limited XT",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Subaru/2022-Subaru-Outback-47214c53ac18393e2bce80d9f6883992.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0259/5ac0e4fcc4cf6fabe7cd6101f24c0077x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "4T1G11AK1RU191608": {
@@ -9440,7 +9440,7 @@
     },
     "4T1G11BK9MU024081": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "4T1G11BK9MU024081",
@@ -9467,8 +9467,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Toyota/2021-Toyota-Camry-5c0fe338ac181c35d475de4c16b69989.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1127/6cd6df45260e9c201d7c8510edcfc836x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "5TDADAB5XRS000198": {
@@ -9506,7 +9506,7 @@
     },
     "5TDKK3DC1FS542013": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5TDKK3DC1FS542013",
@@ -9533,8 +9533,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Toyota/2015-Toyota-Sienna-70a8b7fbac180e99be2ff67d74f41fe7.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0154/8fe7d38daae4ca2e955ccb053bd80bdfx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T10:36:03.953Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 9
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 10
       }
     },
     "3TMLU4EN5BM061874": {
@@ -9606,7 +9606,7 @@
     "3VVUX7B2XRM037248": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "3VVUX7B2XRM037248",
         "stockNumber": "HY19204T",
@@ -9639,7 +9639,7 @@
     "3VV2B7AX8MM055825": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "3VV2B7AX8MM055825",
         "stockNumber": "GM20131T",
@@ -9672,7 +9672,7 @@
     "YV4L12UJ3S2475168": {
       "firstSeen": "2026-09-05T10:36:03.953Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "YV4L12UJ3S2475168",
         "stockNumber": "HY19160T",
@@ -9704,7 +9704,7 @@
     },
     "KMUMADTB5PU109511": {
       "firstSeen": "2026-09-05T15:14:47.743Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMADTB5PU109511",
@@ -9724,20 +9724,20 @@
         "engine": "I-4 cyl",
         "mileage": 59235,
         "msrp": null,
-        "price": 32999,
+        "price": 31999,
         "location": null,
         "rawTitle": "Used | 2023 | GenesisGV70 2.5T",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2023-Genesis-GV70-47214b10ac1827bd9540ac670b075e9b.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1244/f498c5b42aa1f82dd7c6bca9fabcedf0x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T15:14:47.743Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 9
       }
     },
     "KL4CJGSB8EB779588": {
       "firstSeen": "2026-09-05T16:39:37.621Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KL4CJGSB8EB779588",
@@ -9764,13 +9764,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Buick/2014-Buick-Encore-725fd876ac1859f7ab7450ad5612c2a2.htm",
         "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto-color/2014/USC40BUS042C0/GYL.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T16:39:37.621Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "KNDJN2A21G7404296": {
       "firstSeen": "2026-09-05T16:39:37.621Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KNDJN2A21G7404296",
@@ -9797,13 +9797,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Kia/2016-Kia-Soul-725fd9b8ac1838ffae3a022a685197a4.htm",
         "imageUrl": "https://images.dealer.com/ddc/vehicles/2016/Kia/Soul/Hatchback/trim_Base_327e4a/color/Clear%20White-1D-215%2C215%2C210-640-en_US.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T16:39:37.621Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "1N4AL3AP7DN473868": {
       "firstSeen": "2026-09-05T16:39:37.621Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "1N4AL3AP7DN473868",
@@ -9830,8 +9830,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Nissan/2013-Nissan-Altima-725fd6cbac181fe2458d26f29b17aa16.htm",
         "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto-color/2013/USC30NIC041D0/K23.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-05T16:39:37.621Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "WAU38LFF9G1014421": {
@@ -9869,7 +9869,7 @@
     },
     "1GNEVHKW4KJ224304": {
       "firstSeen": "2026-09-06T11:43:17.735Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "1GNEVHKW4KJ224304",
@@ -9889,20 +9889,20 @@
         "engine": "V-6 cyl",
         "mileage": 89599,
         "msrp": null,
-        "price": 18499,
+        "price": 17999,
         "location": null,
         "rawTitle": "Used | 2019 | ChevroletTraverse LT Leather",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Chevrolet/2019-Chevrolet-Traverse-74175019ac185ca9e7e2cb7f0380d34d.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1293/9af2f0acbe7309504f0b135682bb6825x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-06T11:43:17.735Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "KMTG54TE2NU091109": {
       "firstSeen": "2026-09-06T11:43:17.735Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG54TE2NU091109",
@@ -9929,13 +9929,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2022-Genesis-G70-73c2b157ac1849bfafd15ef5c1ddf9a6.htm",
         "imageUrl": "https://images.dealer.com/ddc/vehicles/2022/Genesis/G70/Sedan/trim_33T_161872/color/Uyuni%20White-UYH-221%2C221%2C222-640-en_US.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-06T11:43:17.735Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "KMTG74LE8MU066515": {
       "firstSeen": "2026-09-06T11:43:17.735Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTG74LE8MU066515",
@@ -9962,8 +9962,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2021-Genesis-G70-73c2b40dac185ca9e7e2cb7f120876c3.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1278/d6b3019b852c803df24d29d1b66c47c6x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-06T11:43:17.735Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "KM8K3CAB9PU009604": {
@@ -10001,7 +10001,7 @@
     },
     "KM8HECA35RU172508": {
       "firstSeen": "2026-09-06T11:43:17.735Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KM8HECA35RU172508",
@@ -10021,20 +10021,20 @@
         "engine": "I-4 cyl",
         "mileage": 30199,
         "msrp": null,
-        "price": 27499,
+        "price": 26999,
         "location": null,
         "rawTitle": "Used | 2024 | HyundaiKona Limited",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Kona-75cea96cac184d75e32c2e10c99006a1.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1767/206ac56924a333d54eb65342f02266a6x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-06T11:43:17.735Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "KNAG64J7XS5324608": {
       "firstSeen": "2026-09-06T11:43:17.735Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KNAG64J7XS5324608",
@@ -10061,13 +10061,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Kia/2025-Kia-K5-73c2b578ac180e99be2ff67dcac79489.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1697/51533bf4652de0876d038f6770be6c9ex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-06T11:43:17.735Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "JM1NDAM70H0107603": {
       "firstSeen": "2026-09-06T11:43:17.735Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "JM1NDAM70H0107603",
@@ -10087,20 +10087,20 @@
         "engine": "I-4 cyl",
         "mileage": 22164,
         "msrp": null,
-        "price": 24499,
+        "price": 22999,
         "location": null,
         "rawTitle": "Used | 2017 | MazdaMazda MX-5 Miata RF Grand Touring",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Mazda/2017-Mazda-Mazda-MX-5-Miata-RF-73aa63cfac180e99be2ff67d8308ed8a.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0885/d83f207b1d399d9cfa1ef0fa04c75ae2x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-06T11:43:17.735Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 8
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 9
       }
     },
     "KL7CJLSB6GB570865": {
       "firstSeen": "2026-09-07T13:57:38.958Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KL7CJLSB6GB570865",
@@ -10127,13 +10127,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Chevrolet/2016-Chevrolet-Trax-78cf98f5ac1813b262e6ac10ed9d44ec.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0964/51d230a1df8950de9f837ce907301736x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-07T13:57:38.958Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 7
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 8
       }
     },
     "1FTEW1EP6JKC59713": {
       "firstSeen": "2026-09-07T13:57:38.958Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "1FTEW1EP6JKC59713",
@@ -10160,13 +10160,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Ford/2018-Ford-F-150-793d84c2ac183b721f3e022323eafbbc.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0789/59cacbdaa6caf606df37ed5e68a65aaax.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-07T13:57:38.958Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 7
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 8
       }
     },
     "5NMJBCDE9RH421587": {
       "firstSeen": "2026-09-07T13:57:38.958Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMJBCDE9RH421587",
@@ -10193,13 +10193,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Tucson-78cf9abcac185ca9e7e2cb7fb4de3dbb.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1420/4f6cf12480f67c32c304233a39e1853fx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-07T13:57:38.958Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 7
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 8
       }
     },
     "5NMJFCDE8RH418426": {
       "firstSeen": "2026-09-07T13:57:38.958Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMJFCDE8RH418426",
@@ -10226,8 +10226,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Tucson-793d82fdac1838ffae3a022a542d518d.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0018/0e18470463061b7e44ba7b997ec8ad57x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-07T13:57:38.958Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 7
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 8
       }
     },
     "KMTG34SC6TU172407": {
@@ -10265,7 +10265,7 @@
     },
     "5NMMCDTC0RH010045": {
       "firstSeen": "2026-09-08T11:54:57.101Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMMCDTC0RH010045",
@@ -10292,13 +10292,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2024-Genesis-GV70-7e0f4700ac185ca9e7e2cb7fa59387fc.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0426/d79d2913f0f5804b990cefe70c027586x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-08T11:54:57.101Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 6
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 7
       }
     },
     "5NTJEDAF4RH089752": {
       "firstSeen": "2026-09-08T11:54:57.101Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NTJEDAF4RH089752",
@@ -10325,13 +10325,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Santa-Cruz-7df5c713ac185ca9e7e2cb7f9b7826ae.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1142/7025369a0aa4367f4046f350602f2ad5x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-08T11:54:57.101Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 6
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 7
       }
     },
     "JM3KJEHC3S1106061": {
       "firstSeen": "2026-09-08T11:54:57.101Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "JM3KJEHC3S1106061",
@@ -10358,13 +10358,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Mazda/2025-Mazda-CX-70-7e0f4849ac181fe2458d26f24ade6cf8.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0045/cac430732c44cab2ab098007ceb196f3x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-08T11:54:57.101Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 6
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 7
       }
     },
     "YV4M12RC9S1000502": {
       "firstSeen": "2026-09-08T11:54:57.101Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "YV4M12RC9S1000502",
@@ -10391,14 +10391,14 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Volvo/2025-Volvo-XC60-7e0f49ecac184bccd6d58c5b99d17077.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1898/dc9c7cdbf0602a9cd9d29351192056e1x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-08T11:54:57.101Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 6
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 7
       }
     },
     "KMUJBESC1VU362239": {
       "firstSeen": "2026-09-09T13:22:41.829Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "KMUJBESC1VU362239",
         "stockNumber": "GM270152S",
@@ -10430,7 +10430,7 @@
     },
     "1GKKVSKD2HJ272856": {
       "firstSeen": "2026-09-09T13:22:41.829Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "1GKKVSKD2HJ272856",
@@ -10457,13 +10457,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/GMC/2017-GMC-Acadia-Limited-8541faf1ac1847cfb9a67960e8fea9a1.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1896/0e9813c77b2ced7db4ed8c88914b4638x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-09T13:22:41.829Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 5
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 6
       }
     },
     "KMHLL4DG2SU912901": {
       "firstSeen": "2026-09-09T13:22:41.829Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMHLL4DG2SU912901",
@@ -10490,8 +10490,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2025-Hyundai-Elantra-831c59c4ac1849bfafd15ef583d79a51.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1907/961f11964086d511a33e3610436598b9x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-09T13:22:41.829Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 5
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 6
       }
     },
     "1C6SRFFTXKN587159": {
@@ -10529,7 +10529,7 @@
     },
     "2T1BR32E18C858068": {
       "firstSeen": "2026-09-09T13:22:41.829Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "2T1BR32E18C858068",
@@ -10556,8 +10556,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Toyota/2008-Toyota-Corolla-831c583fac1806568f439d171f593006.htm",
         "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto/2008/USB80TOC041A0.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-09T13:22:41.829Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 5
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 6
       }
     },
     "3VV2B7AX4KM126998": {
@@ -10595,7 +10595,7 @@
     },
     "KMTGC4SC7VU340915": {
       "firstSeen": "2026-09-10T12:54:07.000Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGC4SC7VU340915",
@@ -10622,13 +10622,13 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2027-Genesis-G80-87806ae0ac1847cfb9a6796064f36003.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/29d44ca7825f7b042de092188ad7a107.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-10T12:54:07.000Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 4
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 5
       }
     },
     "KMUJBESC8TU346777": {
       "firstSeen": "2026-09-10T12:54:07.000Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUJBESC8TU346777",
@@ -10655,8 +10655,8 @@
         "sourceUrl": "https://www.genesisofmanchester.com/new/Genesis/2026-Genesis-GV80-Coupe-8877ca67ac180ee004f7d21e71dd3e1a.htm",
         "imageUrl": "https://pictures.dealer.com/generic-genesis-OEM_VIN_STOCK_PHOTOS/4be107ff9f9e035b99c42e3cc9234c0f.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-10T12:54:07.000Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 4
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 5
       }
     },
     "3GNKBLRS5LS580830STOCK# HY19230T": {
@@ -10694,7 +10694,7 @@
     },
     "KMTGA4SC9TU313430": {
       "firstSeen": "2026-09-10T12:54:07.000Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMTGA4SC9TU313430",
@@ -10721,13 +10721,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2026-Genesis-G80-343f0fe7ac1829bdebbeb559db358e47.htm",
         "imageUrl": "https://images.dealer.com/ddc/vehicles/2026/Genesis/G80/Sedan/trim_25T_451cfc/color/Savile%20Silver-SSS-181%2C182%2C187-640-en_US.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-10T12:54:07.000Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 4
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 5
       }
     },
     "KMUHCESC6RU155699": {
       "firstSeen": "2026-09-10T12:54:07.000Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHCESC6RU155699",
@@ -10754,13 +10754,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2024-Genesis-GV80-88778717ac1823ba6e36220615ce7ab4.htm",
         "imageUrl": "https://images.dealer.com/ddc/vehicles/2024/Genesis/GV80/SUV/trim_35T_a76951/color/Cardiff%20Green-HT7-17%2C37%2C29-640-en_US.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-10T12:54:07.000Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 4
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 5
       }
     },
     "1HGCY1F38RA015545": {
       "firstSeen": "2026-09-10T12:54:07.000Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "1HGCY1F38RA015545",
@@ -10787,8 +10787,8 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Honda/2024-Honda-Accord-86a49c33ac184d75e32c2e109cb47e79.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0542/a64fe531597b09c51bad43b03eda596cx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-10T12:54:07.000Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 4
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 5
       }
     },
     "SHHFK7H56JU428623STOCK# HY19287W": {
@@ -10859,7 +10859,7 @@
     },
     "KM8R2DHE8MU236494": {
       "firstSeen": "2026-09-10T12:54:07.000Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KM8R2DHE8MU236494",
@@ -10886,14 +10886,14 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2021-Hyundai-Palisade-8a681681ac1849bfafd15ef59c7beeec.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1247/b553e15edf7062959baaf396f47d1599x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-10T12:54:07.000Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 4
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 5
       }
     },
     "KMHL54JJ6SA117989STOCK# HY19308T": {
       "firstSeen": "2026-09-10T12:54:07.000Z",
-      "lastSeen": "2026-09-10T12:54:07.000Z",
-      "removedAt": "2026-09-11T14:57:04.177Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
+      "removedAt": null,
       "lastKnown": {
         "vin": "KMHL54JJ6SA117989STOCK# HY19308T",
         "stockNumber": "HY19308T",
@@ -10909,18 +10909,18 @@
         "bodyStyle": "Sedan/5 seats",
         "drivetrain": "Front-Wheel Drive",
         "transmission": "6-Speed Automatic with Shiftronic",
-        "engine": "pairs with a 6-speed automatic transmission with Shiftronic to give you smooth, confident power on both city streets and open highway. With just 13,855 miles on it, this Carbon Blue sedan has barely been broken in, and it carries a price of $31,999.",
+        "engine": "paired with a 6-speed automatic transmission with Shiftronic, sending power to the front wheels with a smooth, confident delivery. With just 13,855 miles on the clock, this Carbon Blue Sonata is barely broken in and carries a price of $31,499.",
         "mileage": 13855,
         "msrp": null,
-        "price": 31999,
+        "price": 31499,
         "location": null,
         "rawTitle": "Used | 2025 | HyundaiSonata Hybrid Limited",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2025-Hyundai-Sonata-Hybrid-70a8b676ac184bccd6d58c5b59739b78.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1238/63eb73daf8edd97fd80220bb822883c1x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-10T12:54:07.000Z",
-        "lastSeen": "2026-09-10T12:54:07.000Z",
-        "daysObserved": 1
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 5
       }
     },
     "KMHL34JJ8RA090679STOCK# HY19328X": {
@@ -11123,7 +11123,7 @@
     },
     "KMUMADTB1NU027708": {
       "firstSeen": "2026-09-11T14:57:04.177Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUMADTB1NU027708",
@@ -11150,13 +11150,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2022-Genesis-GV70-8ca6a7b9ac183d20eebe8ad17e283162.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0820/67b8df1ec2991af29c30ccd53ce9eb34x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-11T14:57:04.177Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 3
       }
     },
     "KMHL34JJ8RA090679": {
       "firstSeen": "2026-09-11T14:57:04.177Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMHL34JJ8RA090679",
@@ -11183,13 +11183,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Sonata-Hybrid-87671613ac18112a917d960962add801.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1109/6f3d4d4619be1cce4605abe465cd3fc5x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-11T14:57:04.177Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 3
       }
     },
     "KNAG64J79S5310960": {
       "firstSeen": "2026-09-11T14:57:04.177Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KNAG64J79S5310960",
@@ -11216,13 +11216,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Kia/2025-Kia-K5-8f39a024ac18279fa3a7553b6957d5c8.htm",
         "imageUrl": "https://images.dealer.com/autodata/us/color/2025/USD50KIC203A0/C7S.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-11T14:57:04.177Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 3
       }
     },
     "5UX53DP05P9S88807": {
       "firstSeen": "2026-09-12T13:57:43.674Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5UX53DP05P9S88807",
@@ -11249,13 +11249,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/BMW/2023-BMW-X3-92a9a320ac185fef39d0f00f644d76d3.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1072/0a4f47714802b126805f5600796145b6x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-12T13:57:43.674Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 2
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 3
       }
     },
     "KMHLM4AGXPU498341": {
       "firstSeen": "2026-09-12T13:57:43.674Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMHLM4AGXPU498341",
@@ -11282,13 +11282,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2023-Hyundai-Elantra-928fbc6aac1811a5b94575c67b0120a9.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1106/4ca974a4ece7b26de74d72edb4b2999dx.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-12T13:57:43.674Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 2
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 3
       }
     },
     "KM8HACAB3RU042682": {
       "firstSeen": "2026-09-12T13:57:43.674Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KM8HACAB3RU042682",
@@ -11315,13 +11315,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Kona-94b4eabbac1849e6c966ea6fe5c86283.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0481/b710f43bc8138071a99b445876843fa5x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-12T13:57:43.674Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 2
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 3
       }
     },
     "5NMS5DAL5PH596856": {
       "firstSeen": "2026-09-12T13:57:43.674Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMS5DAL5PH596856",
@@ -11348,13 +11348,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2023-Hyundai-Santa-Fe-94b4e936ac185bc6fc1af9b5e8e05d9b.htm",
         "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/0890/1e93972a97da74dc27ed3a16e89de85ax.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-12T13:57:43.674Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 2
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 3
       }
     },
     "5NMS3DA13PH017951": {
       "firstSeen": "2026-09-12T13:57:43.674Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMS3DA13PH017951",
@@ -11381,13 +11381,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2023-Hyundai-Santa-Fe-Hybrid-92a9a1ceac183203311d4ef26a63667e.htm",
         "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1572/1e93972a97da74dc27ed3a16e89de85ax.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-12T13:57:43.674Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
-        "daysObserved": 2
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 3
       }
     },
     "KMUHBDSB4RU164325": {
       "firstSeen": "2026-09-13T16:10:33.188Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KMUHBDSB4RU164325",
@@ -11407,20 +11407,20 @@
         "engine": "I-4 cyl",
         "mileage": 31936,
         "msrp": null,
-        "price": null,
+        "price": 42499,
         "location": null,
         "rawTitle": "Used | 2024 | GenesisGV80 2.5T",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2024-Genesis-GV80-97cf0f22ac185bc6fc1af9b54415b23d.htm",
-        "imageUrl": "https://images.dealer.com/ddc/vehicles/2024/Genesis/GV80/SUV/trim_25T_7cd024/color/Vik%20Black-PH3-13%2C13%2C13-640-en_US.jpg?impolicy=resize&w=1024",
+        "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/0224/3fbde56add7d943a72154a9958a29e5ex.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-13T16:10:33.188Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 1
       }
     },
     "5NMP5DGLXRH065474": {
       "firstSeen": "2026-09-13T16:10:33.188Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NMP5DGLXRH065474",
@@ -11447,13 +11447,13 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2024-Hyundai-Santa-Fe-97b80e88ac1849e6c966ea6fc90b4070.htm",
         "imageUrl": "https://images.dealer.com/ddc/vehicles/2024/Hyundai/Santa%20Fe/SUV/trim_Calligraphy_096bc9/still/front-left/front-left-640-en_US.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-13T16:10:33.188Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 1
       }
     },
     "5NPET4AC7AH609443": {
       "firstSeen": "2026-09-13T16:10:33.188Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "5NPET4AC7AH609443",
@@ -11480,14 +11480,14 @@
         "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2010-Hyundai-Sonata-9823faafac1811a5b94575c6d77e3b99.htm",
         "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto-color/2010/USC00HYC031A2/DS.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-13T16:10:33.188Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 1
       }
     },
     "5NMJECDE3RH332685": {
       "firstSeen": "2026-09-13T16:10:33.188Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "5NMJECDE3RH332685",
         "stockNumber": "HY19339C",
@@ -11519,7 +11519,7 @@
     },
     "KNDPUCDG9R7123697": {
       "firstSeen": "2026-09-13T16:10:33.188Z",
-      "lastSeen": "2026-09-13T16:10:33.188Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
       "removedAt": null,
       "lastKnown": {
         "vin": "KNDPUCDG9R7123697",
@@ -11539,21 +11539,21 @@
         "engine": "and electric motor without any extra effort on your part. It is the kind of vehicle you settle into quickly and feel confident in from the first drive.",
         "mileage": 18796,
         "msrp": null,
-        "price": null,
+        "price": 28499,
         "location": null,
         "rawTitle": "Used | 2024 | KiaSportage Hybrid LX",
         "source": "shared-used",
         "sourceUrl": "https://www.autofairhyundai.com/used/Kia/2024-Kia-Sportage-Hybrid-99867650ac185fef39d0f00f155c56ba.htm",
-        "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto/2024/USD40KIS122A0.jpg?impolicy=resize&w=1024",
+        "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1235/08f41821838419bc04f47d14a354d2a7x.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-13T16:10:33.188Z",
-        "lastSeen": "2026-09-13T16:10:33.188Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 1
       }
     },
     "3TMLB5JN1TM212325": {
       "firstSeen": "2026-09-13T16:10:33.188Z",
       "lastSeen": "2026-09-13T16:10:33.188Z",
-      "removedAt": null,
+      "removedAt": "2026-09-14T14:52:22.997Z",
       "lastKnown": {
         "vin": "3TMLB5JN1TM212325",
         "stockNumber": "GM20197W",
@@ -11580,6 +11580,237 @@
         "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto/2026/USD60TOT096C0.jpg?impolicy=resize&w=1024",
         "firstSeen": "2026-09-13T16:10:33.188Z",
         "lastSeen": "2026-09-13T16:10:33.188Z",
+        "daysObserved": 1
+      }
+    },
+    "WAUL2AF26LN002491STOCK# GM20149T": {
+      "firstSeen": "2026-09-14T14:52:22.997Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
+      "removedAt": null,
+      "lastKnown": {
+        "vin": "WAUL2AF26LN002491STOCK# GM20149T",
+        "stockNumber": "GM20149T",
+        "condition": "used",
+        "certified": false,
+        "availability": "in-stock",
+        "year": 2020,
+        "make": "Audi",
+        "model": "A6",
+        "trim": "55 Premium",
+        "exteriorColor": "Florett Silver",
+        "interiorColor": "Black",
+        "bodyStyle": "Sedan/5 seats",
+        "drivetrain": "quattro",
+        "transmission": "7-Speed Automatic",
+        "engine": "V-6 cyl",
+        "mileage": 81725,
+        "msrp": null,
+        "price": null,
+        "location": null,
+        "rawTitle": "Used | 2020 | AudiA6 55 Premium",
+        "source": "shared-used",
+        "sourceUrl": "https://www.autofairhyundai.com/used/Audi/2020-Audi-A6-2e3cf27aac18090df99629c9f80b40ff.htm",
+        "imageUrl": "https://pictures.dealer.com/g/genesisofmanchestergen/1984/d1d2de84d18f555c52cc1820776e7ea5x.jpg?impolicy=resize&w=1024",
+        "firstSeen": "2026-09-14T14:52:22.997Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 1
+      }
+    },
+    "1G6DG5RKXS0109926": {
+      "firstSeen": "2026-09-14T14:52:22.997Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
+      "removedAt": null,
+      "lastKnown": {
+        "vin": "1G6DG5RKXS0109926",
+        "stockNumber": "GM20199T",
+        "condition": "used",
+        "certified": false,
+        "availability": "in-stock",
+        "year": 2025,
+        "make": "CADILLAC",
+        "model": "CT4",
+        "trim": "Sport",
+        "exteriorColor": "Typhoon",
+        "interiorColor": "Jet Black With Jet Black Accents",
+        "bodyStyle": "Sedan/5 seats",
+        "drivetrain": "Rear-Wheel Drive",
+        "transmission": "8-Speed Automatic",
+        "engine": "I-4 cyl",
+        "mileage": 33383,
+        "msrp": null,
+        "price": 802,
+        "location": null,
+        "rawTitle": "Used | 2025 | CADILLACCT4 Sport",
+        "source": "shared-used",
+        "sourceUrl": "https://www.autofairhyundai.com/used/CADILLAC/2025-CADILLAC-CT4-9d631e71ac1849e6c966ea6f79dc0a76.htm",
+        "imageUrl": "https://images.dealer.com/ddc/vehicles/2025/CADILLAC/CT4/Sedan/trim_Sport_f054d5/color/Typhoon%20Metallic-GBW-82%2C93%2C106-640-en_US.jpg?impolicy=resize&w=1024",
+        "firstSeen": "2026-09-14T14:52:22.997Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 1
+      }
+    },
+    "5NMMADTB2TH059770": {
+      "firstSeen": "2026-09-14T14:52:22.997Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
+      "removedAt": null,
+      "lastKnown": {
+        "vin": "5NMMADTB2TH059770",
+        "stockNumber": "GM260480L",
+        "condition": "used",
+        "certified": false,
+        "availability": "in-stock",
+        "year": 2026,
+        "make": "Genesis",
+        "model": "GV70",
+        "trim": "2.5T AWD",
+        "exteriorColor": "Savile Silver",
+        "interiorColor": "Obsidian Black",
+        "bodyStyle": "SUV/5 seats",
+        "drivetrain": "All-Wheel Drive",
+        "transmission": "8-Speed Automatic with SHIFTRONIC",
+        "engine": "I-4 cyl",
+        "mileage": 4630,
+        "msrp": null,
+        "price": 49499,
+        "location": null,
+        "rawTitle": "Used | 2026 | GenesisGV70 2.5T AWD",
+        "source": "shared-used",
+        "sourceUrl": "https://www.autofairhyundai.com/used/Genesis/2026-Genesis-GV70-a0645af6ac18004e1d0db14ee5eeab95.htm",
+        "imageUrl": "https://images.dealer.com/ddc/vehicles/2026/Genesis/GV70/SUV/trim_25T_d61b11/color/Savile%20Silver-SSS-131%2C131%2C134-640-en_US.jpg?impolicy=resize&w=1024",
+        "firstSeen": "2026-09-14T14:52:22.997Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 1
+      }
+    },
+    "2HKRW2H50KH642905": {
+      "firstSeen": "2026-09-14T14:52:22.997Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
+      "removedAt": null,
+      "lastKnown": {
+        "vin": "2HKRW2H50KH642905",
+        "stockNumber": "GM20200T",
+        "condition": "used",
+        "certified": false,
+        "availability": "in-stock",
+        "year": 2019,
+        "make": "Honda",
+        "model": "CR-V",
+        "trim": "EX AWD",
+        "exteriorColor": "Red",
+        "interiorColor": null,
+        "bodyStyle": "SUV/5 seats",
+        "drivetrain": "All-wheel Drive",
+        "transmission": "CVT",
+        "engine": "I-4 cyl",
+        "mileage": 66104,
+        "msrp": null,
+        "price": 23699,
+        "location": ", and our team is happy to answer any questions about its condition or history.",
+        "rawTitle": "Used | 2019 | HondaCR-V EX AWD",
+        "source": "shared-used",
+        "sourceUrl": "https://www.autofairhyundai.com/used/Honda/2019-Honda-CR-V-9f1acde7ac184088ef41bc97fdddaf73.htm",
+        "imageUrl": "https://images.dealer.com/ddc/vehicles/2019/Honda/CR-V/SUV/trim_EX_75331c/color/Basque%20Red%20Pearl%20II-RB-69%2C14%2C28-640-en_US.jpg?impolicy=resize&w=1024",
+        "firstSeen": "2026-09-14T14:52:22.997Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 1
+      }
+    },
+    "5NPD84LF3JH335680": {
+      "firstSeen": "2026-09-14T14:52:22.997Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
+      "removedAt": null,
+      "lastKnown": {
+        "vin": "5NPD84LF3JH335680",
+        "stockNumber": "HY19342T",
+        "condition": "used",
+        "certified": false,
+        "availability": "in-stock",
+        "year": 2018,
+        "make": "Hyundai",
+        "model": "Elantra",
+        "trim": "Value Edition",
+        "exteriorColor": "Symphony Silver",
+        "interiorColor": "Gray",
+        "bodyStyle": "Sedan/5 seats",
+        "drivetrain": "Front-wheel Drive",
+        "transmission": "6-Speed Automatic with Shiftronic",
+        "engine": "I-4 cyl",
+        "mileage": 113510,
+        "msrp": null,
+        "price": 9999,
+        "location": null,
+        "rawTitle": "Used | 2018 | HyundaiElantra Value Edition",
+        "source": "shared-used",
+        "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2018-Hyundai-Elantra-9d4a1e31ac183203311d4ef24b0b7543.htm",
+        "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto-color/2018/USC80HYC021E0/Y8.jpg?impolicy=resize&w=1024",
+        "firstSeen": "2026-09-14T14:52:22.997Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 1
+      }
+    },
+    "5NMJECDE4SH504129": {
+      "firstSeen": "2026-09-14T14:52:22.997Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
+      "removedAt": null,
+      "lastKnown": {
+        "vin": "5NMJECDE4SH504129",
+        "stockNumber": "HY19341T",
+        "condition": "used",
+        "certified": false,
+        "availability": "in-stock",
+        "year": 2025,
+        "make": "Hyundai",
+        "model": "Tucson",
+        "trim": "Limited",
+        "exteriorColor": "Ecotronic Gray Matte",
+        "interiorColor": "Gray/Green 3-Tone",
+        "bodyStyle": "SUV/5 seats",
+        "drivetrain": "All-Wheel Drive",
+        "transmission": "8-Speed Automatic with SHIFTRONIC",
+        "engine": "I-4 cyl",
+        "mileage": 9177,
+        "msrp": null,
+        "price": 33499,
+        "location": null,
+        "rawTitle": "Used | 2025 | HyundaiTucson Limited",
+        "source": "shared-used",
+        "sourceUrl": "https://www.autofairhyundai.com/used/Hyundai/2025-Hyundai-Tucson-26d92b20ac181da0dd1bebc300ea05ca.htm",
+        "imageUrl": "https://pictures.dealer.com/a/autofairhyundainh/1847/2a49a2291435656807a2279e4c118162x.jpg?impolicy=resize&w=1024",
+        "firstSeen": "2026-09-14T14:52:22.997Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
+        "daysObserved": 1
+      }
+    },
+    "3VWN57BU0MM094977": {
+      "firstSeen": "2026-09-14T14:52:22.997Z",
+      "lastSeen": "2026-09-14T14:52:22.997Z",
+      "removedAt": null,
+      "lastKnown": {
+        "vin": "3VWN57BU0MM094977",
+        "stockNumber": "HY19343T",
+        "condition": "used",
+        "certified": false,
+        "availability": "in-stock",
+        "year": 2021,
+        "make": "Volkswagen",
+        "model": "Jetta",
+        "trim": "1.4T",
+        "exteriorColor": null,
+        "interiorColor": null,
+        "bodyStyle": "Sedan/5 seats",
+        "drivetrain": "Front-wheel Drive",
+        "transmission": "6-Speed Manual",
+        "engine": "I-4 cyl",
+        "mileage": 80834,
+        "msrp": null,
+        "price": 13999,
+        "location": null,
+        "rawTitle": "Used | 2021 | VolkswagenJetta 1.4T",
+        "source": "shared-used",
+        "sourceUrl": "https://www.autofairhyundai.com/used/Volkswagen/2021-Volkswagen-Jetta-9d4a1c91ac180452357e7dbbb1935a2b.htm",
+        "imageUrl": "https://images.dealer.com/autodata/us/large_stockphoto/2021/USD10VWC033A0.jpg?impolicy=resize&w=1024",
+        "firstSeen": "2026-09-14T14:52:22.997Z",
+        "lastSeen": "2026-09-14T14:52:22.997Z",
         "daysObserved": 1
       }
     }
