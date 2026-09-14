@@ -10,13 +10,14 @@
 
 ## Nightly inventory flow
 
-1. GitHub Actions starts `Nightly Inventory Sync` at 07:30 UTC.
+1. GitHub Actions begins morning inventory recovery attempts at 7:17 AM America/New_York and retries at staggered times through 12:52 PM if the day's inventory is still stale.
 2. The collector discovers New Genesis, AutoFair shared used, and Genesis Certified VDPs.
 3. VDPs are normalized and deduplicated, preferring VIN as the stable key.
 4. Validation checks crawl coverage, inventory floors, VIN/critical-field completeness, and change safety.
 5. If validation fails, no generated inventory file is replaced.
 6. If validation succeeds and data changed, GitHub Actions commits the generated files to `main`.
 7. Vercel detects the `main` commit and creates a new production deployment.
+8. Independent GitHub and Vercel freshness watchdogs provide additional recovery attempts when the main schedule is delayed or missed.
 
 ## Inventory sources
 
@@ -94,7 +95,9 @@ Do not create a separate manual deployment pipeline unless the native Git integr
 
 Natural-language search is deterministic and local. It does not require an external LLM.
 
-The UI synchronizes explicit query intent into Stock Type, Availability, and known Genesis Model filters. If a query returns unexpectedly few results, check the visible filters before changing parser logic.
+Exact stock number and VIN queries are treated as hard catalog matches. A recognized identifier carries the matching vehicle's condition, availability, make, and model into the visible filters so a prior UI filter cannot hide the vehicle.
+
+The UI synchronizes explicit query intent into Stock Type, Availability, and known Genesis Model filters. If a non-identifier query returns unexpectedly few results, check the visible filters before changing parser logic.
 
 ## Known limitations
 
