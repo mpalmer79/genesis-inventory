@@ -50,11 +50,17 @@ try {
   await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
 
   assert((await page.locator('h1').first().textContent())?.includes('Genesis of Manchester'), 'Hero title is missing.');
-  assert(await page.getByLabel('Stock Type').inputValue() === 'all', 'Default Stock Type must be All.');
+  assert(await page.getByRole('combobox', { name: 'Stock Type', exact: true }).inputValue() === 'all', 'Default Stock Type must be All.');
   assert(await page.locator('.vehicle-card').count() > 0, 'Default all-stock inventory cards are missing.');
   assert(await page.getByRole('button', { name: 'Copy VIN / Stock' }).count() > 0, 'Vehicle copy action is missing.');
 
   const search = page.getByLabel('Ask inventory');
+
+  await search.fill('GM260818S');
+  await page.getByRole('button', { name: 'Search', exact: true }).click();
+  await page.waitForFunction(() => document.querySelectorAll('.vehicle-card').length === 1, undefined, { timeout: 3000 });
+  const stockLookupText = await page.locator('.vehicle-card').first().textContent();
+  assert(stockLookupText?.includes('GM260818S'), 'Exact stock-number lookup did not return GM260818S.');
 
   await search.fill('Show me new Genesis vehicles');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
@@ -73,7 +79,7 @@ try {
   await search.fill('Used AWD SUVs under 30k miles');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
   await waitForSelectValue(page, 'Stock Type', 'used');
-  assert(await page.getByLabel('Make').count() === 1, 'Pre-Owned Make filter is missing.');
+  assert(await page.getByRole('combobox', { name: 'Make', exact: true }).count() === 1, 'Pre-Owned Make filter is missing.');
 
   await search.fill('Used Genesis vehicles');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
