@@ -8,6 +8,11 @@ export const CONFIG = {
     },
     {
       name: 'shared-used',
+      url: 'https://www.genesisofmanchester.com/used-inventory/index.htm',
+      condition: 'used'
+    },
+    {
+      name: 'shared-used',
       url: 'https://www.autofairhyundai.com/used-inventory/index.htm',
       condition: 'used'
     },
