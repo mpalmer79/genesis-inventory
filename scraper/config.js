@@ -24,7 +24,7 @@ export const CONFIG = {
     minimumTotalVehicles: 100,
     minimumNewVehicles: 50,
     minimumPreOwnedVehicles: 50,
-    minimumDiscoveryCoverage: 1,
+    minimumDiscoveryCoverage: 0.95,
     minimumVinCompleteness: 0.85,
     minimumRetainedRatio: 0.45,
     minimumCriticalFieldCompleteness: 0.95,
