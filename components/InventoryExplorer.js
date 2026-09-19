@@ -299,16 +299,10 @@ export default function InventoryExplorer({ inventory }) {
     if (!normalized) return;
 
     const parsed = parseInventoryQuery(normalized, vehicles);
-    if (parsed.filters.condition) {
-      setCondition(parsed.filters.condition);
-      if (!parsed.filters.make) setMake('all');
-      if (!parsed.filters.model) setModel('all');
-    } else {
-      setCondition('all');
-    }
-    if (parsed.filters.availability) setAvailability(parsed.filters.availability);
-    if (parsed.filters.make) setMake(parsed.filters.make);
-    if (parsed.filters.model) setModel(parsed.filters.model);
+    setCondition(parsed.filters.condition || 'all');
+    setAvailability(parsed.filters.availability || 'all');
+    setMake(parsed.filters.make || 'all');
+    setModel(parsed.filters.model || 'all');
 
     setQueryInput(normalized);
     setQuery(normalized);
