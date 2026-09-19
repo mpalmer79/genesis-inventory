@@ -11,6 +11,20 @@ on:
       timezone: 'America/New_York'
     - cron: '23 12 * * *'
       timezone: 'America/New_York'
+  workflow_run:
+    workflows:
+      - 'Nightly Inventory Sync'
+    types:
+      - completed
+  push:
+    branches:
+      - main
+    paths:
+      - 'app/page.js'
+      - 'app/api/search/route.js'
+      - 'app/api/inventory-health/**'
+      - 'lib/inventorySource.js'
+      - '.github/workflows/inventory-freshness-watch.yml'
   workflow_dispatch:
 
 permissions:
@@ -31,6 +45,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check inventory date and recover if stale
+        id: freshness
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -44,9 +59,48 @@ jobs:
           fi
 
           if [[ "$generated_day" == "$today" ]]; then
-            echo "Inventory is current for $today. No recovery needed."
+            echo "Inventory is current for $today."
+            echo "repo_current=true" >> "$GITHUB_OUTPUT"
+            echo "generated_at=$generated_at" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
+          echo "repo_current=false" >> "$GITHUB_OUTPUT"
           echo "Inventory is stale or unreadable (last day: ${generated_day:-unknown}). Dispatching recovery sync."
           gh workflow run inventory-sync.yml --ref main
+
+      - name: Verify production inventory delivery
+        if: steps.freshness.outputs.repo_current == 'true'
+        env:
+          EXPECTED_GENERATED_AT: ${{ steps.freshness.outputs.generated_at }}
+          HEALTH_URL: https://genesis-manchester.vercel.app/api/inventory-health
+        shell: bash
+        run: |
+          for attempt in 1 2 3 4 5 6; do
+            response=$(curl --fail --silent --show-error --max-time 15 "$HEALTH_URL" || true)
+
+            if [[ -n "$response" ]]; then
+              if HEALTH_RESPONSE="$response" node --input-type=module -e '
+                const health = JSON.parse(process.env.HEALTH_RESPONSE);
+                const expected = Date.parse(process.env.EXPECTED_GENERATED_AT);
+                const actual = Date.parse(health.generatedAt || "");
+                if (health.current === true && Number.isFinite(actual) && actual >= expected) {
+                  console.log("Production is current: " + health.generatedAt + " via " + health.source + ".");
+                  process.exit(0);
+                }
+                console.error("Production mismatch: generatedAt=" + health.generatedAt + ", current=" + health.current + ", source=" + health.source);
+                process.exit(1);
+              '; then
+                exit 0
+              fi
+            else
+              echo "Production health endpoint did not return a successful response on attempt $attempt."
+            fi
+
+            if [[ "$attempt" != "6" ]]; then
+              sleep 20
+            fi
+          done
+
+          echo "::error::Production is not serving the current validated inventory snapshot."
+          exit 1
