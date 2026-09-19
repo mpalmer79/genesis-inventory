@@ -16,8 +16,9 @@
 4. Validation checks crawl coverage, inventory floors, VIN/critical-field completeness, and change safety.
 5. If validation fails, no generated inventory file is replaced.
 6. If validation succeeds and data changed, GitHub Actions commits the generated files to `main`.
-7. Vercel detects the `main` commit and creates a new production deployment.
-8. Independent GitHub and Vercel freshness watchdogs provide additional recovery attempts when the main schedule is delayed or missed.
+7. The production application reads the latest validated `data/inventory.json` from GitHub at request time, so inventory-only commits do not require a Vercel deployment.
+8. If the live inventory fetch is temporarily unavailable, the application falls back to the validated inventory bundled with the deployed build.
+9. The GitHub freshness watchdog verifies both repository freshness and the production `/api/inventory-health` response.
 
 ## Inventory sources
 
@@ -59,7 +60,7 @@ Do not lower validation thresholds simply to make a broken crawl pass. Diagnose 
 
 ## Stale inventory behavior
 
-The app remains available when a scrape fails because the previous successful dataset remains committed.
+The app remains available when a scrape fails because the previous successful dataset remains committed. The production application also retains a bundled validated snapshot as a fallback if the runtime GitHub fetch is temporarily unavailable.
 
 UI health states:
 
@@ -80,16 +81,17 @@ If the nightly job fails:
 
 ## Deployment troubleshooting
 
-Vercel deploys from GitHub `main` automatically.
+Vercel deploys application code changes from GitHub `main`. Inventory-only updates are delivered at runtime and do not require a new deployment.
 
-If inventory committed successfully but production did not update:
+If the repository inventory is current but production appears stale:
 
-1. Check the Vercel deployment attached to the latest GitHub commit.
-2. Confirm the production branch is still `main`.
-3. Confirm the project domain is `genesis-manchester.vercel.app`.
-4. Inspect the Vercel build log for Next.js build errors.
+1. Check `https://genesis-manchester.vercel.app/api/inventory-health`.
+2. Confirm `current` is `true` and `generatedAt` is at least as recent as the repository snapshot.
+3. If the endpoint is missing, the production deployment is running older application code and must be updated.
+4. If the endpoint reports `bundled-fallback`, inspect outbound access to the GitHub raw inventory URL.
+5. If the endpoint is current but the page is not, reload the page and inspect browser or edge caching.
 
-Do not create a separate manual deployment pipeline unless the native Git integration is unavailable.
+For code deployment failures, confirm the production branch is still `main`, confirm the project domain is `genesis-manchester.vercel.app`, and inspect the Vercel build log for Next.js build errors.
 
 ## Search troubleshooting
 
