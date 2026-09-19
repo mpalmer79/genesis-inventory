@@ -124,7 +124,7 @@ Validation quality gates
 inventory.json / inventory.csv / changes.json / history.json
         |
         v
-Git commit -> Vercel deployment -> production search app
+Git commit -> runtime inventory fetch -> production search app
 ```
 
 ### Generated data
@@ -161,7 +161,7 @@ For active shared-used and certified listing sources, listing membership can ser
 
 ## Application behavior
 
-The Next.js application reads `data/inventory.json` at build time.
+The Next.js application reads the latest validated `data/inventory.json` from GitHub at request time. If the live fetch is temporarily unavailable, it falls back to the validated inventory bundled with the deployed build.
 
 The default view opens to **New** inventory, grouped by model and sorted with the newest model year first. Natural-language searches synchronize relevant visible filters so the parser and dropdown state do not contradict one another.
 
@@ -180,8 +180,9 @@ GitHub Actions handles collection, validation, and application verification.
 | `.github/workflows/inventory-sync.yml` | Scheduled inventory collection and validated data commits |
 | `.github/workflows/scraper-ci.yml` | Scraper syntax and unit tests |
 | `.github/workflows/app-ci.yml` | Search tests, production Next.js build, and Playwright smoke testing |
+| `.github/workflows/inventory-freshness-watch.yml` | Repository freshness recovery plus production-delivery verification |
 
-Vercel is connected to `main`, so successful commits automatically deploy to production.
+Vercel deploys application code changes from `main`. Inventory-only commits no longer depend on a Vercel deployment because the production application loads the latest validated inventory at request time.
 
 ### Inventory health
 
@@ -242,6 +243,7 @@ npm run scrape
 app/                         Next.js application shell and global presentation
 components/                  Inventory explorer UI and interaction logic
 lib/search.js                Natural-language inventory parser and matcher
+lib/inventorySource.js       Runtime live-inventory loader with validated fallback
 lib/voiceNormalize.js        Voice transcript normalization
 scraper/                     Discovery, collection, normalization, and validation
 data/                        Current and historical generated inventory artifacts
