@@ -87,11 +87,17 @@ try {
   const firstGroupYears = await page.locator('[data-model-group]').first().locator('[data-model-year]').evaluateAll((cards) => cards.map((card) => Number(card.getAttribute('data-model-year'))).filter(Number.isFinite));
   assert(firstGroupYears.every((year, index) => index === 0 || firstGroupYears[index - 1] >= year), 'Model years are not sorted newest first.');
 
-  await search.fill('Lexus');
+  const usedCatalogResponse = await fetch(`${baseUrl}/api/search?q=used&limit=100`);
+  assert(usedCatalogResponse.ok, 'Could not load pre-owned inventory for make search testing.');
+  const usedCatalog = await usedCatalogResponse.json();
+  const unqualifiedMake = usedCatalog.vehicles.find((vehicle) => vehicle.make)?.make;
+  assert(unqualifiedMake, 'Could not derive a live make for unqualified make search testing.');
+
+  await search.fill(unqualifiedMake);
   await page.getByRole('button', { name: 'Search', exact: true }).click();
   await waitForSelectValue(page, 'Stock Type', 'all');
-  await waitForSelectValue(page, 'Make', 'LEXUS');
-  assert(await page.locator('.vehicle-card').count() > 0, 'Unqualified Lexus search should return inventory across stock types.');
+  await waitForSelectValue(page, 'Make', unqualifiedMake);
+  assert(await page.locator('.vehicle-card').count() > 0, 'Unqualified make search should return live inventory.');
 
   await search.fill('Used AWD SUVs under 30k miles');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
