@@ -41,6 +41,13 @@ async function waitForSelectValue(page, label, expected) {
 let browser;
 try {
   await waitForServer();
+
+  const healthResponse = await fetch(`${baseUrl}/api/inventory-health`);
+  assert(healthResponse.ok, 'Inventory health endpoint is unavailable.');
+  const health = await healthResponse.json();
+  assert(Boolean(health.generatedAt), 'Inventory health endpoint is missing generatedAt.');
+  assert(Number(health.total) > 0, 'Inventory health endpoint returned an empty inventory.');
+
   browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await page.route('**/*', async (route) => {
@@ -54,13 +61,23 @@ try {
   assert(await page.locator('.vehicle-card').count() > 0, 'Default all-stock inventory cards are missing.');
   assert(await page.getByRole('button', { name: 'Copy VIN / Stock' }).count() > 0, 'Vehicle copy action is missing.');
 
+  const firstStockText = await page.locator('.vehicle-stock').first().textContent();
+  const exactStock = firstStockText?.match(/Stock\\s+([^\\s·]+)/)?.[1];
+  assert(exactStock, 'Could not derive a live stock number for exact lookup testing.');
+
   const search = page.getByLabel('Ask inventory');
 
-  await search.fill('GM260818S');
+  await search.fill(exactStock);
   await page.getByRole('button', { name: 'Search', exact: true }).click();
   await page.waitForFunction(() => document.querySelectorAll('.vehicle-card').length === 1, undefined, { timeout: 3000 });
   const stockLookupText = await page.locator('.vehicle-card').first().textContent();
-  assert(stockLookupText?.includes('GM260818S'), 'Exact stock-number lookup did not return GM260818S.');
+  assert(stockLookupText?.includes(exactStock), `Exact stock-number lookup did not return ${exactStock}.`);
+
+  const apiSearchResponse = await fetch(`${baseUrl}/api/search?q=${encodeURIComponent(exactStock)}`);
+  assert(apiSearchResponse.ok, 'Search API is unavailable.');
+  const apiSearch = await apiSearchResponse.json();
+  assert(apiSearch.totalMatches >= 1, 'Search API did not return the live stock number.');
+  assert(apiSearch.generatedAt === health.generatedAt, 'Search API and health endpoint are serving different inventory snapshots.');
 
   await search.fill('Show me new Genesis vehicles');
   await page.getByRole('button', { name: 'Search', exact: true }).click();
