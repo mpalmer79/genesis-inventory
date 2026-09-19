@@ -93,10 +93,16 @@ try {
   const unqualifiedMake = usedCatalog.vehicles.find((vehicle) => vehicle.make)?.make;
   assert(unqualifiedMake, 'Could not derive a live make for unqualified make search testing.');
 
+  const unqualifiedMakeResponse = await fetch(`${baseUrl}/api/search?q=${encodeURIComponent(unqualifiedMake)}`);
+  assert(unqualifiedMakeResponse.ok, 'Unqualified make search API is unavailable.');
+  const unqualifiedMakeSearch = await unqualifiedMakeResponse.json();
+  assert(unqualifiedMakeSearch.totalMatches > 0, 'Unqualified make search API returned no live inventory.');
+
   await search.fill(unqualifiedMake);
   await page.getByRole('button', { name: 'Search', exact: true }).click();
   await waitForSelectValue(page, 'Stock Type', 'all');
   await waitForSelectValue(page, 'Make', unqualifiedMake);
+  await page.waitForFunction(() => document.querySelectorAll('.vehicle-card').length > 0, undefined, { timeout: 3000 });
   assert(await page.locator('.vehicle-card').count() > 0, 'Unqualified make search should return live inventory.');
 
   await search.fill('Used AWD SUVs under 30k miles');
