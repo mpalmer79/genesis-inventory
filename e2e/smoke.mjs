@@ -62,7 +62,7 @@ try {
   assert(await page.getByRole('button', { name: 'Copy VIN / Stock' }).count() > 0, 'Vehicle copy action is missing.');
 
   const firstStockText = await page.locator('.vehicle-stock').first().textContent();
-  const exactStock = firstStockText?.match(/Stock\\s+([^\\s·]+)/)?.[1];
+  const exactStock = firstStockText?.match(/Stock\s+([^\s·]+)/)?.[1];
   assert(exactStock, 'Could not derive a live stock number for exact lookup testing.');
 
   const search = page.getByLabel('Ask inventory');
