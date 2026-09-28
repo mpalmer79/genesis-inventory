@@ -255,6 +255,18 @@ async function collectVehicleLinks(page, source) {
 
   const firstPageLinks = await discoverFirstPageLinks(page, source);
   if (!firstPageLinks.size) {
+    const diagnostics = await page.evaluate(() => ({
+      title: document.title,
+      url: location.href,
+      bodyText: (document.body?.innerText || '').slice(0, 1200),
+      anchors: Array.from(document.querySelectorAll('a[href]'))
+        .slice(0, 40)
+        .map((anchor) => anchor.href)
+    })).catch(() => null);
+
+    console.error(
+      `${source.name}: listing diagnostics: ${JSON.stringify(diagnostics)}`
+    );
     throw new Error(`${source.name}: first listing page exposed no canonical vehicle detail links.`);
   }
 
