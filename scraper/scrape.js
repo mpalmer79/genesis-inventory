@@ -66,34 +66,57 @@ async function navigate(page, url) {
 }
 
 async function settleListingPage(page, source) {
-  if (source.name !== 'shared-used') return;
-
+  const isSharedUsed = source.name === 'shared-used';
+  const maxAttempts = isSharedUsed ? 20 : 30;
+  const stableTarget = isSharedUsed ? 2 : 1;
   let previousCount = -1;
   let stableChecks = 0;
 
-  for (let attempt = 0; attempt < 12; attempt += 1) {
-    await page.evaluate(() => {
-      const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-      window.scrollTo(0, height);
-    });
-    await page.waitForTimeout(500);
-
+  for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
     const currentLinks = await extractVehicleLinks(page, source);
     const currentCount = currentLinks.size;
 
     if (currentCount > 0 && currentCount === previousCount) stableChecks += 1;
     else stableChecks = 0;
 
-    if (stableChecks >= 2) {
+    if (currentCount > 0 && stableChecks >= stableTarget) {
       await page.evaluate(() => window.scrollTo(0, 0));
-      await page.waitForTimeout(100);
+      await page.waitForTimeout(150);
       return;
     }
 
+    if (isSharedUsed || currentCount === 0) {
+      await page.evaluate(() => {
+        const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+        window.scrollTo(0, height);
+      });
+    }
+
     previousCount = currentCount;
+    await page.waitForTimeout(500);
   }
 
   await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(150);
+}
+
+async function discoverFirstPageLinks(page, source) {
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    if (attempt > 1) {
+      console.warn(
+        `${source.name}: no VDP links after page hydration; retrying listing navigation (${attempt}/3).`
+      );
+      await navigate(page, source.url);
+    }
+
+    await settleListingPage(page, source);
+    const links = await extractVehicleLinks(page, source);
+    if (links.size > 0) return links;
+
+    await page.waitForTimeout(1000 * attempt);
+  }
+
+  return new Set();
 }
 
 function parseAdvertisedVehicleCount(text) {
@@ -230,7 +253,7 @@ async function collectVehicleLinks(page, source) {
   await navigate(page, source.url);
   await settleListingPage(page, source);
 
-  const firstPageLinks = await extractVehicleLinks(page, source);
+  const firstPageLinks = await discoverFirstPageLinks(page, source);
   if (!firstPageLinks.size) {
     throw new Error(`${source.name}: first listing page exposed no canonical vehicle detail links.`);
   }
