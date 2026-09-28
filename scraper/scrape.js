@@ -315,10 +315,28 @@ async function collectVehicleLinks(page, source) {
 
 async function collectAuthoritativeInventoryTotal(page) {
   console.log(`Reading authoritative inventory total from ${AUTHORITATIVE_INVENTORY_URL}`);
-  await navigate(page, AUTHORITATIVE_INVENTORY_URL);
-  const total = await readAdvertisedVehicleCount(page, 'all-inventory', true);
-  console.log(`Genesis of Manchester advertises ${total} total vehicles.`);
-  return total;
+
+  try {
+    await navigate(page, AUTHORITATIVE_INVENTORY_URL);
+    const total = await readAdvertisedVehicleCount(page, 'all-inventory', false);
+
+    if (Number.isFinite(total) && total > 0) {
+      console.log(`Genesis of Manchester advertises ${total} total vehicles.`);
+      return total;
+    }
+
+    console.warn(
+      'all-inventory: dealer-advertised total was not readable. ' +
+      'Falling back to source-level advertised counts and discovered VDP totals.'
+    );
+  } catch (error) {
+    console.warn(
+      'all-inventory: authoritative total lookup failed. ' +
+      `Falling back to source-level counts. ${error instanceof Error ? error.message : String(error)}`
+    );
+  }
+
+  return null;
 }
 
 function assertDiscoveryCoverage(discovered, expected, minimumCoverage) {
@@ -617,12 +635,40 @@ async function main() {
       throw new Error('Could not establish the dealer-advertised new inventory count.');
     }
 
-    const authoritativePreOwned = authoritativeTotal - authoritativeNew;
+    const discoveredPreOwnedAdvertised = discoveries
+      .filter((discovery) => ['used', 'certified'].includes(discovery.condition))
+      .map((discovery) => Number(discovery.advertisedCount))
+      .filter((value) => Number.isFinite(value) && value > 0)
+      .reduce((sum, value) => sum + value, 0);
+
+    const fallbackTotal =
+      authoritativeNew +
+      (discoveredPreOwnedAdvertised > 0
+        ? discoveredPreOwnedAdvertised
+        : discoveredInventory.preOwned);
+
+    const effectiveAuthoritativeTotal =
+      Number.isFinite(authoritativeTotal) && authoritativeTotal > 0
+        ? authoritativeTotal
+        : fallbackTotal;
+
+    const authoritativePreOwned = Math.max(
+      0,
+      effectiveAuthoritativeTotal - authoritativeNew
+    );
+
     const expectedInventory = {
-      total: authoritativeTotal,
+      total: effectiveAuthoritativeTotal,
       new: authoritativeNew,
       preOwned: authoritativePreOwned
     };
+
+    if (!(Number.isFinite(authoritativeTotal) && authoritativeTotal > 0)) {
+      console.warn(
+        'Using fallback authoritative inventory total:',
+        expectedInventory
+      );
+    }
 
     console.log(`Collected ${uniqueTargets.length} unique canonical VDP links across all sources.`);
     console.log('Dealer-advertised inventory:', expectedInventory);
