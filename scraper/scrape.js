@@ -66,57 +66,34 @@ async function navigate(page, url) {
 }
 
 async function settleListingPage(page, source) {
-  const isSharedUsed = source.name === 'shared-used';
-  const maxAttempts = isSharedUsed ? 20 : 30;
-  const stableTarget = isSharedUsed ? 2 : 1;
+  if (source.name !== 'shared-used') return;
+
   let previousCount = -1;
   let stableChecks = 0;
 
-  for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    await page.evaluate(() => {
+      const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      window.scrollTo(0, height);
+    });
+    await page.waitForTimeout(500);
+
     const currentLinks = await extractVehicleLinks(page, source);
     const currentCount = currentLinks.size;
 
     if (currentCount > 0 && currentCount === previousCount) stableChecks += 1;
     else stableChecks = 0;
 
-    if (currentCount > 0 && stableChecks >= stableTarget) {
+    if (stableChecks >= 2) {
       await page.evaluate(() => window.scrollTo(0, 0));
-      await page.waitForTimeout(150);
+      await page.waitForTimeout(100);
       return;
     }
 
-    if (isSharedUsed || currentCount === 0) {
-      await page.evaluate(() => {
-        const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-        window.scrollTo(0, height);
-      });
-    }
-
     previousCount = currentCount;
-    await page.waitForTimeout(500);
   }
 
   await page.evaluate(() => window.scrollTo(0, 0));
-  await page.waitForTimeout(150);
-}
-
-async function discoverFirstPageLinks(page, source) {
-  for (let attempt = 1; attempt <= 3; attempt += 1) {
-    if (attempt > 1) {
-      console.warn(
-        `${source.name}: no VDP links after page hydration; retrying listing navigation (${attempt}/3).`
-      );
-      await navigate(page, source.url);
-    }
-
-    await settleListingPage(page, source);
-    const links = await extractVehicleLinks(page, source);
-    if (links.size > 0) return links;
-
-    await page.waitForTimeout(1000 * attempt);
-  }
-
-  return new Set();
 }
 
 function parseAdvertisedVehicleCount(text) {
@@ -253,20 +230,8 @@ async function collectVehicleLinks(page, source) {
   await navigate(page, source.url);
   await settleListingPage(page, source);
 
-  const firstPageLinks = await discoverFirstPageLinks(page, source);
+  const firstPageLinks = await extractVehicleLinks(page, source);
   if (!firstPageLinks.size) {
-    const diagnostics = await page.evaluate(() => ({
-      title: document.title,
-      url: location.href,
-      bodyText: (document.body?.innerText || '').slice(0, 1200),
-      anchors: Array.from(document.querySelectorAll('a[href]'))
-        .slice(0, 40)
-        .map((anchor) => anchor.href)
-    })).catch(() => null);
-
-    console.error(
-      `${source.name}: listing diagnostics: ${JSON.stringify(diagnostics)}`
-    );
     throw new Error(`${source.name}: first listing page exposed no canonical vehicle detail links.`);
   }
 
@@ -350,28 +315,10 @@ async function collectVehicleLinks(page, source) {
 
 async function collectAuthoritativeInventoryTotal(page) {
   console.log(`Reading authoritative inventory total from ${AUTHORITATIVE_INVENTORY_URL}`);
-
-  try {
-    await navigate(page, AUTHORITATIVE_INVENTORY_URL);
-    const total = await readAdvertisedVehicleCount(page, 'all-inventory', false);
-
-    if (Number.isFinite(total) && total > 0) {
-      console.log(`Genesis of Manchester advertises ${total} total vehicles.`);
-      return total;
-    }
-
-    console.warn(
-      'all-inventory: dealer-advertised total was not readable. ' +
-      'Falling back to source-level advertised counts and discovered VDP totals.'
-    );
-  } catch (error) {
-    console.warn(
-      'all-inventory: authoritative total lookup failed. ' +
-      `Falling back to source-level counts. ${error instanceof Error ? error.message : String(error)}`
-    );
-  }
-
-  return null;
+  await navigate(page, AUTHORITATIVE_INVENTORY_URL);
+  const total = await readAdvertisedVehicleCount(page, 'all-inventory', true);
+  console.log(`Genesis of Manchester advertises ${total} total vehicles.`);
+  return total;
 }
 
 function assertDiscoveryCoverage(discovered, expected, minimumCoverage) {
@@ -670,40 +617,12 @@ async function main() {
       throw new Error('Could not establish the dealer-advertised new inventory count.');
     }
 
-    const discoveredPreOwnedAdvertised = discoveries
-      .filter((discovery) => ['used', 'certified'].includes(discovery.condition))
-      .map((discovery) => Number(discovery.advertisedCount))
-      .filter((value) => Number.isFinite(value) && value > 0)
-      .reduce((sum, value) => sum + value, 0);
-
-    const fallbackTotal =
-      authoritativeNew +
-      (discoveredPreOwnedAdvertised > 0
-        ? discoveredPreOwnedAdvertised
-        : discoveredInventory.preOwned);
-
-    const effectiveAuthoritativeTotal =
-      Number.isFinite(authoritativeTotal) && authoritativeTotal > 0
-        ? authoritativeTotal
-        : fallbackTotal;
-
-    const authoritativePreOwned = Math.max(
-      0,
-      effectiveAuthoritativeTotal - authoritativeNew
-    );
-
+    const authoritativePreOwned = authoritativeTotal - authoritativeNew;
     const expectedInventory = {
-      total: effectiveAuthoritativeTotal,
+      total: authoritativeTotal,
       new: authoritativeNew,
       preOwned: authoritativePreOwned
     };
-
-    if (!(Number.isFinite(authoritativeTotal) && authoritativeTotal > 0)) {
-      console.warn(
-        'Using fallback authoritative inventory total:',
-        expectedInventory
-      );
-    }
 
     console.log(`Collected ${uniqueTargets.length} unique canonical VDP links across all sources.`);
     console.log('Dealer-advertised inventory:', expectedInventory);
