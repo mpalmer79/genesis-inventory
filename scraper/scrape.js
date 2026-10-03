@@ -62,38 +62,35 @@ async function navigate(page, url) {
     waitUntil: 'domcontentloaded',
     timeout: CONFIG.navigationTimeoutMs
   });
-  await page.waitForTimeout(250);
+  await page.waitForTimeout(750);
 }
 
 async function settleListingPage(page, source) {
-  if (source.name !== 'shared-used') return;
-
   let previousCount = -1;
   let stableChecks = 0;
+  const attempts = source.name === 'shared-used' ? 12 : 20;
 
-  for (let attempt = 0; attempt < 12; attempt += 1) {
-    await page.evaluate(() => {
-      const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-      window.scrollTo(0, height);
-    });
-    await page.waitForTimeout(500);
-
-    const currentLinks = await extractVehicleLinks(page, source);
-    const currentCount = currentLinks.size;
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    const links = await extractVehicleLinks(page, source);
+    const currentCount = links.size;
 
     if (currentCount > 0 && currentCount === previousCount) stableChecks += 1;
     else stableChecks = 0;
 
-    if (stableChecks >= 2) {
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await page.waitForTimeout(100);
+    if (currentCount > 0 && (stableChecks >= 2 || source.name !== 'shared-used')) {
+      await page.evaluate(() => window.scrollTo(0, 0)).catch(() => {});
       return;
     }
 
+    await page.evaluate(() => {
+      const height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      window.scrollTo(0, height);
+    }).catch(() => {});
+    await page.waitForTimeout(500);
     previousCount = currentCount;
   }
 
-  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.evaluate(() => window.scrollTo(0, 0)).catch(() => {});
 }
 
 function parseAdvertisedVehicleCount(text) {
@@ -183,9 +180,28 @@ async function discoverListingMetadata(page, source, firstPageLinks) {
 }
 
 async function extractVehicleLinks(page, source) {
-  const hrefs = await page.locator('a[href]').evaluateAll((anchors) => anchors.map((anchor) => anchor.href));
+  const candidates = await page.evaluate(() => {
+    const values = [];
+
+    for (const anchor of document.querySelectorAll('a[href]')) {
+      values.push(anchor.href);
+    }
+
+    const html = document.documentElement?.innerHTML || '';
+    const patterns = [
+      /https?:\\/\\/[^"'<>\\s]+\\/(?:new|used|certified)\\/[^"'<>\\s]+\\/20\\d{2}-[^"'<>\\s]+-[a-f0-9]{32}\\.htm/gi,
+      /\\/(?:new|used|certified)\\/[^"'<>\\s]+\\/20\\d{2}-[^"'<>\\s]+-[a-f0-9]{32}\\.htm/gi
+    ];
+
+    for (const pattern of patterns) {
+      for (const match of html.matchAll(pattern)) values.push(match[0]);
+    }
+
+    return values;
+  });
+
   const links = new Set();
-  for (const href of hrefs) {
+  for (const href of candidates) {
     const canonical = canonicalVehicleDetailUrl(href, source);
     if (canonical) links.add(canonical);
   }
